@@ -1,10 +1,8 @@
-> Incarico corrente: **F02 — revisione della fluidità**. Leggere CODEX_TASK.md. Le specifiche F02 sono pronte; gli acquisti multipli e le milestone non sono ancora implementati in questo commit. Baseline codice: FIRST_PLAYABLE della PR #1.
-
 # Borgo delle Creature
 
 **F02 implementata** sulla baseline FIRST_PLAYABLE: acquisti multipli, traguardi automatici, talenti e lista operativa nel Borgo. Un quartiere, quattro attività, tre creature, tre progetti e la prima festa; produzione offline fino a 48 ore. Nessun account, backend o API runtime.
 
-Stato attuale e verifiche: [docs/FLOW_IMPLEMENTATION_REPORT.md](docs/FLOW_IMPLEMENTATION_REPORT.md). La revisione è nella PR #3, branch `design/idle-flow-revision`, verso `codex/first-playable`. Nessun merge o deploy. Il report FIRST_PLAYABLE rimane storico.
+Stato attuale e verifiche: [docs/FLOW_IMPLEMENTATION_REPORT.md](docs/FLOW_IMPLEMENTATION_REPORT.md). FIRST_PLAYABLE e F02 sono integrati in `main`. Nessun deploy. Il report FIRST_PLAYABLE rimane storico.
 
 La grafica è un **fallback SVG originale e provvisorio**, a strati. Il riferimento illustrato in `docs/art/concept-reference.jpg` resta la direzione per i raster definitivi: il fallback non li sostituisce come stile approvato.
 
@@ -15,8 +13,7 @@ Node **22.12+ della serie 22, 24.x oppure 26+** e npm. Ambiente verificato: Wind
 ```powershell
 git clone https://github.com/margulka93-lab/idle-creature.git
 cd idle-creature
-# Se la PR non è ancora integrata:
-git switch design/idle-flow-revision
+git switch main
 npm ci
 npm run dev
 ```
@@ -93,3 +90,7 @@ Solo con `npm run dev`, apri `/?debug=1`: salti di 60s/1h/48h, reset con conferm
 - `tests`: motore/persistenza/geometria ed E2E; `scripts/simulate.ts`: politiche di visita ripetibili.
 
 Prezzi e quantità di cristalli baseline invariati; formule di produzione e gate sono v2. Niente combattimento, fame, gacha, monetizzazione, prestigio, riproduzione, multiplayer o sistemi della roadmap futura. Dopo la Festa il borgo produce ancora; il messaggio «Prototipo completato» esplicita la fine del contenuto.
+
+## Guida illustrata
+
+[Le tre tavole del primo borgo](docs/GUIDA_VISIVA.md): scelte, interazioni, crescita, sblocchi e progresso offline. Le tavole sono concept esplicativi; per le regole aggiornate prevalgono F02 e il codice corrente.
