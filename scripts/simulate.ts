@@ -8,7 +8,7 @@ import {
   totalRate,
   upgradeCost,
   type State,
-} from "../src/core/engine";
+} from "../src/core/legacy-v1";
 import { parseSave } from "../src/persistence/save";
 const epoch = 1_800_000_000_000;
 function simulate(active: boolean) {

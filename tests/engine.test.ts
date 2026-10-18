@@ -15,6 +15,8 @@ import {
 } from "../src/core/engine";
 import { load, parseSave, save, SAVE_KEY } from "../src/persistence/save";
 import { intersects } from "../src/scene/geometry";
+import * as legacy from "../src/core/legacy-v1";
+import { normalizeSave } from "../src/persistence/save";
 const start = 1_800_000_000_000;
 const act = (s: State, a: Command, now = s.lastSimulatedAt) =>
   command(s, a, now).state;
@@ -22,13 +24,21 @@ function wealthy() {
   return advance(createState(start), start + 86400_000);
 }
 function expanded() {
-  let s = wealthy();
+  let s = legacy.advance(legacy.createState(start), start + 86400_000);
   for (const a of activities.slice(1)) {
-    s = act(s, { type: "buyActivity", id: a.id });
+    s = legacy.command(
+      s,
+      { type: "buyActivity", id: a.id },
+      s.lastSimulatedAt,
+    ).state;
     for (const id of ["sentiero", "ponte", "festa"])
-      s = act(s, { type: "completeProject", id });
+      s = legacy.command(
+        s,
+        { type: "completeProject", id },
+        s.lastSimulatedAt,
+      ).state;
   }
-  return s;
+  return normalizeSave(s, s.lastSimulatedAt);
 }
 describe("economia e comandi atomici", () => {
   it("parte esattamente dai dati concordati", () => {
@@ -53,7 +63,7 @@ describe("economia e comandi atomici", () => {
     expect(s.lifetimeCoins).toBeCloseTo(0.65);
     expect(
       command(s, { type: "upgradeActivity", id: "orto" }, s.lastSimulatedAt),
-    ).toEqual({ state: s, error: "Monete insufficienti." });
+    ).toEqual({ state: s, error: "Monete insufficienti per questo acquisto." });
   });
   it("non paga due volte un acquisto e risolve subito lo sblocco", () => {
     const s = wealthy(),

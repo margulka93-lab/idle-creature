@@ -3,11 +3,19 @@ import {
   command,
   createState,
   returnSummary,
+  quoteUpgrade,
   type Command,
   type State,
 } from "../core/engine";
 import { activities, projects } from "../content";
-import { load, parseSave, save, SAVE_KEY } from "../persistence/save";
+import {
+  load,
+  parseSave,
+  normalizeSave,
+  save,
+  SAVE_KEY,
+  BACKUP_KEY,
+} from "../persistence/save";
 type Snapshot = {
   state: State;
   warning: string;
@@ -16,6 +24,8 @@ type Snapshot = {
   ready: boolean;
   message: string;
   summary: ReturnType<typeof returnSummary> | null;
+  backup: string | null;
+  upgradeFeedback: Record<string, string>;
 };
 const memoryStorage = {
   getItem: () => null,
@@ -39,6 +49,8 @@ class GameStore {
     ready: false,
     message: "",
     summary: null,
+    backup: null,
+    upgradeFeedback: {},
   };
   listeners = new Set<() => void>();
   offset = 0;
@@ -46,6 +58,7 @@ class GameStore {
   lastSaved = 0;
   release: (() => void) | undefined;
   generation = 0;
+  backupPending: string | undefined;
   subscribe = (fn: () => void) => {
     this.listeners.add(fn);
     return () => {
@@ -60,6 +73,20 @@ class GameStore {
   now = () => Date.now() + this.offset;
   persist = () => {
     if (this.snapshot.readOnly || this.snapshot.corrupt) return;
+    if (this.backupPending) {
+      try {
+        const existing = storage().getItem(BACKUP_KEY);
+        if (!existing) storage().setItem(BACKUP_KEY, this.backupPending);
+        this.emit({ backup: existing ?? this.backupPending });
+        this.backupPending = undefined;
+      } catch {
+        this.emit({
+          warning:
+            "Backup pre-F02 disponibile in memoria: esportalo. La partita originale resta nello storage.",
+        });
+        return;
+      }
+    }
     if (!save(storage(), this.snapshot.state))
       this.emit({ warning: "Il salvataggio non è disponibile" });
     this.lastSaved = Date.now();
@@ -81,7 +108,8 @@ class GameStore {
     if (!this.snapshot.readOnly || event.key !== SAVE_KEY || !event.newValue)
       return;
     try {
-      this.emit({ state: parseSave(event.newValue) });
+      const saved = parseSave(event.newValue);
+      this.emit({ state: { ...saved, economyVersion: 2 } });
     } catch {
       this.emit({ warning: "Salvataggio aggiornato non valido." });
     }
@@ -103,7 +131,7 @@ class GameStore {
         async (lock) => {
           if (generation !== this.generation) return;
           if (!lock) {
-            const loaded = load(storage(), this.now());
+            const loaded = load(storage(), this.now(), true);
             this.emit({
               ready: true,
               readOnly: true,
@@ -114,10 +142,17 @@ class GameStore {
             return;
           }
           const loaded = load(storage(), this.now());
+          this.backupPending = loaded.migrationBackup;
+          let backup = loaded.migrationBackup ?? null;
+          try {
+            backup = storage().getItem(BACKUP_KEY) ?? backup;
+          } catch {
+            /* Memory-only export remains available. */
+          }
           const state = loaded.corrupt
             ? loaded.state
             : advance(loaded.state, this.now());
-          const summary = returnSummary(loaded.state, state);
+          const summary = returnSummary(loaded.previous ?? loaded.state, state);
           this.emit({
             state,
             ready: true,
@@ -125,6 +160,7 @@ class GameStore {
             warning: loaded.warning ?? "",
             corrupt: loaded.corrupt ?? null,
             summary: summary.elapsed >= 60 && !loaded.corrupt ? summary : null,
+            backup,
           });
           this.persist();
           await new Promise<void>((resolve) => {
@@ -162,7 +198,27 @@ class GameStore {
   };
   dispatch = (action: Command) => {
     if (this.snapshot.readOnly || this.snapshot.corrupt) return;
-    const result = command(this.snapshot.state, action, this.now());
+    const now = this.now();
+    const reconciled = advance(this.snapshot.state, now);
+    const result = command(this.snapshot.state, action, now);
+    if (action.type === "encourage") {
+      this.emit({ state: result.state });
+      if (!result.error) this.persist();
+      return;
+    }
+    if (action.type === "upgradeActivity" && !result.error) {
+      const q = quoteUpgrade(reconciled, action.id, action.mode ?? "1");
+      const feedback = `L${q.from} → L${q.target} · ${q.count} livelli${q.milestones.length ? ` · Traguardi ${q.milestones.map((m) => `L${m.level} ×${m.factor}`).join(", ")}` : ""}`;
+      this.emit({
+        state: result.state,
+        upgradeFeedback: {
+          ...this.snapshot.upgradeFeedback,
+          [action.id]: feedback,
+        },
+      });
+      this.persist();
+      return;
+    }
     const success: Record<Command["type"], string> = {
       encourage: "Carezza ricevuta · produzione +50% per 30s",
       buyActivity: "Una nuova attività nel borgo!",
@@ -188,7 +244,8 @@ class GameStore {
         )
       )
         return;
-      const state = advance(imported, this.now());
+      const state = advance(normalizeSave(imported, this.now()), this.now());
+      if (imported.economyVersion !== 2) this.backupPending = raw;
       const summary = returnSummary(imported, state);
       this.emit({
         state,
@@ -196,6 +253,9 @@ class GameStore {
         warning: "",
         summary: summary.elapsed >= 60 ? summary : null,
         message: "Partita importata",
+        backup:
+          this.snapshot.backup ?? (imported.economyVersion !== 2 ? raw : null),
+        upgradeFeedback: {},
       });
       this.persist();
     } catch (e) {
@@ -209,12 +269,14 @@ class GameStore {
     )
       return;
     this.offset = 0;
+    this.backupPending = undefined;
     this.emit({
       state: createState(this.now()),
       corrupt: null,
       warning: "",
       summary: null,
       message: "Un nuovo inizio",
+      upgradeFeedback: {},
     });
     this.persist();
   };
@@ -229,12 +291,19 @@ class GameStore {
     if (!import.meta.env.DEV || this.snapshot.readOnly || this.snapshot.corrupt)
       return;
     this.debugAdvance(86400);
-    for (const a of activities) {
-      if (!this.snapshot.state.activities[a.id])
-        this.dispatch({ type: "buyActivity", id: a.id });
-      for (const p of projects)
-        this.dispatch({ type: "completeProject", id: p.id });
+    for (let pass = 0; pass < 2; pass++) {
+      for (const a of activities) {
+        if (!this.snapshot.state.activities[a.id])
+          this.dispatch({ type: "buyActivity", id: a.id });
+        if (this.snapshot.state.activities[a.id] < 25)
+          this.dispatch({ type: "upgradeActivity", id: a.id, mode: "next" });
+        for (const p of projects)
+          this.dispatch({ type: "completeProject", id: p.id });
+      }
+      this.debugAdvance(3600);
     }
+    for (const p of projects)
+      this.dispatch({ type: "completeProject", id: p.id });
   };
 }
 export const game = new GameStore();

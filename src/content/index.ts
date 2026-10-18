@@ -1,4 +1,17 @@
 import data from "../../design/balance.v1.json" with { type: "json" };
+import flowData from "../../design/flow.v2.json" with { type: "json" };
+export const flow = flowData;
+export type PurchaseMode = "1" | "10" | "next" | "max";
+export const purchaseModes = flow.purchaseModes as PurchaseMode[];
+export const defaultPurchaseMode = flow.defaultPurchaseMode as PurchaseMode;
+export type ProjectRequirements = {
+  activityLevels?: Record<string, number>;
+  creatureLevels?: Record<string, number>;
+};
+export const projectRequirements = flow.projectAdditionalRequirements as Record<
+  string,
+  ProjectRequirements
+>;
 export const balance = data;
 export const activities = data.activities;
 export const creatures = data.creatures;

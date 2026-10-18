@@ -1,4 +1,13 @@
-import { activities, balance as b, creatures, projects } from "../content";
+import {
+  activities,
+  balance as b,
+  creatures,
+  projects,
+  flow,
+  projectRequirements,
+  purchaseModes,
+  type PurchaseMode,
+} from "../content";
 
 export interface CreatureState {
   unlocked: boolean;
@@ -10,6 +19,7 @@ export interface CreatureState {
 }
 export interface State {
   schemaVersion: 1;
+  economyVersion: 2;
   coins: number;
   lifetimeCoins: number;
   crystals: number;
@@ -26,7 +36,9 @@ export interface State {
   lastSimulatedAt: number;
 }
 export type Command =
-  | { type: "buyActivity" | "upgradeActivity" | "collectProduct"; id: string }
+  | { type: "buyActivity"; id: string }
+  | { type: "collectProduct"; id: string }
+  | { type: "upgradeActivity"; id: string; mode?: PurchaseMode }
   | { type: "encourage"; id: string }
   | { type: "assignCreature"; id: string; activityId: string | null }
   | { type: "completeProject"; id: string }
@@ -35,6 +47,7 @@ export const clone = (s: State): State => structuredClone(s);
 export function createState(now: number): State {
   const s: State = {
     schemaVersion: 1,
+    economyVersion: 2,
     coins: b.startingCoins,
     lifetimeCoins: 0,
     crystals: 0,
@@ -68,6 +81,28 @@ export const assigned = (s: State, id: string) =>
   Object.entries(s.creatures).find(
     ([, c]) => c.unlocked && c.assignedActivityId === id,
   );
+export const milestoneFactor = (level: number) =>
+  flow.activityMilestones
+    .filter((m) => level >= m.level)
+    .reduce((factor, m) => factor * m.factor, 1);
+export const nextActivityMilestone = (level: number) =>
+  flow.activityMilestones.find((m) => m.level > level);
+export const encouragementDuration = (level: number) =>
+  flow.creatureMilestones.reduce(
+    (duration, m) =>
+      level >= m.level && m.encouragementDurationSeconds
+        ? m.encouragementDurationSeconds
+        : duration,
+    b.pet.durationSeconds,
+  );
+export const preferredTalentBonus = (level: number) =>
+  flow.creatureMilestones.reduce(
+    (bonus, m) =>
+      bonus + (level >= m.level ? (m.preferredAssignmentBonusAdd ?? 0) : 0),
+    0,
+  );
+export const nextCreatureMilestone = (level: number) =>
+  flow.creatureMilestones.find((m) => m.level > level);
 export const baseRate = (
   s: State,
   id: string,
@@ -80,12 +115,13 @@ export const baseRate = (
     ? b.creature.assignedBonus +
       b.creature.bonusPerLevel * (worker[1].level - 1) +
       (creatures.find((c) => c.id === worker[0])!.preferredActivity === id
-        ? b.creature.preferredBonus
+        ? b.creature.preferredBonus + preferredTalentBonus(worker[1].level)
         : 0)
     : 0;
   return (
     (a.baseCoinsPerSecond + (level - 1) * a.coinsPerSecondPerLevel) *
-    (1 + bonus)
+    (1 + bonus) *
+    milestoneFactor(level)
   );
 };
 export function rate(
@@ -112,6 +148,92 @@ export const upgradeCost = (s: State, id: string) => {
     a.upgradeBaseCost * a.upgradeCostGrowth ** (s.activities[id] - 1),
   );
 };
+export interface UpgradeQuote {
+  from: number;
+  target: number;
+  count: number;
+  cost: number;
+  affordable: boolean;
+  beforeRate: number;
+  afterRate: number;
+  milestones: { level: number; factor: number }[];
+}
+export function quoteUpgrade(
+  s: State,
+  id: string,
+  mode: PurchaseMode = "1",
+): UpgradeQuote {
+  const a = activities.find((a) => a.id === id),
+    from = s.activities[id] ?? 0;
+  let target = from,
+    cost = 0;
+  if (
+    a &&
+    from > 0 &&
+    from < b.activityMaxLevel &&
+    purchaseModes.includes(mode)
+  ) {
+    const desired =
+      mode === "1"
+        ? from + 1
+        : mode === "10"
+          ? Math.min(from + 10, b.activityMaxLevel)
+          : mode === "next"
+            ? (nextActivityMilestone(from)?.level ?? from)
+            : b.activityMaxLevel;
+    for (let level = from; level < desired; level++) {
+      const price = Math.ceil(
+        a.upgradeBaseCost * a.upgradeCostGrowth ** (level - 1),
+      );
+      if (mode === "max" && cost + price > s.coins) break;
+      cost += price;
+      target = level + 1;
+    }
+  }
+  return {
+    from,
+    target,
+    count: target - from,
+    cost,
+    affordable: target > from && cost <= s.coins,
+    beforeRate: baseRate(s, id),
+    afterRate: baseRate(s, id, target),
+    milestones: flow.activityMilestones.filter(
+      (m) => m.level > from && m.level <= target,
+    ),
+  };
+}
+export function projectChecklist(s: State, id: string) {
+  const p = projects.find((p) => p.id === id);
+  if (!p) return [];
+  const checks: { label: string; met: boolean }[] = [];
+  if (p.requiresProject)
+    checks.push({
+      label: projects.find((x) => x.id === p.requiresProject)!.name,
+      met: s.completedProjects.includes(p.requiresProject),
+    });
+  checks.push({
+    label: `${activities.find((a) => a.id === p.requiresOwned)!.name} costruito`,
+    met: s.activities[p.requiresOwned] > 0,
+  });
+  for (const [activityId, level] of Object.entries(
+    projectRequirements[id]?.activityLevels ?? {},
+  ))
+    checks.push({
+      label: `${activities.find((a) => a.id === activityId)!.name} L${level}`,
+      met: s.activities[activityId] >= level,
+    });
+  for (const [creatureId, level] of Object.entries(
+    projectRequirements[id]?.creatureLevels ?? {},
+  ))
+    checks.push({
+      label: `${creatures.find((c) => c.id === creatureId)!.name} L${level}`,
+      met:
+        s.creatures[creatureId].unlocked &&
+        s.creatures[creatureId].level >= level,
+    });
+  return checks;
+}
 export const villageLevel = (s: State) => 1 + s.completedProjects.length;
 function rewards(s: State) {
   for (const m of b.milestones)
@@ -223,7 +345,8 @@ export function command(
       )
         return fail("Carezza già ricevuta.");
       c.lastEncouragedAt = s.lastSimulatedAt;
-      c.encouragedUntil = s.lastSimulatedAt + b.pet.durationSeconds * 1000;
+      c.encouragedUntil =
+        s.lastSimulatedAt + encouragementDuration(c.level) * 1000;
     } else {
       if (
         action.activityId !== null &&
@@ -238,10 +361,7 @@ export function command(
     const p = projects.find((p) => p.id === action.id);
     if (!p || s.completedProjects.includes(p.id))
       return fail("Progetto non disponibile.");
-    if (
-      (p.requiresProject && !s.completedProjects.includes(p.requiresProject)) ||
-      !s.activities[p.requiresOwned]
-    )
+    if (projectChecklist(s, p.id).some((check) => !check.met))
       return fail("Completa i prerequisiti del progetto.");
     if (s.coins < p.coinsCost || s.crystals < p.crystalsCost)
       return fail("Monete o cristalli insufficienti.");
@@ -269,16 +389,20 @@ export function command(
     } else {
       if (s.activities[a.id] < 1 || s.activities[a.id] >= b.activityMaxLevel)
         return fail("Attività non migliorabile.");
-      const cost = upgradeCost(s, a.id);
-      if (s.coins < cost) return fail("Monete insufficienti.");
-      s.coins -= cost;
-      s.activities[a.id]++;
+      const quote = quoteUpgrade(s, a.id, action.mode ?? "1");
+      if (!quote.affordable)
+        return fail("Monete insufficienti per questo acquisto.");
+      s.coins -= quote.cost;
+      s.activities[a.id] = quote.target;
     }
   }
   rewards(s);
   return { state: s };
 }
-export function returnSummary(before: State, after: State) {
+export function returnSummary(
+  before: Omit<State, "economyVersion">,
+  after: State,
+) {
   const elapsed = Math.max(
     0,
     (after.lastSimulatedAt - before.lastSimulatedAt) / 1000,
@@ -288,6 +412,18 @@ export function returnSummary(before: State, after: State) {
     counted: Math.min(elapsed, b.offlineCapSeconds),
     capped: elapsed > b.offlineCapSeconds,
     earned: after.lifetimeCoins - before.lifetimeCoins,
+    talents: creatures.flatMap((def) =>
+      flow.creatureMilestones
+        .filter(
+          (m) =>
+            m.level > before.creatures[def.id].level &&
+            m.level <= after.creatures[def.id].level,
+        )
+        .map(
+          (m) =>
+            `${def.name} L${m.level}: ${m.preferredAssignmentBonusAdd ? "talento preferita +10%" : `carezze ${m.encouragementDurationSeconds}s`}`,
+        ),
+    ),
     crystals: after.crystals - before.crystals,
     levels: Object.entries(after.creatures).reduce(
       (n, [id, c]) => n + c.level - before.creatures[id].level,

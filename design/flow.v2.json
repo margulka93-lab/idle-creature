@@ -1,6 +1,6 @@
 {
   "economyVersion": 2,
-  "status": "F02 implementation baseline, not active until Codex integrates",
+  "status": "F02 active runtime: balance.v1 numeric foundation plus flow.v2 rules; no numeric tuning",
   "purchaseModes": [
     "1",
     "10",

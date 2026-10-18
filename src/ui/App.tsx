@@ -6,11 +6,16 @@ import {
   rate,
   totalRate,
   upgradeCost,
+  projectChecklist,
+  encouragementDuration,
+  nextCreatureMilestone,
+  preferredTalentBonus,
   villageLevel,
   type State,
 } from "../core/engine";
 import { Scene, creatureArt } from "../scene/Scene";
 import { downloadSave, game } from "./store";
+import { ActivityList } from "./ActivityList";
 import "./styles.css";
 const fmt = (n: number, digits = 1) =>
   n.toLocaleString("it-IT", { maximumFractionDigits: digits });
@@ -54,10 +59,8 @@ function ProjectCard({
 }) {
   const p = projects.find((p) => p.id === id)!;
   const completed = state.completedProjects.includes(id);
-  const prereq =
-    (!p.requiresProject ||
-      state.completedProjects.includes(p.requiresProject)) &&
-    state.activities[p.requiresOwned] > 0;
+  const checklist = projectChecklist(state, id);
+  const prereq = checklist.every((check) => check.met);
   const enough = state.coins >= p.coinsCost && state.crystals >= p.crystalsCost;
   const result: Record<string, string> = {
     sentiero: "Mulino di nuvole e Ora delle meraviglie",
@@ -73,13 +76,16 @@ function ProjectCard({
       <p>{result[id]}</p>
       {!completed && (
         <>
-          <p className="requirement">
-            Richiede {activities.find((a) => a.id === p.requiresOwned)!.name}
-            {p.requiresProject
-              ? ` e ${projects.find((x) => x.id === p.requiresProject)!.name}`
-              : ""}
-            .
-          </p>
+          <ul className="project-checklist" aria-label={`Requisiti ${p.name}`}>
+            {checklist.map((check) => (
+              <li key={check.label} className={check.met ? "met" : ""}>
+                <span aria-label={check.met ? "Raggiunto" : "Mancante"}>
+                  {check.met ? "✓" : "○"}
+                </span>{" "}
+                {check.label}
+              </li>
+            ))}
+          </ul>
           <div className="cost-line">
             <span className="coin" />
             {fmt(p.coinsCost, 0)} <span className="crystal" />
@@ -157,7 +163,13 @@ function CreatureCard({
             <strong>Il suo posto del cuore</strong>
             <p>
               {activities.find((a) => a.id === def.preferredActivity)!.name} ·
-              talento +20%
+              talento +
+              {fmt(
+                (b.creature.preferredBonus + preferredTalentBonus(c.level)) *
+                  100,
+                0,
+              )}
+              %
             </p>
             <small>
               Assegnazione +
@@ -170,6 +182,12 @@ function CreatureCard({
               % · cresce di 1 XP/s mentre lavora
             </small>
           </div>
+          <p className="next-talent">
+            {nextCreatureMilestone(c.level)
+              ? `Prossimo talento L${nextCreatureMilestone(c.level)!.level}: ${nextCreatureMilestone(c.level)!.preferredAssignmentBonusAdd ? "+10% nell’attività preferita" : `carezze ${nextCreatureMilestone(c.level)!.encouragementDurationSeconds}s`}`
+              : "Tutti i talenti raggiunti"}{" "}
+            · carezze attuali {encouragementDuration(c.level)}s
+          </p>
           <label className="assign-label" htmlFor={`assign-${id}`}>
             Dove lavora {def.name}
           </label>
@@ -212,7 +230,7 @@ function CreatureCard({
             <span>
               {boosted
                 ? `+50% · ${duration((c.encouragedUntil - state.lastSimulatedAt) / 1000)} rimasti`
-                : "+50% produzione per 30 secondi"}
+                : `+50% produzione per ${encouragementDuration(c.level)} secondi`}
             </span>
           </button>
         </>
@@ -224,14 +242,14 @@ export function App() {
   const snap = useSyncExternalStore(game.subscribe, game.getSnapshot);
   const { state, warning, readOnly, corrupt, ready, summary, message } = snap;
   const [tab, setTab] = useState("Borgo"),
-    [selected, setSelected] = useState("orto"),
+    [selected, setSelected] = useState<string | null>(null),
     [settings, setSettings] = useState(false);
   const [importText, setImportText] = useState("");
   const file = useRef<HTMLInputElement>(null);
   useEffect(game.start, []);
   const disabled = !ready || readOnly || !!corrupt;
   const activity = activities.find((a) => a.id === selected)!;
-  const worker = assigned(state, selected);
+  const worker = selected ? assigned(state, selected) : undefined;
   const nextProject = projects.find(
     (p) => !state.completedProjects.includes(p.id),
   );
@@ -240,7 +258,6 @@ export function App() {
     0,
     (state.festivalReadyAt - state.lastSimulatedAt) / 1000,
   );
-  const selectedLevel = state.activities[selected];
   const nextMilestone = b.milestones.find(
     (m) => !state.claimedMilestoneIds.includes(m.id),
   );
@@ -351,12 +368,37 @@ export function App() {
         ))}
       </nav>
       <main>
+        {summary && !readOnly && (
+          <aside className="return-banner" aria-label="Riepilogo ritorno">
+            <div>
+              <strong>Bentornato · +{fmt(summary.earned)} monete</strong>
+              <span>Già accreditate · puoi investire subito</span>
+              <details>
+                <summary>Dettagli dell’assenza</summary>
+                <p>
+                  {duration(summary.counted)} conteggiati · {summary.levels}{" "}
+                  livelli · {summary.crystals} cristalli
+                  {summary.capped ? " · limite 48h applicato" : ""}
+                </p>
+                {summary.talents.map((t) => (
+                  <p key={t}>{t}</p>
+                ))}
+              </details>
+            </div>
+            <button
+              className="secondary"
+              onClick={() => game.emit({ summary: null })}
+            >
+              Nascondi riepilogo
+            </button>
+          </aside>
+        )}
         <div className="page-intro">
           <div>
             <span className="eyebrow">IL TUO ANGOLO DI MERAVIGLIA</span>
             <h1>
               {tab === "Borgo"
-                ? "Bentornato al borgo."
+                ? "Il tuo borgo"
                 : tab === "Creature"
                   ? "Piccole mani, grandi magie."
                   : tab === "Progetti"
@@ -374,41 +416,37 @@ export function App() {
             <span>
               Tre amici, quattro attività e un luogo da chiamare casa. Hai
               completato il tuo primo borgo; i tuoi amici continuano a produrre.
+              Prototipo completato.
             </span>
           </div>
         )}
         {tab === "Borgo" && (
-          <div className="village-layout">
+          <div className="flow-layout">
             <section className="scene-column">
               <Scene
                 state={state}
-                selected={selected}
+                selected={selected ?? ""}
                 select={setSelected}
                 disabled={disabled}
               />
-              <div className="below-scene">
-                <span className="live-dot" />
-                <span>
-                  Il borgo produce anche mentre sei lontano
-                  <small>Fino a 48 ore per ogni assenza</small>
-                </span>
-                <span className="art-note">Studio visivo · SVG provvisori</span>
-              </div>
-              <div className="festival-card">
+              <div className="compact-festival">
                 <div>
-                  <span className="eyebrow">UN MOMENTO DA CONDIVIDERE</span>
-                  <h3>Ora delle meraviglie</h3>
-                  <p>
+                  <strong>Ora delle meraviglie</strong>
+                  <small>
                     {!state.completedProjects.includes(
                       b.festival.requiresProject,
                     )
-                      ? "Completa il Sentiero per sbloccare +50% a tutto il borgo."
+                      ? "Completa il Sentiero · +50% a tutto il borgo"
                       : festivalActive
-                        ? `La magia dura ancora ${duration((state.festivalEndsAt - state.lastSimulatedAt) / 1000)}. Con carezze: bonus attivo totale +100%.`
+                        ? "Magia attiva: " +
+                          duration(
+                            (state.festivalEndsAt - state.lastSimulatedAt) /
+                              1000,
+                          )
                         : festivalWait > 0
-                          ? `Di nuovo disponibile tra ${duration(festivalWait)}.`
-                          : "+50% a tutto il borgo per 20s · ricarica 5 minuti"}
-                  </p>
+                          ? "Ricarica: " + duration(festivalWait)
+                          : "+50% per 20s · ricarica 5 min"}
+                  </small>
                 </div>
                 <button
                   disabled={
@@ -420,132 +458,61 @@ export function App() {
                   }
                   onClick={() => game.dispatch({ type: "activateFestival" })}
                 >
-                  {festivalActive
-                    ? "Meraviglie in corso"
-                    : festivalWait > 0
-                      ? `Ricarica · ${duration(festivalWait)}`
-                      : "Attiva meraviglie"}
+                  {festivalActive ? "Meraviglie in corso" : "Attiva meraviglie"}
                 </button>
               </div>
-            </section>
-            <aside className="inspector" aria-label="Attività selezionata">
-              <div className="inspector-title">
-                <span className="eyebrow">IL TUO PICCOLO LABORIOSO MONDO</span>
-                <h2>{activity.name}</h2>
-                <p>
-                  {selectedLevel > 0
-                    ? `Livello ${selectedLevel} · ${fmt(rate(state, selected))} monete/s`
-                    : "Un nuovo posto per crescere insieme"}
-                </p>
-              </div>
-              {worker ? (
-                <CreatureCard
-                  state={state}
-                  id={worker[0]}
-                  disabled={disabled}
-                />
-              ) : (
-                <div className="empty-worker">
-                  <h3>
-                    {selectedLevel
-                      ? "Un posto libero"
-                      : "Un sogno da costruire"}
-                  </h3>
-                  <p>
-                    {selectedLevel
-                      ? "L’attività produce anche da sola. Assegna un amico dalla sezione Creature per farlo crescere."
-                      : "Acquista questa attività per iniziare a produrre."}
-                  </p>
-                </div>
-              )}
-              <article className="upgrade-card">
-                <h3>
-                  {selectedLevel
-                    ? `Migliora ${activity.name}`
-                    : `Costruisci ${activity.name}`}
-                </h3>
-                {selectedLevel > 0 ? (
-                  <>
-                    <p>
-                      {selectedLevel >= b.activityMaxLevel
-                        ? "Hai raggiunto il livello massimo."
-                        : `Liv. ${selectedLevel} → ${selectedLevel + 1} · +${fmt(rate(state, selected, state.lastSimulatedAt, selectedLevel + 1) - rate(state, selected))} monete/s`}
-                    </p>
-                    <button
-                      disabled={
-                        disabled ||
-                        selectedLevel >= b.activityMaxLevel ||
-                        state.coins < upgradeCost(state, selected)
-                      }
-                      onClick={() =>
-                        game.dispatch({ type: "upgradeActivity", id: selected })
-                      }
-                    >
-                      Migliora ·{" "}
-                      {selectedLevel >= b.activityMaxLevel
-                        ? "Massimo"
-                        : `${fmt(upgradeCost(state, selected), 0)} monete`}
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <p>
-                      {activity.requiresProject &&
-                      !state.completedProjects.includes(
-                        activity.requiresProject,
-                      )
-                        ? `Richiede ${projects.find((p) => p.id === activity.requiresProject)!.name}`
-                        : `Produce da subito ${fmt(activity.baseCoinsPerSecond)} monete/s, anche senza creatura.`}
-                    </p>
-                    <button
-                      disabled={
-                        disabled ||
-                        state.coins < activity.purchaseCost ||
-                        (!!activity.requiresProject &&
-                          !state.completedProjects.includes(
-                            activity.requiresProject,
-                          ))
-                      }
-                      onClick={() =>
-                        game.dispatch({ type: "buyActivity", id: selected })
-                      }
-                    >
-                      Costruisci · {fmt(activity.purchaseCost, 0)} monete
-                    </button>
-                  </>
-                )}
-                {selectedLevel > 0 && (
-                  <div className="product-control">
-                    <p>
-                      {state.specialProducts[selected].ready
-                        ? `Prodotto pronto · ${fmt(baseRate(state, selected) * b.specialProduct.rewardUnboostedProductionSeconds)} monete`
-                        : `Prodotto speciale fra ${duration(b.specialProduct.secondsToReady - state.specialProducts[selected].secondsAccumulated)}`}
-                    </p>
+              {selected && activity && (
+                <section
+                  className="activity-details"
+                  aria-label="Dettagli attività selezionata"
+                >
+                  <div className="settings-heading">
+                    <h2>{activity.name}</h2>
                     <button
                       className="secondary"
-                      disabled={
-                        disabled || !state.specialProducts[selected].ready
-                      }
-                      onClick={() =>
-                        game.dispatch({ type: "collectProduct", id: selected })
-                      }
+                      onClick={() => setSelected(null)}
                     >
-                      Raccogli prodotto
+                      Chiudi dettagli
                     </button>
                   </div>
-                )}
-              </article>
+                  <p>
+                    Livello {state.activities[selected]} ·{" "}
+                    {fmt(baseRate(state, selected))} monete/s passive
+                  </p>
+                  {worker ? (
+                    <CreatureCard
+                      state={state}
+                      id={worker[0]}
+                      disabled={disabled}
+                    />
+                  ) : (
+                    <p>
+                      {state.activities[selected]
+                        ? "Posto libero: assegna una creatura dalla sezione Creature."
+                        : "Costruisci dalla lista del Borgo."}
+                    </p>
+                  )}
+                </section>
+              )}
+            </section>
+            <div className="operations">
+              <ActivityList
+                state={state}
+                disabled={disabled}
+                onDetails={setSelected}
+                feedback={snap.upgradeFeedback}
+              />
               {nextProject && (
-                <div className="next-project">
-                  <span className="eyebrow">IL PROSSIMO PASSO</span>
+                <section className="next-project">
+                  <h2>Prossimo progetto</h2>
                   <ProjectCard
                     state={state}
                     id={nextProject.id}
                     disabled={disabled}
                   />
-                </div>
+                </section>
               )}
-            </aside>
+            </div>
           </div>
         )}
         {tab === "Creature" && (
@@ -640,6 +607,21 @@ export function App() {
               Un’esportazione permette di conservare la partita fuori da questo
               browser.
             </p>
+            <p>
+              Economia v2 · bonus automatici, acquisti multipli e talenti.
+              Grafica SVG originale provvisoria: i raster illustrati definitivi
+              restano da realizzare.
+            </p>
+            {snap.backup && (
+              <button
+                className="secondary"
+                onClick={() =>
+                  downloadSave(snap.backup!, "borgo-pre-F02-v1.json")
+                }
+              >
+                Esporta backup pre-F02
+              </button>
+            )}
             <div className="settings-actions">
               <button
                 onClick={() => {
@@ -725,49 +707,11 @@ export function App() {
       </main>
       <footer>
         Un borgo da coltivare, senza fretta.
-        <span>FIRST_PLAYABLE · arte provvisoria</span>
+        <span>Borgo delle Creature · F02</span>
       </footer>
       <div className="toast" role="status" aria-live="polite" key={message}>
         {message}
       </div>
-      {summary && !readOnly && (
-        <div className="modal-backdrop">
-          <section
-            className="return-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="return-title"
-            onKeyDown={(e) => {
-              if (e.key === "Tab") e.preventDefault();
-              if (e.key === "Escape") game.emit({ summary: null });
-            }}
-          >
-            <span className="eyebrow">IL BORGO TI STAVA ASPETTANDO</span>
-            <h2 id="return-title">Bentornato a casa.</h2>
-            <p>Durante la tua assenza, i tuoi amici si sono dati da fare.</p>
-            <strong className="return-coins">
-              +{fmt(summary.earned)} monete
-            </strong>
-            <p>
-              {duration(summary.counted)} conteggiati · {summary.levels} livelli
-              guadagnati · {summary.crystals} cristalli
-            </p>
-            {summary.capped && (
-              <p>
-                Limite di 48 ore applicato. Il tempo eccedente non sarà
-                accreditato di nuovo.
-              </p>
-            )}
-            <p>
-              I prodotti pronti ti aspettano nelle attività. Questi guadagni
-              sono già salvati.
-            </p>
-            <button autoFocus onClick={() => game.emit({ summary: null })}>
-              Rientra nel borgo
-            </button>
-          </section>
-        </div>
-      )}
     </div>
   );
 }

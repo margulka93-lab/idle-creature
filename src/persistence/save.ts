@@ -1,6 +1,17 @@
 import { activities, balance as b, creatures, projects } from "../content";
 import { createState, type State } from "../core/engine";
+import {
+  advance as advanceLegacy,
+  type State as LegacyState,
+} from "../core/legacy-v1";
 export const SAVE_KEY = "borgo-creature.save.v1";
+export const BACKUP_KEY = "borgo-creature.pre-f02.v1";
+export type SavedState = State | (LegacyState & { economyVersion?: 1 });
+/** Reconcile the old interval with frozen v1 rules, then switch only future rates. */
+export function normalizeSave(s: SavedState, now: number): State {
+  if (s.economyVersion === 2) return s;
+  return { ...advanceLegacy(s, now), economyVersion: 2 };
+}
 export interface StorageLike {
   getItem(k: string): string | null;
   setItem(k: string, v: string): void;
@@ -16,11 +27,17 @@ const record = (v: unknown): v is Record<string, unknown> =>
 const exactKeys = (v: Record<string, unknown>, ids: string[]) =>
   Object.keys(v).length === ids.length &&
   ids.every((id) => Object.hasOwn(v, id));
-export function parseSave(raw: string): State {
+export function parseSave(raw: string): SavedState {
   if (raw.length > 100_000) throw new Error("Salvataggio troppo grande.");
   const v: unknown = JSON.parse(raw);
   if (!record(v) || v.schemaVersion !== 1)
     throw new Error("Versione del salvataggio sconosciuta.");
+  if (
+    v.economyVersion !== undefined &&
+    v.economyVersion !== 1 &&
+    v.economyVersion !== 2
+  )
+    throw new Error("Versione economica sconosciuta.");
   if (
     ![
       "coins",
@@ -154,12 +171,19 @@ export function parseSave(raw: string): State {
     Number(v.coins) > b.startingCoins + Number(v.lifetimeCoins) + 1e-6
   )
     throw new Error("Saldo incoerente.");
-  return v as unknown as State;
+  return v as unknown as SavedState;
 }
 export function load(
   storage: StorageLike,
   now: number,
-): { state: State; warning?: string; corrupt?: string } {
+  readOnly = false,
+): {
+  state: State;
+  warning?: string;
+  corrupt?: string;
+  previous?: SavedState;
+  migrationBackup?: string;
+} {
   let raw: string | null;
   try {
     raw = storage.getItem(SAVE_KEY);
@@ -171,10 +195,17 @@ export function load(
   }
   if (!raw) return { state: createState(now) };
   try {
-    return { state: parseSave(raw) };
+    const previous = parseSave(raw);
+    return {
+      state: readOnly
+        ? { ...previous, economyVersion: 2 }
+        : normalizeSave(previous, now),
+      previous,
+      migrationBackup: previous.economyVersion !== 2 ? raw : undefined,
+    };
   } catch (e) {
     try {
-      storage.setItem(`${SAVE_KEY}.recovery`, raw);
+      if (!readOnly) storage.setItem(`${SAVE_KEY}.recovery`, raw);
     } catch {
       /* Original stays in the primary slot. */
     }
