@@ -11,3 +11,7 @@ Obiettivo: una prima versione giocabile completa del quartiere iniziale, con pro
 Riferimento artistico: `docs/art/concept-reference.jpg` (concept illustrato; interfaccia e personaggi provvisori). Fondale ed edifici statici, creature separate con microanimazioni.
 
 Stato iniziale: documentazione di progetto, nessuna implementazione ancora consegnata.
+
+## Guida illustrata
+
+[Le tre tavole del primo borgo](docs/GUIDA_VISIVA.md): scelte, interazioni, crescita, sblocchi e progresso offline.
