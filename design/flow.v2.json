@@ -1,0 +1,70 @@
+{
+  "economyVersion": 2,
+  "status": "F02 implementation baseline, not active until Codex integrates",
+  "purchaseModes": [
+    "1",
+    "10",
+    "next",
+    "max"
+  ],
+  "defaultPurchaseMode": "next",
+  "activityMilestones": [
+    {
+      "level": 10,
+      "factor": 2
+    },
+    {
+      "level": 25,
+      "factor": 2
+    },
+    {
+      "level": 50,
+      "factor": 2
+    }
+  ],
+  "creatureMilestones": [
+    {
+      "level": 5,
+      "preferredAssignmentBonusAdd": 0.1
+    },
+    {
+      "level": 10,
+      "encouragementDurationSeconds": 45
+    },
+    {
+      "level": 20,
+      "encouragementDurationSeconds": 60
+    }
+  ],
+  "projectAdditionalRequirements": {
+    "sentiero": {
+      "activityLevels": {
+        "orto": 10
+      }
+    },
+    "ponte": {
+      "activityLevels": {
+        "orto": 10,
+        "vivaio": 10,
+        "mulino": 10
+      }
+    },
+    "festa": {
+      "activityLevels": {
+        "orto": 25,
+        "vivaio": 25,
+        "mulino": 25,
+        "laboratorio": 25
+      },
+      "creatureLevels": {
+        "momo": 5,
+        "nibi": 5,
+        "tula": 5
+      }
+    }
+  },
+  "tuningBounds": {
+    "upgradeCostGrowthMin": 1.12,
+    "upgradeCostGrowthMax": 1.22
+  }
+}

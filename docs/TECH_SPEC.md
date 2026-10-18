@@ -1,3 +1,5 @@
+> Baseline FIRST_PLAYABLE (storica). Per F02, CODEX_TASK.md e docs/FLOW_REVISION.md prevalgono su acquisti, milestone, prerequisiti, UI, ritorno e migrazione. Accettazione corrente: docs/FLOW_ACCEPTANCE.md; conservare le regressioni tecniche applicabili qui sotto.
+
 # Architettura della prima slice
 
 Stack baseline: TypeScript + React + Vite, CSS, SVG/PNG/WebP a strati. Nessun engine 3D, backend, account, API runtime o servizio a pagamento. Scegliere versioni stabili compatibili e committare lockfile. Test unitari con Vitest, E2E con Playwright se installabile. Script typecheck/build/test obbligatori; E2E separato con istruzioni.

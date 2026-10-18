@@ -1,26 +1,22 @@
-# FIRST_PLAYABLE — incarico completo
+# F02 — fluidità, acquisti multipli e traguardi
 
-## Consegna
-Costruire da questo repository di sole specifiche un gioco web locale avviabile e giocabile: un quartiere con quattro postazioni, tre creature, tre progetti di espansione e una conclusione visibile. La domanda da verificare è: accarezzare, investire e sbloccare rende una breve visita piacevole mentre il borgo continua a crescere offline?
-Non fermarti dopo il primo sottopasso. Il blocco include tutti i punti seguenti. Questa è una singola vertical slice, non l'intero futuro gioco.
+## Obiettivo
+Correggere il feedback umano: il prototipo è macchinoso, richiede acquisti singoli e i livelli non creano accelerazioni riconoscibili. Non aggiungere contenuti per mascherare il problema.
+Leggere AGENTS.md, docs/IDLE_RESEARCH.md, docs/FLOW_REVISION.md, docs/FLOW_ACCEPTANCE.md e design/flow.v2.json. La baseline di codice è FIRST_PLAYABLE, commit 8ae73a6; questo branch contiene specifiche F02, non una nuova implementazione già pronta.
 
-## Esecuzione
-1. Leggi AGENTS.md e le specifiche. Scrivi un breve piano operativo, poi implementalo nello stesso incarico.
-2. Crea React + TypeScript + Vite, versione Node compatibile documentata, lockfile, script dev/build/typecheck/test e controllo E2E. Scegli versioni stabili compatibili nell'ambiente; non richiedere API keys.
-3. Implementa il motore, i dati, il salvataggio e un'interfaccia completa. Completa l'intero percorso dai 25 soldi iniziali alla prima festa.
-4. Implementa incoraggiamento tramite tap/trascinamento, prodotti speciali, Ora delle meraviglie, crescita, assegnazione e progetti.
-5. Costruisci una scena cozy con fondale ed edifici fermi, creature separate e microanimazioni. Riferimento: docs/art/concept-reference.jpg. Se non puoi produrre i raster illustrati definitivi, realizza una fallback originale curata a strati in SVG; mantieni palette/composizione, identifica chiaramente il limite artistico e non bloccarti. Non usare emoji come creature finali della slice. Il riferimento non contiene asset separati utilizzabili direttamente.
-6. Verifica nel browser desktop e mobile quando disponibile; correggi overflow, gesture, hitbox e feedback. Nessun pulsante finto. I pannelli Borgo, Creature, Progetti e Collezione devono mostrare dati reali; la collezione in questo scope coincide con tre specie.
-7. Esegui controlli automatici e simulazioni. Correggi problemi e completa documentazione e consegna.
+## Incarico completo
+1. Conserva motore/salvataggi/asset e implementa quote acquisti +1/+10/PROSSIMO/MAX e comandi atomici con test.
+2. Introduci milestone automatiche guidate dai dati ai livelli 10/25/50 e anteprime corrette attraverso tutte le soglie. Integra traguardi creature e nuovi prerequisiti progetti secondo FLOW_REVISION.
+3. Ridisegna il flusso della schermata Borgo: elenco compatto di tutte le attività, upgrade diretto senza selezione obbligatoria, selettore acquisti condiviso, prossimo traguardo e beneficio visibili. Inspector solo per dettagli. Riduci intestazioni e messaggi ripetitivi.
+4. Rendi il ritorno non bloccante, assorbendo il riepilogo in un banner. Cura feedback carezze/acquisti e mantiene input equivalenti.
+5. Aggiorna dati runtime, regole documentate, validazione save/import e test senza reset silenziosi. Rendi riconoscibile economyVersion=2 nei nuovi export: niente ricalcolo retroattivo di monete/XP; solo tassi futuri e milestone derivate.
+6. Esegui simulazioni comparative dal vecchio codice e dal nuovo con politiche uguali; riferisci progressione, numero di azioni, tempo per obiettivi e traguardi. Se numeri richiedono tuning, agisci entro i limiti di FLOW_REVISION, motivando ogni variazione.
+7. Avvia/prova browser desktop/mobile se disponibile, correggi regressioni e consegna report, screenshot e commit/PR. Non limitarti a descrivere o a inserire pulsanti non funzionanti.
 
-## UI e sviluppo
-Scena con slot fissi, quattro attività; l'orto è attivo all'inizio e le altre vengono acquistate. Selezione con inspector, pulsante distinto Incoraggia, comando Migliora con costo/beneficio, assegnazione creature. Selezionare non deve comprare o spendere.
-Su mobile quartiere in schermata dedicata con altezza limitata, inspector sotto e scroll esterno al riquadro interattivo. Desktop scena e inspector affiancati. Non rimpicciolire tutta l'interfaccia desktop per farla entrare su telefono.
-Aggiungi un pannello diagnostico solo in sviluppo (?debug=1) con salta 60s/1h/48h, reset e sblocco di test; usa la medesima funzione del motore. Nessun guadagno o avanzamento debug nel normale gioco di produzione.
+## Consegna Git
+Continua su design/idle-flow-revision e aggiorna la relativa PR verso codex/first-playable. Non fare merge o deploy. Se lavori su un altro branch, apri PR verso design/idle-flow-revision e indica la dipendenza dalla PR FIRST_PLAYABLE. Non applicare F02 al main vuoto di implementazione e non ricreare il gioco da zero.
+Non è necessario interrogare l'utente su scelte tecniche reversibili. Completare tutti i sottopassi dell'incarico corrente.
 
-## Verifiche obbligatorie
-Vedi docs/ACCEPTANCE.md. Usa un clock controllabile. Simula almeno 24 ore con due politiche documentate: passiva con acquisti ai check-in (0/1/4/8/24h) e attiva con gli stessi check-in più incoraggiamento durante finestre di 3 minuti, senza input il resto del tempo. Riporta sblocchi, reddito, produzione e differenze. Se ritocchi numeri per correggere attese o blocchi, aggiorna JSON, motivazione e risultati; non inventare sistemi nuovi.
-
-## Consegna
-Branch suggerito codex/first-playable. PR con funzionalità, verifica eseguita, limiti e istruzioni di avvio. Non fare merge/deploy. Se aprire una PR non è disponibile, lascia commit pronti e spiega esattamente cosa manca.
-README: setup, comandi, controlli, salvataggio/export/import e stato reale. docs/IMPLEMENTATION_REPORT.md: criteri di accettazione con esito, comandi e risultati, simulazioni, schermate desktop/mobile dove effettivamente catturate, limiti grafici. Non dichiarare l'arte definitiva se usi fallback.
+## Verifica
+Soddisfare docs/FLOW_ACCEPTANCE.md e mantenere verdi i controlli pertinenti di FIRST_PLAYABLE. Report in docs/FLOW_IMPLEMENTATION_REPORT.md, dati simulazioni in docs/flow-simulation-results.json e README aggiornato con lo stato effettivo.
+La consegna delle specifiche non certifica il divertimento. Il playtest umano successivo decide se il flusso è abbastanza fluido.

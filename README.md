@@ -1,3 +1,5 @@
+> Incarico corrente: **F02 — revisione della fluidità**. Leggere CODEX_TASK.md. Le specifiche F02 sono pronte; gli acquisti multipli e le milestone non sono ancora implementati in questo commit. Baseline codice: FIRST_PLAYABLE della PR #1.
+
 # Borgo delle Creature
 
 FIRST_PLAYABLE completo di un idle web 2D italiano: un quartiere, quattro attività, tre creature, tre progetti e la prima festa del borgo. Produzione automatica, crescita, carezze, prodotti speciali, Ora delle meraviglie e progresso offline fino a 48 ore. Nessun account, backend o API runtime.
