@@ -1,0 +1,38 @@
+{
+  "baselineCommit": "ea31c4e",
+  "comparison": "All eight simulation runs, snapshots, events and contrasts equal F02, ignoring generatedAt only",
+  "runs": 8,
+  "equal": true,
+  "unchanged": [
+    {
+      "path": "src/core/engine.ts",
+      "sha256": "3a7f4906bbb0039be7aad8272233c9e3f40c7ffbd7765e9745ff8f9b65ea9e73",
+      "unchanged": true
+    },
+    {
+      "path": "src/core/legacy-v1.ts",
+      "sha256": "40a87b526aa9f64b845c542f7898e2409ae17c1894a560d0bc9d43893efd469c",
+      "unchanged": true
+    },
+    {
+      "path": "src/persistence/save.ts",
+      "sha256": "04ad2a50dcf4bfbdfa9cd7b70105359df9d93c44a672f471d2574032329f8ef3",
+      "unchanged": true
+    },
+    {
+      "path": "src/content/index.ts",
+      "sha256": "d9a5a75d613c95f5ad271d35a8d6f7f056ddeabfb2ca781da3ecab9f9490ead3",
+      "unchanged": true
+    },
+    {
+      "path": "design/balance.v1.json",
+      "sha256": "c83d9b3cbe265a1f839f3b982708a4fa5b93a08c4d718bf8c1ee65f19d7eef44",
+      "unchanged": true
+    },
+    {
+      "path": "design/flow.v2.json",
+      "sha256": "8337a9c57344c1082e4d61542e6904c6d7011e57172d945c0e18823d9e4c1515",
+      "unchanged": true
+    }
+  ]
+}

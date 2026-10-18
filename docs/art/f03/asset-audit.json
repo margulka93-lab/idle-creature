@@ -1,0 +1,90 @@
+[
+  {
+    "id": "background",
+    "source": "docs/art/f03/masters/background.png",
+    "width": 1448,
+    "height": 1086,
+    "alpha": false,
+    "alphaMinimum": null,
+    "exportWidth": 1448,
+    "exportHeight": 1086,
+    "exportBytes": 516596
+  },
+  {
+    "id": "orto",
+    "source": "docs/art/f03/masters/orto.png",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "alphaMinimum": 0,
+    "exportWidth": 768,
+    "exportHeight": 768,
+    "exportBytes": 150924
+  },
+  {
+    "id": "vivaio",
+    "source": "docs/art/f03/masters/vivaio.png",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "alphaMinimum": 0,
+    "exportWidth": 768,
+    "exportHeight": 768,
+    "exportBytes": 217980
+  },
+  {
+    "id": "mulino",
+    "source": "docs/art/f03/masters/mulino.png",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "alphaMinimum": 0,
+    "exportWidth": 768,
+    "exportHeight": 768,
+    "exportBytes": 143924
+  },
+  {
+    "id": "laboratorio",
+    "source": "docs/art/f03/masters/laboratorio.png",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "alphaMinimum": 0,
+    "exportWidth": 768,
+    "exportHeight": 768,
+    "exportBytes": 167090
+  },
+  {
+    "id": "momo",
+    "source": "docs/art/f03/masters/momo.png",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "alphaMinimum": 0,
+    "exportWidth": 512,
+    "exportHeight": 512,
+    "exportBytes": 52096
+  },
+  {
+    "id": "nibi",
+    "source": "docs/art/f03/masters/nibi.png",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "alphaMinimum": 0,
+    "exportWidth": 512,
+    "exportHeight": 512,
+    "exportBytes": 53522
+  },
+  {
+    "id": "tula",
+    "source": "docs/art/f03/masters/tula.png",
+    "width": 1254,
+    "height": 1254,
+    "alpha": true,
+    "alphaMinimum": 0,
+    "exportWidth": 512,
+    "exportHeight": 512,
+    "exportBytes": 64546
+  }
+]

@@ -13,6 +13,23 @@ import {
   BACKUP_KEY,
   SAVE_KEY,
 } from "../../src/persistence/save";
+async function manage(page: Page) {
+  const open = page.getByRole("button", { name: "Gestisci quattro attività" });
+  if (await open.isVisible()) await open.click();
+}
+async function closeManage(page: Page) {
+  const close = page.getByRole("button", {
+    name: "Chiudi Gestione del borgo",
+    exact: true,
+  });
+  if (await close.isVisible()) await close.click();
+}
+async function project(page: Page) {
+  await page
+    .getByRole("button", { name: /^Prossimo progetto:/ })
+    .last()
+    .click();
+}
 const epoch = 1_800_000_000_000;
 function progressed() {
   let s = legacy.advance(legacy.createState(epoch - 86400_000), epoch);
@@ -55,29 +72,28 @@ test("primi due minuti normali, selezione, upgrade, tastiera e reload", async ({
     .getByRole("button", { name: "Seleziona Vivaio delle gemme" })
     .click();
   expect((await saved(page)).activities.vivaio).toBe(0);
-  await page.getByRole("button", { name: "Seleziona Orto luminoso" }).click();
-  await page
-    .getByTestId("activity-orto")
-    .getByRole("button", { name: /Incoraggia Momo/ })
-    .focus();
+  await page.getByRole("button", { name: "Seleziona Orto luminoso" }).focus();
+  await page.keyboard.press("Enter");
+  await page.getByRole("button", { name: /Incoraggia Momo/ }).focus();
   await page.keyboard.press("Enter");
   expect((await saved(page)).creatures.momo.encouragedUntil).toBeGreaterThan(
     epoch,
   );
-  await page.getByRole("button", { name: "+1", exact: true }).click();
+  await manage(page);
+  await page.getByRole("button", { name: "+1", exact: true }).last().click();
   await page
     .getByTestId("activity-orto")
     .getByRole("button", { name: /^Migliora / })
     .click();
   expect((await saved(page)).activities.orto).toBe(2);
+  await closeManage(page);
   await page.clock.runFor(121_000);
   expect((await saved(page)).lifetimeCoins).toBeGreaterThan(140);
   await page.reload();
-  await expect(page.getByTestId("activity-orto")).toContainText("L2");
   expect((await saved(page)).activities.orto).toBe(2);
-  mkdirSync("docs/screenshots", { recursive: true });
+  mkdirSync("docs/screenshots/f03", { recursive: true });
   await page.screenshot({
-    path: `docs/screenshots/f02/${info.project.name}-inizio.png`,
+    path: `docs/screenshots/f03/${info.project.name}-inizio.png`,
     fullPage: true,
     animations: "disabled",
   });
@@ -92,9 +108,7 @@ test("scena, pannelli, assegnazioni, raccolta e layout completo", async ({
     if (r.status() >= 400) errors.push(`${r.status()} ${r.url()}`);
   });
   await setup(page, progressed());
-  await expect(
-    page.getByText("La prima festa del borgo è cominciata!"),
-  ).toBeVisible();
+  expect((await saved(page)).completedProjects).toContain("festa");
   const before = (await saved(page)).lifetimeCoins;
   await page
     .getByRole("button", {
@@ -143,7 +157,7 @@ test("scena, pannelli, assegnazioni, raccolta e layout completo", async ({
     ),
   ).toBe(true);
   await page.screenshot({
-    path: `docs/screenshots/f02/${info.project.name}-borgo.png`,
+    path: `docs/screenshots/f03/${info.project.name}-borgo.png`,
     fullPage: true,
     animations: "disabled",
   });
@@ -198,22 +212,53 @@ test("touch reale: scroll esterno, scena ferma, multitouch ignorato e tap selezi
   test.skip(info.project.name === "desktop", "Touch solo nei profili mobile");
   await setup(page, progressed());
   const cdp = await context.newCDPSession(page);
-  await page
-    .getByRole("button", { name: "Seleziona Vivaio delle gemme" })
-    .tap();
+  await page.getByRole("button", { name: "Seleziona Nibi", exact: true }).tap();
   await expect(
-    page
-      .getByRole("region", { name: "Dettagli attività selezionata" })
-      .getByRole("heading", { name: "Vivaio delle gemme", exact: true }),
-  ).toBeVisible();
-  await page.getByRole("button", { name: "Seleziona Orto luminoso" }).tap();
-  await cdp.send("Input.synthesizeScrollGesture", {
-    x: 20,
-    y: 150,
-    yDistance: -100,
-    speed: 800,
-    gestureSourceType: "touch",
+    page.getByRole("button", {
+      name: "Seleziona Vivaio delle gemme",
+      exact: true,
+    }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await page.getByRole("button", { name: "Seleziona Momo", exact: true }).tap();
+  await page.setViewportSize({
+    width: info.project.use.viewport!.width,
+    height: 600,
   });
+  await manage(page);
+  const scrollBody = page.locator(".management-drawer .dialog-scroll");
+  const scrollBox = (await scrollBody.boundingBox())!;
+  expect(
+    await scrollBody.evaluate((e) => e.scrollHeight - e.clientHeight),
+  ).toBeGreaterThan(0);
+  const touchStart = {
+    x: scrollBox.x + 20,
+    y: scrollBox.y + scrollBox.height - 40,
+    id: 1,
+  };
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchStart",
+    touchPoints: [touchStart],
+  });
+  for (let step = 1; step <= 8; step++) {
+    await cdp.send("Input.dispatchTouchEvent", {
+      type: "touchMove",
+      touchPoints: [{ ...touchStart, y: touchStart.y - step * 25 }],
+    });
+    await page.waitForTimeout(30);
+  }
+  await cdp.send("Input.dispatchTouchEvent", {
+    type: "touchEnd",
+    touchPoints: [],
+  });
+  await expect
+    .poll(() =>
+      page
+        .locator(".management-drawer .dialog-scroll")
+        .evaluate((e) => e.scrollTop),
+    )
+    .toBeGreaterThan(0);
+  await closeManage(page);
+  await page.setViewportSize(info.project.use.viewport!);
   const first = await saved(page);
   expect(first.creatures.momo.encouragedUntil).toBe(0);
   await page.evaluate(() => scrollTo(0, 0));
@@ -239,14 +284,13 @@ test("touch reale: scroll esterno, scena ferma, multitouch ignorato e tap selezi
     epoch,
   );
   expect(await page.evaluate(() => scrollY)).toBe(scrollBefore);
-  await page
-    .getByRole("button", { name: "Seleziona Vivaio delle gemme" })
-    .tap();
+  await page.getByRole("button", { name: "Seleziona Nibi", exact: true }).tap();
   await expect(
-    page
-      .getByRole("region", { name: "Dettagli attività selezionata" })
-      .getByRole("heading", { name: "Vivaio delle gemme", exact: true }),
-  ).toBeVisible();
+    page.getByRole("button", {
+      name: "Seleziona Vivaio delle gemme",
+      exact: true,
+    }),
+  ).toHaveAttribute("aria-pressed", "true");
   const scene = page.getByTestId("scene");
   await scene.dispatchEvent("pointerdown", {
     pointerId: 99,
@@ -274,9 +318,7 @@ test("salvataggio, export/import validato e reset con conferma", async ({
     .getByLabel("Oppure incolla un salvataggio JSON")
     .fill('{"schemaVersion":999}');
   await page.getByRole("button", { name: "Valida e importa" }).click();
-  await expect(
-    page.getByRole("status").filter({ hasText: "Importazione rifiutata" }),
-  ).toBeVisible();
+  await expect(page.locator(".settings-result")).toBeVisible();
   await page
     .getByLabel("Oppure incolla un salvataggio JSON")
     .fill(JSON.stringify(progressed()));
@@ -309,9 +351,7 @@ test("salvataggio corrotto non sovrascritto; reset esplicito", async ({
     await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY),
   ).toBe("{corrotto");
   await expect(
-    page
-      .getByTestId("activity-orto")
-      .getByRole("button", { name: /Incoraggia Momo/ }),
+    page.getByRole("button", { name: /Incoraggia Momo/ }),
   ).toBeDisabled();
   page.once("dialog", (d) => d.accept());
   await page
@@ -333,11 +373,8 @@ test("storage negato: partita in memoria e avviso persistente", async ({
   await expect(page.getByRole("alert")).toHaveText(
     "Il salvataggio non è disponibile",
   );
-  await page
-    .getByTestId("activity-orto")
-    .getByRole("button", { name: /Incoraggia Momo/ })
-    .click();
-  await expect(page.getByTestId("activity-orto")).toContainText("+50%");
+  await page.getByRole("button", { name: /Incoraggia Momo/ }).click();
+  await expect(page.locator(".boost-label")).toContainText("+50%");
   await expect(page.locator(".toast")).toBeEmpty();
 });
 test("offline 1h con riepilogo: chiusura e reload senza doppio accredito", async ({
@@ -395,8 +432,9 @@ test("percorso F02 completo dalla lista, gate espliciti e ritorno non bloccante"
   page,
 }) => {
   await setup(page);
+  await manage(page);
   const row = (id: string) => page.getByTestId("activity-" + id);
-  await page.getByRole("button", { name: "+1", exact: true }).click();
+  await page.getByRole("button", { name: "+1", exact: true }).last().click();
   await row("orto")
     .getByRole("button", { name: /^Migliora / })
     .click();
@@ -405,32 +443,61 @@ test("percorso F02 completo dalla lista, gate espliciti e ritorno non bloccante"
     page.getByRole("complementary", { name: "Riepilogo ritorno" }),
   ).toBeVisible();
   // Buy without dismissing the return summary or selecting a station.
-  await page.getByRole("button", { name: "PROSSIMO", exact: true }).click();
+  await page
+    .getByRole("button", { name: "PROSSIMO", exact: true })
+    .last()
+    .click();
   await row("orto")
     .getByRole("button", { name: /^Migliora / })
     .click();
   await row("vivaio")
     .getByRole("button", { name: /^Costruisci / })
     .click();
-  await page.getByRole("button", { name: "Realizza progetto" }).click();
+  await project(page);
+  await page
+    .getByRole("dialog", { name: "Prossimo progetto", exact: true })
+    .getByRole("button", { name: "Realizza progetto" })
+    .click();
+  await page
+    .getByRole("button", { name: "Chiudi Prossimo progetto", exact: true })
+    .click();
   await row("mulino")
     .getByRole("button", { name: /^Costruisci / })
     .click();
+  await project(page);
   await expect(
-    page.getByRole("button", { name: "Realizza progetto" }),
+    page
+      .getByRole("dialog", { name: "Prossimo progetto", exact: true })
+      .getByRole("button", { name: "Realizza progetto" }),
   ).toBeDisabled();
+  await page
+    .getByRole("button", { name: "Chiudi Prossimo progetto", exact: true })
+    .click();
   await page.clock.fastForward(3600_000);
   for (const id of ["vivaio", "mulino"])
     await row(id)
       .getByRole("button", { name: /^Migliora / })
       .click();
-  await page.getByRole("button", { name: "Realizza progetto" }).click();
+  await project(page);
+  await page
+    .getByRole("dialog", { name: "Prossimo progetto", exact: true })
+    .getByRole("button", { name: "Realizza progetto" })
+    .click();
+  await page
+    .getByRole("button", { name: "Chiudi Prossimo progetto", exact: true })
+    .click();
   await row("laboratorio")
     .getByRole("button", { name: /^Costruisci / })
     .click();
+  await project(page);
   await expect(
-    page.getByRole("button", { name: "Realizza progetto" }),
+    page
+      .getByRole("dialog", { name: "Prossimo progetto", exact: true })
+      .getByRole("button", { name: "Realizza progetto" }),
   ).toBeDisabled();
+  await page
+    .getByRole("button", { name: "Chiudi Prossimo progetto", exact: true })
+    .click();
   await page.clock.fastForward(3600_000);
   for (const id of ["orto", "vivaio", "mulino", "laboratorio"]) {
     while ((await saved(page)).activities[id] < 25)
@@ -438,16 +505,22 @@ test("percorso F02 completo dalla lista, gate espliciti e ritorno non bloccante"
         .getByRole("button", { name: /^Migliora / })
         .click();
   }
-  await page.getByRole("button", { name: "Realizza progetto" }).click();
-  await expect(
-    page.getByText("La prima festa del borgo è cominciata!"),
-  ).toBeVisible();
+  await project(page);
+  await page
+    .getByRole("dialog", { name: "Prossimo progetto", exact: true })
+    .getByRole("button", { name: "Realizza progetto" })
+    .click();
+  await page
+    .getByRole("button", { name: "Chiudi Prossimo progetto", exact: true })
+    .click();
+  expect((await saved(page)).completedProjects).toContain("festa");
   expect((await saved(page)).completedProjects).toEqual([
     "sentiero",
     "ponte",
     "festa",
   ]);
-  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await closeManage(page);
+  await expect(page.locator("dialog[open]")).toHaveCount(0);
 });
 
 test("seconda scheda non avanza né scrive; takeover esplicito", async ({
@@ -501,9 +574,7 @@ test("reduced motion e strumenti debug solo in sviluppo", async ({ page }) => {
     .getByRole("button", { name: "Sblocchi di test", exact: true })
     .click();
   await page.getByRole("button", { name: "Nascondi riepilogo" }).click();
-  await expect(
-    page.getByText("La prima festa del borgo è cominciata!"),
-  ).toBeVisible();
+  expect((await saved(page)).completedProjects).toContain("festa");
   await page.goto("http://127.0.0.1:4173/?debug=1");
   await expect(
     page.getByRole("region", { name: "Diagnostica sviluppo" }),

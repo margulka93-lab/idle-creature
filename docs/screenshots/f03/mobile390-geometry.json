@@ -1,0 +1,156 @@
+{
+  "geometry": {
+    "width": 390,
+    "overflow": false,
+    "main": 700,
+    "view": 700,
+    "dock": {
+      "x": 8,
+      "y": 503.71875,
+      "width": 374,
+      "height": 269.6875,
+      "top": 503.71875,
+      "right": 382,
+      "bottom": 773.40625,
+      "left": 8
+    },
+    "nav": {
+      "x": 0,
+      "y": 779.40625,
+      "width": 390,
+      "height": 64.59375,
+      "top": 779.40625,
+      "right": 390,
+      "bottom": 844,
+      "left": 0
+    }
+  },
+  "controls": [
+    {
+      "name": "Impostazioni",
+      "w": 44,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Orto luminoso",
+      "w": 149.59375,
+      "h": 149.59375,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Vivaio delle gemme",
+      "w": 149.59375,
+      "h": 149.59375,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Mulino di nuvole",
+      "w": 149.59375,
+      "h": 149.59375,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Laboratorio delle lucciole",
+      "w": 149.59375,
+      "h": 149.59375,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Momo",
+      "w": 88,
+      "h": 88,
+      "font": 14
+    },
+    {
+      "name": "Attiva meraviglie",
+      "w": 153.4375,
+      "h": 51.1875,
+      "font": 14
+    },
+    {
+      "name": "Gestisci quattro attività",
+      "w": 80.46875,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Prossimo progetto: Il sentiero delle nuvole",
+      "w": 44,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "+1",
+      "w": 84.25,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "+10",
+      "w": 84.25,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "PROSSIMO",
+      "w": 84.25,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "MAX",
+      "w": 84.25,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Migliora Orto luminoso: L2 → L10, 8 livelli, 416 monete",
+      "w": 303,
+      "h": 46,
+      "font": 14
+    },
+    {
+      "name": "Anteprima Orto luminoso",
+      "w": 44,
+      "h": 46,
+      "font": 23
+    },
+    {
+      "name": "Incoraggia Momo",
+      "w": 302,
+      "h": 51.1875,
+      "font": 14
+    },
+    {
+      "name": "Dettagli Orto luminoso",
+      "w": 44,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Borgo",
+      "w": 91.5,
+      "h": 54.59375,
+      "font": 14
+    },
+    {
+      "name": "Creature",
+      "w": 91.5,
+      "h": 54.59375,
+      "font": 14
+    },
+    {
+      "name": "Progetti",
+      "w": 91.5,
+      "h": 54.59375,
+      "font": 14
+    },
+    {
+      "name": "Collezione",
+      "w": 91.5,
+      "h": 54.59375,
+      "font": 14
+    }
+  ]
+}

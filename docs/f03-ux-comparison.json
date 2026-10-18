@@ -1,0 +1,321 @@
+{
+  "baselineCommit": "ea31c4e",
+  "method": "Real Chromium, same new-game fixture per isolated task, controlled clock. Taps are executed inputs. Scroll events are browser automatic scrollIntoView movements, NOT estimates of human swipes or completion times. F02 runs at5174, F03 at5173.",
+  "results": [
+    {
+      "profile": "desktop",
+      "version": "F02",
+      "scenario": "incoraggia",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 1350,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F02",
+      "scenario": "primo-livello",
+      "taps": 2,
+      "events": [],
+      "documentHeight": 1339,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F02",
+      "scenario": "quantita-10",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 1350,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F02",
+      "scenario": "trova-progetto",
+      "taps": 0,
+      "events": [
+        {
+          "target": "document",
+          "top": 450
+        }
+      ],
+      "documentHeight": 1350,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F02",
+      "scenario": "confronta-quattro",
+      "taps": 0,
+      "events": [
+        {
+          "target": "document",
+          "top": 29
+        }
+      ],
+      "documentHeight": 1350,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F03",
+      "scenario": "incoraggia",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 900,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F03",
+      "scenario": "primo-livello",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 900,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F03",
+      "scenario": "quantita-10",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 900,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F03",
+      "scenario": "trova-progetto",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 900,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "desktop",
+      "version": "F03",
+      "scenario": "confronta-quattro",
+      "taps": 0,
+      "events": [],
+      "documentHeight": 900,
+      "viewportHeight": 900
+    },
+    {
+      "profile": "mobile390",
+      "version": "F02",
+      "scenario": "incoraggia",
+      "taps": 1,
+      "events": [
+        {
+          "target": "document",
+          "top": 463
+        }
+      ],
+      "documentHeight": 1735,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F02",
+      "scenario": "primo-livello",
+      "taps": 2,
+      "events": [],
+      "documentHeight": 1723,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F02",
+      "scenario": "quantita-10",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 1735,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F02",
+      "scenario": "trova-progetto",
+      "taps": 0,
+      "events": [
+        {
+          "target": "document",
+          "top": 891
+        }
+      ],
+      "documentHeight": 1735,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F02",
+      "scenario": "confronta-quattro",
+      "taps": 0,
+      "events": [
+        {
+          "target": "document",
+          "top": 826
+        }
+      ],
+      "documentHeight": 1735,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F03",
+      "scenario": "incoraggia",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 844,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F03",
+      "scenario": "primo-livello",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 844,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F03",
+      "scenario": "quantita-10",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 844,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F03",
+      "scenario": "trova-progetto",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 844,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile390",
+      "version": "F03",
+      "scenario": "confronta-quattro",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 844,
+      "viewportHeight": 844
+    },
+    {
+      "profile": "mobile360",
+      "version": "F02",
+      "scenario": "incoraggia",
+      "taps": 1,
+      "events": [
+        {
+          "target": "document",
+          "top": 461
+        }
+      ],
+      "documentHeight": 1711,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F02",
+      "scenario": "primo-livello",
+      "taps": 2,
+      "events": [],
+      "documentHeight": 1699,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F02",
+      "scenario": "quantita-10",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 1711,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F02",
+      "scenario": "trova-progetto",
+      "taps": 0,
+      "events": [
+        {
+          "target": "document",
+          "top": 911
+        }
+      ],
+      "documentHeight": 1711,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F02",
+      "scenario": "confronta-quattro",
+      "taps": 0,
+      "events": [
+        {
+          "target": "document",
+          "top": 824
+        }
+      ],
+      "documentHeight": 1711,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F03",
+      "scenario": "incoraggia",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 800,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F03",
+      "scenario": "primo-livello",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 800,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F03",
+      "scenario": "quantita-10",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 800,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F03",
+      "scenario": "trova-progetto",
+      "taps": 1,
+      "events": [],
+      "documentHeight": 800,
+      "viewportHeight": 800
+    },
+    {
+      "profile": "mobile360",
+      "version": "F03",
+      "scenario": "confronta-quattro",
+      "taps": 1,
+      "events": [
+        {
+          "target": "dialog-scroll",
+          "top": 34
+        }
+      ],
+      "documentHeight": 800,
+      "viewportHeight": 800
+    }
+  ]
+}

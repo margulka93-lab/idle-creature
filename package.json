@@ -14,7 +14,10 @@
     "test": "vitest run",
     "test:e2e": "npm run build && playwright test",
     "simulate": "tsx scripts/flow-simulate.ts",
-    "simulate:v1": "tsx scripts/simulate.ts"
+    "simulate:v1": "tsx scripts/simulate.ts",
+    "assets:export": "node scripts/export-f03-assets.mjs",
+    "verify:economy": "node scripts/verify-f03-economy.mjs",
+    "compare:ux": "tsx scripts/compare-f03-ux.ts"
   },
   "dependencies": {
     "react": "^19.3.1",
@@ -26,6 +29,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "prettier": "^3.9.10",
+    "sharp": "^0.35.5",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "vite": "^7.3.7",

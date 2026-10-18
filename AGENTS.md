@@ -1,3 +1,5 @@
+> Incarico corrente F03: CODEX_TASK.md e docs/F03_VISUAL_UX.md prevalgono sui compiti precedenti per UI/arte. F02 resta autorità per economia e persistenza.
+
 # Istruzioni per Codex
 
 ## Obiettivo e autorità
@@ -10,7 +12,7 @@ Completare l'intero incarico corrente senza chiedere conferma a ogni passaggio. 
 Lavorare su un branch dedicato e consegnare una PR, senza merge o deploy. Se non è possibile aprirla, consegnare commit e istruzioni precise. Non attivare servizi a pagamento, account, backend o API runtime.
 
 ## Confini
-Scope corrente: F02 descritto in CODEX_TASK.md. FIRST_PLAYABLE è la baseline implementata e resta storica in docs/archive/CODEX_TASK_FIRST_PLAYABLE.md. Le fasi in docs/ROADMAP.md sono future, non autorizzazioni ad aggiungere funzionalità. Non aggiungere combattimento, riproduzione, gacha, monetizzazione, fame, malattia, multiplayer, prestigio o pathfinding.
+Scope corrente: F03 descritto in CODEX_TASK.md. F02 è la baseline implementata, da preservare. FIRST_PLAYABLE è la baseline implementata e resta storica in docs/archive/CODEX_TASK_FIRST_PLAYABLE.md. Le fasi in docs/ROADMAP.md sono future, non autorizzazioni ad aggiungere funzionalità. Non aggiungere combattimento, riproduzione, gacha, monetizzazione, fame, malattia, multiplayer, prestigio o pathfinding.
 Nessun obiettivo di tempo artificiale: completare il lavoro utile con controlli proporzionati. Non ripetere test già verdi senza cambiamenti rilevanti. Non dichiarare verifiche o schermate mai eseguite.
 
 ## Qualità

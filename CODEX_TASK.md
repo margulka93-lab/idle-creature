@@ -1,22 +1,14 @@
-# F02 — fluidità, acquisti multipli e traguardi
+# F03 — ricostruzione intensiva di grafica e UX
 
-## Obiettivo
-Correggere il feedback umano: il prototipo è macchinoso, richiede acquisti singoli e i livelli non creano accelerazioni riconoscibili. Non aggiungere contenuti per mascherare il problema.
-Leggere AGENTS.md, docs/IDLE_RESEARCH.md, docs/FLOW_REVISION.md, docs/FLOW_ACCEPTANCE.md e design/flow.v2.json. La baseline di codice è FIRST_PLAYABLE, commit 8ae73a6; questo branch contiene specifiche F02, non una nuova implementazione già pronta.
+Baseline: main commit ea31c4e, FIRST_PLAYABLE+F02 integrati con guida visiva. Feedback utente: meccaniche accettabili, utilizzo ancora insoddisfacente; priorità intensiva a esperienza e grafica. Leggi AGENTS.md e docs/F03_VISUAL_UX.md. Non ripartire da zero e non rifare F02.
 
-## Incarico completo
-1. Conserva motore/salvataggi/asset e implementa quote acquisti +1/+10/PROSSIMO/MAX e comandi atomici con test.
-2. Introduci milestone automatiche guidate dai dati ai livelli 10/25/50 e anteprime corrette attraverso tutte le soglie. Integra traguardi creature e nuovi prerequisiti progetti secondo FLOW_REVISION.
-3. Ridisegna il flusso della schermata Borgo: elenco compatto di tutte le attività, upgrade diretto senza selezione obbligatoria, selettore acquisti condiviso, prossimo traguardo e beneficio visibili. Inspector solo per dettagli. Riduci intestazioni e messaggi ripetitivi.
-4. Rendi il ritorno non bloccante, assorbendo il riepilogo in un banner. Cura feedback carezze/acquisti e mantiene input equivalenti.
-5. Aggiorna dati runtime, regole documentate, validazione save/import e test senza reset silenziosi. Rendi riconoscibile economyVersion=2 nei nuovi export: niente ricalcolo retroattivo di monete/XP; solo tassi futuri e milestone derivate.
-6. Esegui simulazioni comparative dal vecchio codice e dal nuovo con politiche uguali; riferisci progressione, numero di azioni, tempo per obiettivi e traguardi. Se numeri richiedono tuning, agisci entro i limiti di FLOW_REVISION, motivando ogni variazione.
-7. Avvia/prova browser desktop/mobile se disponibile, correggi regressioni e consegna report, screenshot e commit/PR. Non limitarti a descrivere o a inserire pulsanti non funzionanti.
+## Consegna completa del blocco UX
+Ristruttura il layout e le interazioni ordinarie come nella specifica, mantendo motore/economia/salvataggi. Produci schermate reali e una breve registrazione del percorso se gli strumenti la consentono. Prova una partita nuova, sblocco e ritorno offline. Controlla desktop1440x900 e mobile390x844/360x800, focus, contrasto, reduced motion e gesture. Conserva acquisti multipli, preview esatte, backup e regressioni.
+Crea prima una composizione coerente della schermata di gioco con gli asset disponibili, poi implementala e correggila nel browser nello stesso incarico. Non limitarti a proposte o CSS cosmetico. Non introdurre nuovi sistemi, contenuti o tuning economico.
 
-## Consegna Git
-Continua su design/idle-flow-revision e aggiorna la relativa PR verso codex/first-playable. Non fare merge o deploy. Se lavori su un altro branch, apri PR verso design/idle-flow-revision e indica la dipendenza dalla PR FIRST_PLAYABLE. Non applicare F02 al main vuoto di implementazione e non ricreare il gioco da zero.
-Non è necessario interrogare l'utente su scelte tecniche reversibili. Completare tutti i sottopassi dell'incarico corrente.
+## Grafica e risorse
+Obiettivo artistico: PRIMO concept docs/art/concept-reference.jpg. Fondo ed edifici fermi, personaggi separati con microanimazioni. Vedi pipeline nel brief. Non dichiarare che un ritocco CSS/SVG abbia consegnato l'illustrazione definitiva. Se hai generazione immagini disponibile, prepara risorse originali separate coerenti con il concept e verifica l'importazione; nessuna API/key a pagamento da introdurre. Se la capacità non c'è, completa interamente il lavoro UX e l'integrazione via manifest, documenta esattamente asset mancanti e misure/pivot/hitbox richiesti, senza sostituire la direzione approvata con un altro fallback artistico dichiarato finale.
+Le immagini illustrative non possono contenere UI, testi o creature incorporate nel fondale. Grafica non deve peggiorare contrasto, leggibilità o hitbox.
 
-## Verifica
-Soddisfare docs/FLOW_ACCEPTANCE.md e mantenere verdi i controlli pertinenti di FIRST_PLAYABLE. Report in docs/FLOW_IMPLEMENTATION_REPORT.md, dati simulazioni in docs/flow-simulation-results.json e README aggiornato con lo stato effettivo.
-La consegna delle specifiche non certifica il divertimento. Il playtest umano successivo decide se il flusso è abbastanza fluido.
+## Consegna e autonomia
+Lavora su design/f03-visual-ux e aggiorna la sua PR verso main; nessun merge/deploy. Completa implementazione, verifiche e correzioni senza conferme intermedie su scelte reversibili. Mantieni docs/FLOW_IMPLEMENTATION_REPORT.md come storico; nuovo report docs/F03_IMPLEMENTATION_REPORT.md con cosa è implementato, cosa è solo illustrato, limiti e comandi realmente eseguiti. Aggiorna README allo stato vero, non ai soli intenti.
