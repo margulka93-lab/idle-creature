@@ -1,0 +1,350 @@
+{
+  "generatedAt": "2026-10-18T15:06:47.328Z",
+  "checkinsHours": [
+    0,
+    1,
+    4,
+    8,
+    24
+  ],
+  "activeWindowSeconds": 180,
+  "activeInputEverySeconds": 15,
+  "policy": "Ai check-in: prima progetti e nuove attività finché possibili; poi upgrade per rendimento marginale/costo. Politica attiva aggiunge carezze, raccolte e meraviglie per 3 min a 0/1/4/8h; nessun input tra le finestre. Snapshot 24h dopo investimenti, senza finestra successiva.",
+  "passive": {
+    "policy": "passiva",
+    "events": [
+      {
+        "hour": 1,
+        "event": "buyActivity:vivaio"
+      },
+      {
+        "hour": 1,
+        "event": "completeProject:sentiero"
+      },
+      {
+        "hour": 1,
+        "event": "buyActivity:mulino"
+      },
+      {
+        "hour": 4,
+        "event": "completeProject:ponte"
+      },
+      {
+        "hour": 4,
+        "event": "buyActivity:laboratorio"
+      },
+      {
+        "hour": 4,
+        "event": "completeProject:festa"
+      }
+    ],
+    "snapshots": [
+      {
+        "hour": 0,
+        "coins": 0,
+        "lifetimeCoins": 0,
+        "rate": 1.105,
+        "crystals": 0,
+        "activities": {
+          "orto": 2,
+          "vivaio": 0,
+          "mulino": 0,
+          "laboratorio": 0
+        },
+        "projects": []
+      },
+      {
+        "hour": 1,
+        "coins": 35.1,
+        "lifetimeCoins": 4408.1,
+        "rate": 24.966,
+        "crystals": 7,
+        "activities": {
+          "orto": 14,
+          "vivaio": 9,
+          "mulino": 8,
+          "laboratorio": 0
+        },
+        "projects": [
+          "sentiero"
+        ]
+      },
+      {
+        "hour": 4,
+        "coins": 5057.1,
+        "lifetimeCoins": 317298.1,
+        "rate": 162.352,
+        "crystals": 5,
+        "activities": {
+          "orto": 37,
+          "vivaio": 34,
+          "mulino": 33,
+          "laboratorio": 27
+        },
+        "projects": [
+          "sentiero",
+          "ponte",
+          "festa"
+        ]
+      },
+      {
+        "hour": 8,
+        "coins": 62905.9,
+        "lifetimeCoins": 2655166.9,
+        "rate": 235.276,
+        "crystals": 5,
+        "activities": {
+          "orto": 50,
+          "vivaio": 48,
+          "mulino": 47,
+          "laboratorio": 42
+        },
+        "projects": [
+          "sentiero",
+          "ponte",
+          "festa"
+        ]
+      },
+      {
+        "hour": 24,
+        "coins": 10488517.5,
+        "lifetimeCoins": 16207064.5,
+        "rate": 257.996,
+        "crystals": 5,
+        "activities": {
+          "orto": 50,
+          "vivaio": 50,
+          "mulino": 50,
+          "laboratorio": 50
+        },
+        "projects": [
+          "sentiero",
+          "ponte",
+          "festa"
+        ]
+      }
+    ],
+    "final": {
+      "coins": 10488517.5,
+      "produced": 16207064.5,
+      "rate": 257.996,
+      "creatures": {
+        "momo": {
+          "unlocked": true,
+          "level": 20,
+          "xpInLevel": 0,
+          "assignedActivityId": "orto",
+          "encouragedUntil": 0,
+          "lastEncouragedAt": 0
+        },
+        "nibi": {
+          "unlocked": true,
+          "level": 20,
+          "xpInLevel": 0,
+          "assignedActivityId": "vivaio",
+          "encouragedUntil": 0,
+          "lastEncouragedAt": 0
+        },
+        "tula": {
+          "unlocked": true,
+          "level": 20,
+          "xpInLevel": 0,
+          "assignedActivityId": "mulino",
+          "encouragedUntil": 0,
+          "lastEncouragedAt": 0
+        }
+      },
+      "activities": {
+        "orto": 50,
+        "vivaio": 50,
+        "mulino": 50,
+        "laboratorio": 50
+      }
+    }
+  },
+  "active": {
+    "policy": "attiva",
+    "events": [
+      {
+        "hour": 1,
+        "event": "buyActivity:vivaio"
+      },
+      {
+        "hour": 1,
+        "event": "completeProject:sentiero"
+      },
+      {
+        "hour": 1,
+        "event": "buyActivity:mulino"
+      },
+      {
+        "hour": 4,
+        "event": "completeProject:ponte"
+      },
+      {
+        "hour": 4,
+        "event": "buyActivity:laboratorio"
+      },
+      {
+        "hour": 4,
+        "event": "completeProject:festa"
+      }
+    ],
+    "snapshots": [
+      {
+        "hour": 0,
+        "coins": 302.43,
+        "lifetimeCoins": 302.43,
+        "rate": 1.708,
+        "crystals": 2,
+        "activities": {
+          "orto": 2,
+          "vivaio": 0,
+          "mulino": 0,
+          "laboratorio": 0
+        },
+        "projects": []
+      },
+      {
+        "hour": 1,
+        "coins": 7275.533,
+        "lifetimeCoins": 11648.532,
+        "rate": 38.247,
+        "crystals": 25,
+        "activities": {
+          "orto": 14,
+          "vivaio": 9,
+          "mulino": 8,
+          "laboratorio": 0
+        },
+        "projects": [
+          "sentiero"
+        ]
+      },
+      {
+        "hour": 4,
+        "coins": 44474.928,
+        "lifetimeCoins": 361945.928,
+        "rate": 216.91,
+        "crystals": 5,
+        "activities": {
+          "orto": 38,
+          "vivaio": 34,
+          "mulino": 33,
+          "laboratorio": 27
+        },
+        "projects": [
+          "sentiero",
+          "ponte",
+          "festa"
+        ]
+      },
+      {
+        "hour": 8,
+        "coins": 84103.918,
+        "lifetimeCoins": 2740585.917,
+        "rate": 311.674,
+        "crystals": 5,
+        "activities": {
+          "orto": 50,
+          "vivaio": 49,
+          "mulino": 47,
+          "laboratorio": 42
+        },
+        "projects": [
+          "sentiero",
+          "ponte",
+          "festa"
+        ]
+      },
+      {
+        "hour": 24,
+        "coins": 10580953.008,
+        "lifetimeCoins": 16299500.008,
+        "rate": 257.996,
+        "crystals": 5,
+        "activities": {
+          "orto": 50,
+          "vivaio": 50,
+          "mulino": 50,
+          "laboratorio": 50
+        },
+        "projects": [
+          "sentiero",
+          "ponte",
+          "festa"
+        ]
+      }
+    ],
+    "final": {
+      "coins": 10580953.0075,
+      "produced": 16299500.0075,
+      "rate": 257.996,
+      "creatures": {
+        "momo": {
+          "unlocked": true,
+          "level": 20,
+          "xpInLevel": 0,
+          "assignedActivityId": "orto",
+          "encouragedUntil": 1800028995000,
+          "lastEncouragedAt": 1800028965000
+        },
+        "nibi": {
+          "unlocked": true,
+          "level": 20,
+          "xpInLevel": 0,
+          "assignedActivityId": "vivaio",
+          "encouragedUntil": 1800028995000,
+          "lastEncouragedAt": 1800028965000
+        },
+        "tula": {
+          "unlocked": true,
+          "level": 20,
+          "xpInLevel": 0,
+          "assignedActivityId": "mulino",
+          "encouragedUntil": 1800028995000,
+          "lastEncouragedAt": 1800028965000
+        }
+      },
+      "activities": {
+        "orto": 50,
+        "vivaio": 50,
+        "mulino": 50,
+        "laboratorio": 50
+      }
+    }
+  },
+  "essentialPath": {
+    "policy": "Check-in ogni minuto; upgrade orto iniziale, poi risparmio per la sequenza essenziale. Nessun bonus attivo o raccolta.",
+    "events": [
+      {
+        "minute": 3,
+        "event": "buyActivity:vivaio"
+      },
+      {
+        "minute": 6,
+        "event": "completeProject:sentiero"
+      },
+      {
+        "minute": 9,
+        "event": "buyActivity:mulino"
+      },
+      {
+        "minute": 25,
+        "event": "completeProject:ponte"
+      },
+      {
+        "minute": 25,
+        "event": "buyActivity:laboratorio"
+      },
+      {
+        "minute": 36,
+        "event": "completeProject:festa"
+      }
+    ]
+  },
+  "difference": {
+    "produced": 92435.5075000003,
+    "percent": 0.5703408380956398
+  }
+}

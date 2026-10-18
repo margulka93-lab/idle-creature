@@ -1,3 +1,5 @@
+> Baseline FIRST_PLAYABLE (storica). Per F02, CODEX_TASK.md e docs/FLOW_REVISION.md prevalgono su acquisti, milestone, prerequisiti, UI, ritorno e migrazione. Accettazione corrente: docs/FLOW_ACCEPTANCE.md; conservare le regressioni tecniche applicabili qui sotto.
+
 # Regole eseguibili
 
 Fonte numerica: design/balance.v1.json. Tutte le durate sono secondi; timestamp persistenti in millisecondi UTC. Ogni comando prima riconcilia la simulazione fino al suo timestamp e poi applica la modifica atomicamente.

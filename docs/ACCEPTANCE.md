@@ -1,3 +1,5 @@
+> Baseline FIRST_PLAYABLE (storica). Per F02, CODEX_TASK.md e docs/FLOW_REVISION.md prevalgono su acquisti, milestone, prerequisiti, UI, ritorno e migrazione. Accettazione corrente: docs/FLOW_ACCEPTANCE.md; conservare le regressioni tecniche applicabili qui sotto.
+
 # Criteri di accettazione FIRST_PLAYABLE
 
 Ogni riga deve avere esito ed evidenza nel report. Non sostituire verifica del gioco con soli test di rendering.

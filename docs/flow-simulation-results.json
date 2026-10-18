@@ -1,0 +1,7043 @@
+{
+  "baselineCommit": "8ae73a6",
+  "generatedAt": "2026-10-18T15:47:34.390Z",
+  "policy": "Visite ogni minuto da 0 a 30min, poi 1h/4h/8h/24h; upgrade iniziale +1. Progetti e costruzioni prima degli upgrade e dopo ogni investimento. Marginale: +1 per rendimento/costo. Obiettivi: risparmio per soglie 10/25, poi MAX verso50. V1 esegue ciascun livello singolarmente; v2 un comando per blocco. Stesse visite e decisioni per entrambe le versioni; la variante attiva aggiunge bonus ogni15s in finestre di3min a0/5/15/30/60/240/480min. Nessun acquisto tra le visite. Gap senza acquisti descrive questa politica, non incapacità tecnica di investire.",
+  "clickBurden": [
+    {
+      "scenario": "Orto L1→10, fondi esatti",
+      "v1UpgradeClicks": 9,
+      "v2UpgradeClicks": 1
+    },
+    {
+      "scenario": "Orto L8→10, 153 monete",
+      "v1UpgradeClicks": 2,
+      "v2UpgradeClicks": 1
+    },
+    {
+      "scenario": "Ritorno, quattro attività L1 con fondi per cap",
+      "v1UpgradeClicks": 196,
+      "v2UpgradeClicks": 4
+    }
+  ],
+  "runs": [
+    {
+      "version": 1,
+      "policy": "marginale",
+      "active": false,
+      "firstL10Minute": 6,
+      "secondResidentMinute": 3,
+      "completionMinute": 16,
+      "capAtMinute": 1440,
+      "purchases": 202,
+      "upgradeCommands": 196,
+      "selectionActions": 179,
+      "economicUIActions": 381,
+      "bonusInputs": 0,
+      "longestNoPurchaseGapFirst30Minutes": 1,
+      "snapshots": [
+        {
+          "minute": 5,
+          "coins": 61.19999999999999,
+          "produced": 935.1999999999999,
+          "passiveRate": 7.048,
+          "activities": {
+            "orto": 8,
+            "vivaio": 4,
+            "mulino": 0,
+            "laboratorio": 0
+          },
+          "projects": [
+            "sentiero"
+          ],
+          "purchases": 12,
+          "upgradeCommands": 10,
+          "selections": 4,
+          "bonusInputs": 0,
+          "nextObjective": "completeProject:ponte",
+          "nextObjectiveAtMinute": 10,
+          "waitForNextObjectiveMinutes": 5
+        },
+        {
+          "minute": 15,
+          "coins": 81.4399999999996,
+          "produced": 15276.44,
+          "passiveRate": 51.924,
+          "activities": {
+            "orto": 17,
+            "vivaio": 13,
+            "mulino": 12,
+            "laboratorio": 8
+          },
+          "projects": [
+            "sentiero",
+            "ponte"
+          ],
+          "purchases": 51,
+          "upgradeCommands": 46,
+          "selections": 36,
+          "bonusInputs": 0,
+          "nextObjective": "completeProject:festa",
+          "nextObjectiveAtMinute": 16,
+          "waitForNextObjectiveMinutes": 1
+        },
+        {
+          "minute": 30,
+          "coins": 110.73999999999796,
+          "produced": 86451.74,
+          "passiveRate": 105.84,
+          "activities": {
+            "orto": 29,
+            "vivaio": 25,
+            "mulino": 23,
+            "laboratorio": 19
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 98,
+          "upgradeCommands": 92,
+          "selections": 80,
+          "bonusInputs": 0,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 210
+        },
+        {
+          "minute": 60,
+          "coins": 3026.6199999999953,
+          "produced": 280519.62,
+          "passiveRate": 147.698,
+          "activities": {
+            "orto": 37,
+            "vivaio": 33,
+            "mulino": 31,
+            "laboratorio": 27
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 130,
+          "upgradeCommands": 124,
+          "selections": 112,
+          "bonusInputs": 0,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 180
+        },
+        {
+          "minute": 1440,
+          "coins": 14109866.78,
+          "produced": 19828413.78,
+          "passiveRate": 257.996,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 50,
+            "laboratorio": 50
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 202,
+          "upgradeCommands": 196,
+          "selections": 179,
+          "bonusInputs": 0,
+          "nextObjective": null,
+          "nextObjectiveAtMinute": null,
+          "waitForNextObjectiveMinutes": null
+        }
+      ],
+      "events": [
+        {
+          "minute": 0,
+          "event": "upgrade:orto:1→2"
+        },
+        {
+          "minute": 1,
+          "event": "upgrade:orto:2→3"
+        },
+        {
+          "minute": 1,
+          "event": "upgrade:orto:3→4"
+        },
+        {
+          "minute": 2,
+          "event": "upgrade:orto:4→5"
+        },
+        {
+          "minute": 2,
+          "event": "upgrade:orto:5→6"
+        },
+        {
+          "minute": 3,
+          "event": "buyActivity:vivaio"
+        },
+        {
+          "minute": 3,
+          "event": "upgrade:vivaio:1→2"
+        },
+        {
+          "minute": 4,
+          "event": "completeProject:sentiero"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:vivaio:2→3"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:orto:6→7"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:vivaio:3→4"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:orto:7→8"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:vivaio:4→5"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:orto:8→9"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:vivaio:5→6"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:orto:9→10"
+        },
+        {
+          "minute": 6,
+          "event": "soglia:orto:L10"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:vivaio:6→7"
+        },
+        {
+          "minute": 7,
+          "event": "buyActivity:mulino"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:orto:10→11"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:1→2"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:2→3"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:3→4"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:vivaio:7→8"
+        },
+        {
+          "minute": 8.333333333333334,
+          "event": "talento:momo:L5"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:mulino:4→5"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:mulino:5→6"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:orto:11→12"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:mulino:6→7"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:8→9"
+        },
+        {
+          "minute": 10,
+          "event": "completeProject:ponte"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:orto:12→13"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:9→10"
+        },
+        {
+          "minute": 10,
+          "event": "soglia:vivaio:L10"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:mulino:7→8"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:orto:13→14"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:mulino:8→9"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:vivaio:10→11"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:orto:14→15"
+        },
+        {
+          "minute": 11.333333333333334,
+          "event": "talento:nibi:L5"
+        },
+        {
+          "minute": 12,
+          "event": "buyActivity:laboratorio"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:11→12"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:laboratorio:1→2"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:laboratorio:2→3"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:laboratorio:3→4"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:mulino:9→10"
+        },
+        {
+          "minute": 13,
+          "event": "soglia:mulino:L10"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:laboratorio:4→5"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:laboratorio:5→6"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:orto:15→16"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:mulino:10→11"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:vivaio:12→13"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:laboratorio:6→7"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:orto:16→17"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:mulino:11→12"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:laboratorio:7→8"
+        },
+        {
+          "minute": 15.333333333333334,
+          "event": "talento:tula:L5"
+        },
+        {
+          "minute": 16,
+          "event": "completeProject:festa"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:vivaio:13→14"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:17→18"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:mulino:12→13"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:laboratorio:8→9"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:vivaio:14→15"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:18→19"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:mulino:13→14"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:laboratorio:9→10"
+        },
+        {
+          "minute": 18,
+          "event": "soglia:laboratorio:L10"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:vivaio:15→16"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:orto:19→20"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:orto:20→21"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:mulino:14→15"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:laboratorio:10→11"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:vivaio:16→17"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:vivaio:17→18"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:mulino:15→16"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:laboratorio:11→12"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:21→22"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:vivaio:18→19"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:mulino:16→17"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:laboratorio:12→13"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:orto:22→23"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:mulino:17→18"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:laboratorio:13→14"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:vivaio:19→20"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:orto:23→24"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:mulino:18→19"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:vivaio:20→21"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:orto:24→25"
+        },
+        {
+          "minute": 23,
+          "event": "soglia:orto:L25"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:laboratorio:14→15"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:mulino:19→20"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:orto:25→26"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:laboratorio:15→16"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:vivaio:21→22"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:mulino:20→21"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:laboratorio:16→17"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:vivaio:22→23"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:orto:26→27"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:mulino:21→22"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:laboratorio:17→18"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:vivaio:23→24"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:orto:27→28"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:mulino:22→23"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:vivaio:24→25"
+        },
+        {
+          "minute": 29,
+          "event": "soglia:vivaio:L25"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:laboratorio:18→19"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:28→29"
+        },
+        {
+          "minute": 37.5,
+          "event": "talento:momo:L10"
+        },
+        {
+          "minute": 40.5,
+          "event": "talento:nibi:L10"
+        },
+        {
+          "minute": 44.5,
+          "event": "talento:tula:L10"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:23→24"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:25→26"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:19→20"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:29→30"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:24→25"
+        },
+        {
+          "minute": 60,
+          "event": "soglia:mulino:L25"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:26→27"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:20→21"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:30→31"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:25→26"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:27→28"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:21→22"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:31→32"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:26→27"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:28→29"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:22→23"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:32→33"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:27→28"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:29→30"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:23→24"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:33→34"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:28→29"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:30→31"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:24→25"
+        },
+        {
+          "minute": 60,
+          "event": "soglia:laboratorio:L25"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:34→35"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:29→30"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:31→32"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:25→26"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:35→36"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:30→31"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:32→33"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:26→27"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:36→37"
+        },
+        {
+          "minute": 158.33333333333334,
+          "event": "talento:momo:L20"
+        },
+        {
+          "minute": 161.33333333333334,
+          "event": "talento:nibi:L20"
+        },
+        {
+          "minute": 165.33333333333334,
+          "event": "talento:tula:L20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:31→32"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:33→34"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:32→33"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:27→28"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:34→35"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:33→34"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:28→29"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:35→36"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:34→35"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:29→30"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:36→37"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:35→36"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:30→31"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:36→37"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:31→32"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:32→33"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:33→34"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:34→35"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:35→36"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:36→37"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:orto:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:46→47"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:39→40"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:45→46"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:40→41"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:47→48"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:46→47"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:41→42"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:48→49"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:47→48"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:42→43"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:49→50"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:vivaio:L50"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:48→49"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:43→44"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:49→50"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:mulino:L50"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:44→45"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:45→46"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:46→47"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:47→48"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:48→49"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:49→50"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:laboratorio:L50"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "policy": "marginale",
+      "active": true,
+      "firstL10Minute": 5,
+      "secondResidentMinute": 2,
+      "completionMinute": 13,
+      "capAtMinute": 1440,
+      "purchases": 202,
+      "upgradeCommands": 196,
+      "selectionActions": 184,
+      "economicUIActions": 386,
+      "bonusInputs": 256,
+      "longestNoPurchaseGapFirst30Minutes": 1,
+      "snapshots": [
+        {
+          "minute": 5,
+          "coins": 177.3799999999999,
+          "produced": 1407.38,
+          "passiveRate": 9.386,
+          "activities": {
+            "orto": 10,
+            "vivaio": 6,
+            "mulino": 0,
+            "laboratorio": 0
+          },
+          "projects": [
+            "sentiero"
+          ],
+          "purchases": 16,
+          "upgradeCommands": 14,
+          "selections": 12,
+          "bonusInputs": 21,
+          "nextObjective": "completeProject:ponte",
+          "nextObjectiveAtMinute": 8,
+          "waitForNextObjectiveMinutes": 3
+        },
+        {
+          "minute": 15,
+          "coins": 949.9499999999989,
+          "produced": 23766.949999999993,
+          "passiveRate": 60.15,
+          "activities": {
+            "orto": 19,
+            "vivaio": 16,
+            "mulino": 14,
+            "laboratorio": 9
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 60,
+          "upgradeCommands": 54,
+          "selections": 48,
+          "bonusInputs": 59,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 225
+        },
+        {
+          "minute": 30,
+          "coins": 1178.5274999999945,
+          "produced": 111952.52750000003,
+          "passiveRate": 114.163,
+          "activities": {
+            "orto": 32,
+            "vivaio": 27,
+            "mulino": 25,
+            "laboratorio": 20
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 106,
+          "upgradeCommands": 100,
+          "selections": 94,
+          "bonusInputs": 100,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 210
+        },
+        {
+          "minute": 60,
+          "coins": 2807.539999999978,
+          "produced": 330372.54,
+          "passiveRate": 153.022,
+          "activities": {
+            "orto": 39,
+            "vivaio": 34,
+            "mulino": 32,
+            "laboratorio": 28
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 135,
+          "upgradeCommands": 129,
+          "selections": 122,
+          "bonusInputs": 141,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 180
+        },
+        {
+          "minute": 1440,
+          "coins": 14414787.18,
+          "produced": 20133334.18,
+          "passiveRate": 257.996,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 50,
+            "laboratorio": 50
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 202,
+          "upgradeCommands": 196,
+          "selections": 184,
+          "bonusInputs": 256,
+          "nextObjective": null,
+          "nextObjectiveAtMinute": null,
+          "waitForNextObjectiveMinutes": null
+        }
+      ],
+      "events": [
+        {
+          "minute": 0,
+          "event": "upgrade:orto:1→2"
+        },
+        {
+          "minute": 1,
+          "event": "upgrade:orto:2→3"
+        },
+        {
+          "minute": 1,
+          "event": "upgrade:orto:3→4"
+        },
+        {
+          "minute": 2,
+          "event": "buyActivity:vivaio"
+        },
+        {
+          "minute": 2,
+          "event": "upgrade:orto:4→5"
+        },
+        {
+          "minute": 3,
+          "event": "completeProject:sentiero"
+        },
+        {
+          "minute": 3,
+          "event": "upgrade:vivaio:1→2"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:5→6"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:vivaio:2→3"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:6→7"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:vivaio:3→4"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:7→8"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:vivaio:4→5"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:orto:8→9"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:vivaio:5→6"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:orto:9→10"
+        },
+        {
+          "minute": 5,
+          "event": "soglia:orto:L10"
+        },
+        {
+          "minute": 6,
+          "event": "buyActivity:mulino"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:mulino:1→2"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:mulino:2→3"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:mulino:3→4"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:mulino:4→5"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:6→7"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:orto:10→11"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:mulino:5→6"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:7→8"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:orto:11→12"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:mulino:6→7"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:orto:12→13"
+        },
+        {
+          "minute": 8,
+          "event": "completeProject:ponte"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:vivaio:8→9"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:7→8"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:vivaio:9→10"
+        },
+        {
+          "minute": 8,
+          "event": "soglia:vivaio:L10"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:13→14"
+        },
+        {
+          "minute": 8.333333333333334,
+          "event": "talento:momo:L5"
+        },
+        {
+          "minute": 9,
+          "event": "buyActivity:laboratorio"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:10→11"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:laboratorio:1→2"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:laboratorio:2→3"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:laboratorio:3→4"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:mulino:8→9"
+        },
+        {
+          "minute": 10.333333333333334,
+          "event": "talento:nibi:L5"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:laboratorio:4→5"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:orto:14→15"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:mulino:9→10"
+        },
+        {
+          "minute": 11,
+          "event": "soglia:mulino:L10"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:laboratorio:5→6"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:orto:15→16"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:11→12"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:mulino:10→11"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:laboratorio:6→7"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:12→13"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:orto:16→17"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:13→14"
+        },
+        {
+          "minute": 13,
+          "event": "completeProject:festa"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:mulino:11→12"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:laboratorio:7→8"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:orto:17→18"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:mulino:12→13"
+        },
+        {
+          "minute": 14.333333333333334,
+          "event": "talento:tula:L5"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:laboratorio:8→9"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:vivaio:14→15"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:orto:18→19"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:mulino:13→14"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:vivaio:15→16"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:laboratorio:9→10"
+        },
+        {
+          "minute": 16,
+          "event": "soglia:laboratorio:L10"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:orto:19→20"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:mulino:14→15"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:laboratorio:10→11"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:16→17"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:orto:20→21"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:17→18"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:orto:21→22"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:mulino:15→16"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:laboratorio:11→12"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:mulino:16→17"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:vivaio:18→19"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:laboratorio:12→13"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:orto:22→23"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:mulino:17→18"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:vivaio:19→20"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:orto:23→24"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:laboratorio:13→14"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:mulino:18→19"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:vivaio:20→21"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:laboratorio:14→15"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:24→25"
+        },
+        {
+          "minute": 20,
+          "event": "soglia:orto:L25"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:vivaio:21→22"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:mulino:19→20"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:laboratorio:15→16"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:orto:25→26"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:mulino:20→21"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:vivaio:22→23"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:orto:26→27"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:laboratorio:16→17"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:vivaio:23→24"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:mulino:21→22"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:orto:27→28"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:vivaio:24→25"
+        },
+        {
+          "minute": 24,
+          "event": "soglia:vivaio:L25"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:laboratorio:17→18"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:orto:28→29"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:mulino:22→23"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:vivaio:25→26"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:laboratorio:18→19"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:orto:29→30"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:mulino:23→24"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:vivaio:26→27"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:laboratorio:19→20"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:orto:30→31"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:mulino:24→25"
+        },
+        {
+          "minute": 30,
+          "event": "soglia:mulino:L25"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:31→32"
+        },
+        {
+          "minute": 37.5,
+          "event": "talento:momo:L10"
+        },
+        {
+          "minute": 39.5,
+          "event": "talento:nibi:L10"
+        },
+        {
+          "minute": 43.5,
+          "event": "talento:tula:L10"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:20→21"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:25→26"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:27→28"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:21→22"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:26→27"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:28→29"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:22→23"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:32→33"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:27→28"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:29→30"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:23→24"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:33→34"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:28→29"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:30→31"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:24→25"
+        },
+        {
+          "minute": 60,
+          "event": "soglia:laboratorio:L25"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:34→35"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:29→30"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:31→32"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:25→26"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:35→36"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:30→31"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:32→33"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:26→27"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:36→37"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:31→32"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:33→34"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:27→28"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:37→38"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:38→39"
+        },
+        {
+          "minute": 158.33333333333334,
+          "event": "talento:momo:L20"
+        },
+        {
+          "minute": 160.33333333333334,
+          "event": "talento:nibi:L20"
+        },
+        {
+          "minute": 164.33333333333334,
+          "event": "talento:tula:L20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:32→33"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:34→35"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:33→34"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:28→29"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:35→36"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:34→35"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:29→30"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:36→37"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:35→36"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:30→31"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:36→37"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:31→32"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:32→33"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:33→34"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:34→35"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:35→36"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:36→37"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:orto:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:46→47"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:45→46"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:40→41"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:47→48"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:46→47"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:41→42"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:48→49"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:47→48"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:42→43"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:49→50"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:vivaio:L50"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:48→49"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:43→44"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:49→50"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:mulino:L50"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:44→45"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:45→46"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:46→47"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:47→48"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:laboratorio:48→49"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:49→50"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:laboratorio:L50"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "policy": "obiettivi",
+      "active": false,
+      "firstL10Minute": 8,
+      "secondResidentMinute": 3,
+      "completionMinute": 20,
+      "capAtMinute": 1440,
+      "purchases": 202,
+      "upgradeCommands": 196,
+      "selectionActions": 9,
+      "economicUIActions": 211,
+      "bonusInputs": 0,
+      "longestNoPurchaseGapFirst30Minutes": 5,
+      "snapshots": [
+        {
+          "minute": 5,
+          "coins": 314.21999999999997,
+          "produced": 464.21999999999997,
+          "passiveRate": 2.2119999999999997,
+          "activities": {
+            "orto": 2,
+            "vivaio": 1,
+            "mulino": 0,
+            "laboratorio": 0
+          },
+          "projects": [],
+          "purchases": 2,
+          "upgradeCommands": 1,
+          "selections": 1,
+          "bonusInputs": 0,
+          "nextObjective": "completeProject:sentiero",
+          "nextObjectiveAtMinute": 6,
+          "waitForNextObjectiveMinutes": 1
+        },
+        {
+          "minute": 15,
+          "coins": 294.0899999999997,
+          "produced": 5165.089999999999,
+          "passiveRate": 17.464,
+          "activities": {
+            "orto": 10,
+            "vivaio": 10,
+            "mulino": 1,
+            "laboratorio": 1
+          },
+          "projects": [
+            "sentiero",
+            "ponte"
+          ],
+          "purchases": 23,
+          "upgradeCommands": 18,
+          "selections": 5,
+          "bonusInputs": 0,
+          "nextObjective": "completeProject:festa",
+          "nextObjectiveAtMinute": 20,
+          "waitForNextObjectiveMinutes": 5
+        },
+        {
+          "minute": 30,
+          "coins": 1206.5599999999981,
+          "produced": 26545.559999999998,
+          "passiveRate": 29.843999999999998,
+          "activities": {
+            "orto": 33,
+            "vivaio": 10,
+            "mulino": 1,
+            "laboratorio": 1
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 47,
+          "upgradeCommands": 41,
+          "selections": 6,
+          "bonusInputs": 0,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 210
+        },
+        {
+          "minute": 60,
+          "coins": 5405.239999999991,
+          "produced": 81343.23999999999,
+          "passiveRate": 35.878,
+          "activities": {
+            "orto": 42,
+            "vivaio": 10,
+            "mulino": 1,
+            "laboratorio": 1
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 56,
+          "upgradeCommands": 50,
+          "selections": 6,
+          "bonusInputs": 0,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 180
+        },
+        {
+          "minute": 1440,
+          "coins": 4664327.999999998,
+          "produced": 10382874.999999998,
+          "passiveRate": 257.996,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 50,
+            "laboratorio": 50
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 202,
+          "upgradeCommands": 196,
+          "selections": 9,
+          "bonusInputs": 0,
+          "nextObjective": null,
+          "nextObjectiveAtMinute": null,
+          "waitForNextObjectiveMinutes": null
+        }
+      ],
+      "events": [
+        {
+          "minute": 0,
+          "event": "upgrade:orto:1→2"
+        },
+        {
+          "minute": 3,
+          "event": "buyActivity:vivaio"
+        },
+        {
+          "minute": 6,
+          "event": "completeProject:sentiero"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:2→3"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:3→4"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:4→5"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:5→6"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:6→7"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:7→8"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:8→9"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:9→10"
+        },
+        {
+          "minute": 8,
+          "event": "soglia:orto:L10"
+        },
+        {
+          "minute": 8.333333333333334,
+          "event": "talento:momo:L5"
+        },
+        {
+          "minute": 10,
+          "event": "buyActivity:mulino"
+        },
+        {
+          "minute": 11.333333333333334,
+          "event": "talento:nibi:L5"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:1→2"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:2→3"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:3→4"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:4→5"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:5→6"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:6→7"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:7→8"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:8→9"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:9→10"
+        },
+        {
+          "minute": 12,
+          "event": "soglia:vivaio:L10"
+        },
+        {
+          "minute": 15,
+          "event": "completeProject:ponte"
+        },
+        {
+          "minute": 15,
+          "event": "buyActivity:laboratorio"
+        },
+        {
+          "minute": 18.333333333333332,
+          "event": "talento:tula:L5"
+        },
+        {
+          "minute": 20,
+          "event": "completeProject:festa"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:10→11"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:11→12"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:12→13"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:13→14"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:14→15"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:15→16"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:16→17"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:17→18"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:18→19"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:19→20"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:20→21"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:orto:21→22"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:orto:22→23"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:orto:23→24"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:orto:24→25"
+        },
+        {
+          "minute": 22,
+          "event": "soglia:orto:L25"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:orto:25→26"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:orto:26→27"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:orto:27→28"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:orto:28→29"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:orto:29→30"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:orto:30→31"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:orto:31→32"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:32→33"
+        },
+        {
+          "minute": 37.5,
+          "event": "talento:momo:L10"
+        },
+        {
+          "minute": 40.5,
+          "event": "talento:nibi:L10"
+        },
+        {
+          "minute": 47.5,
+          "event": "talento:tula:L10"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:33→34"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:34→35"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:35→36"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:36→37"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:37→38"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:38→39"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:39→40"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:40→41"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:41→42"
+        },
+        {
+          "minute": 158.33333333333334,
+          "event": "talento:momo:L20"
+        },
+        {
+          "minute": 161.33333333333334,
+          "event": "talento:nibi:L20"
+        },
+        {
+          "minute": 168.33333333333334,
+          "event": "talento:tula:L20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:orto:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:10→11"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:11→12"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:12→13"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:13→14"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:14→15"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:15→16"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:16→17"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:17→18"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:18→19"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:19→20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:20→21"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:21→22"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:22→23"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:23→24"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:24→25"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:vivaio:L25"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:25→26"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:26→27"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:27→28"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:28→29"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:29→30"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:30→31"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:31→32"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:32→33"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:33→34"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:34→35"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:35→36"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:36→37"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:44→45"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:45→46"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:46→47"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:47→48"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:48→49"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:49→50"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:vivaio:L50"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:1→2"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:2→3"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:3→4"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:4→5"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:5→6"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:6→7"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:7→8"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:8→9"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:9→10"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:mulino:L10"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:10→11"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:11→12"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:12→13"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:13→14"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:14→15"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:15→16"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:16→17"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:17→18"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:18→19"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:19→20"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:20→21"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:21→22"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:22→23"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:23→24"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:24→25"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:mulino:L25"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:25→26"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:26→27"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:27→28"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:28→29"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:29→30"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:30→31"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:31→32"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:32→33"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:33→34"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:34→35"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:35→36"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:36→37"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:37→38"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:38→39"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:39→40"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:40→41"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:41→42"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:42→43"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:43→44"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:44→45"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:45→46"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:mulino:46→47"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:mulino:47→48"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:mulino:48→49"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:mulino:49→50"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:mulino:L50"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:1→2"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:2→3"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:3→4"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:4→5"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:5→6"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:6→7"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:7→8"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:8→9"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:9→10"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:laboratorio:L10"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:10→11"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:11→12"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:12→13"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:13→14"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:14→15"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:15→16"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:16→17"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:17→18"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:18→19"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:19→20"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:20→21"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:21→22"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:22→23"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:23→24"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:24→25"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:laboratorio:L25"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:25→26"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:26→27"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:27→28"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:28→29"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:29→30"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:30→31"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:31→32"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:32→33"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:33→34"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:34→35"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:35→36"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:36→37"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:37→38"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:38→39"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:39→40"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:40→41"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:41→42"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:42→43"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:43→44"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:44→45"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:45→46"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:46→47"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:47→48"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:48→49"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:49→50"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:laboratorio:L50"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "policy": "obiettivi",
+      "active": true,
+      "firstL10Minute": 8,
+      "secondResidentMinute": 2,
+      "completionMinute": 17,
+      "capAtMinute": 1440,
+      "purchases": 202,
+      "upgradeCommands": 196,
+      "selectionActions": 9,
+      "economicUIActions": 211,
+      "bonusInputs": 256,
+      "longestNoPurchaseGapFirst30Minutes": 4,
+      "snapshots": [
+        {
+          "minute": 5,
+          "coins": 298.89250000000004,
+          "produced": 698.8925,
+          "passiveRate": 2.2279999999999998,
+          "activities": {
+            "orto": 2,
+            "vivaio": 1,
+            "mulino": 0,
+            "laboratorio": 0
+          },
+          "projects": [
+            "sentiero"
+          ],
+          "purchases": 3,
+          "upgradeCommands": 1,
+          "selections": 1,
+          "bonusInputs": 21,
+          "nextObjective": "completeProject:ponte",
+          "nextObjectiveAtMinute": 13,
+          "waitForNextObjectiveMinutes": 8
+        },
+        {
+          "minute": 15,
+          "coins": 2676.1124999999993,
+          "produced": 7547.112499999998,
+          "passiveRate": 17.599999999999998,
+          "activities": {
+            "orto": 10,
+            "vivaio": 10,
+            "mulino": 1,
+            "laboratorio": 1
+          },
+          "projects": [
+            "sentiero",
+            "ponte"
+          ],
+          "purchases": 23,
+          "upgradeCommands": 18,
+          "selections": 5,
+          "bonusInputs": 58,
+          "nextObjective": "completeProject:festa",
+          "nextObjectiveAtMinute": 17,
+          "waitForNextObjectiveMinutes": 2
+        },
+        {
+          "minute": 30,
+          "coins": 1873.2949999999971,
+          "produced": 33451.294999999984,
+          "passiveRate": 30.895999999999997,
+          "activities": {
+            "orto": 35,
+            "vivaio": 10,
+            "mulino": 1,
+            "laboratorio": 1
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 49,
+          "upgradeCommands": 43,
+          "selections": 6,
+          "bonusInputs": 100,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 210
+        },
+        {
+          "minute": 60,
+          "coins": 6652.509999999997,
+          "produced": 93573.50999999998,
+          "passiveRate": 36.41,
+          "activities": {
+            "orto": 43,
+            "vivaio": 10,
+            "mulino": 1,
+            "laboratorio": 1
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 57,
+          "upgradeCommands": 51,
+          "selections": 6,
+          "bonusInputs": 141,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 180
+        },
+        {
+          "minute": 1440,
+          "coins": 4712542.51,
+          "produced": 10431089.509999998,
+          "passiveRate": 257.996,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 50,
+            "laboratorio": 50
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 202,
+          "upgradeCommands": 196,
+          "selections": 9,
+          "bonusInputs": 256,
+          "nextObjective": null,
+          "nextObjectiveAtMinute": null,
+          "waitForNextObjectiveMinutes": null
+        }
+      ],
+      "events": [
+        {
+          "minute": 0,
+          "event": "upgrade:orto:1→2"
+        },
+        {
+          "minute": 2,
+          "event": "buyActivity:vivaio"
+        },
+        {
+          "minute": 4,
+          "event": "completeProject:sentiero"
+        },
+        {
+          "minute": 6,
+          "event": "buyActivity:mulino"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:2→3"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:3→4"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:4→5"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:5→6"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:6→7"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:7→8"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:8→9"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:9→10"
+        },
+        {
+          "minute": 8,
+          "event": "soglia:orto:L10"
+        },
+        {
+          "minute": 8.333333333333334,
+          "event": "talento:momo:L5"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:1→2"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:2→3"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:3→4"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:4→5"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:5→6"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:6→7"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:7→8"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:8→9"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:9→10"
+        },
+        {
+          "minute": 10,
+          "event": "soglia:vivaio:L10"
+        },
+        {
+          "minute": 10.333333333333334,
+          "event": "talento:nibi:L5"
+        },
+        {
+          "minute": 13,
+          "event": "completeProject:ponte"
+        },
+        {
+          "minute": 13,
+          "event": "buyActivity:laboratorio"
+        },
+        {
+          "minute": 14.333333333333334,
+          "event": "talento:tula:L5"
+        },
+        {
+          "minute": 17,
+          "event": "completeProject:festa"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:10→11"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:11→12"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:12→13"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:13→14"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:14→15"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:15→16"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:16→17"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:17→18"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:18→19"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:19→20"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:20→21"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:orto:21→22"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:orto:22→23"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:orto:23→24"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:orto:24→25"
+        },
+        {
+          "minute": 19,
+          "event": "soglia:orto:L25"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:orto:25→26"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:26→27"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:27→28"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:orto:28→29"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:orto:29→30"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:orto:30→31"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:orto:31→32"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:orto:32→33"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:orto:33→34"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:34→35"
+        },
+        {
+          "minute": 37.5,
+          "event": "talento:momo:L10"
+        },
+        {
+          "minute": 39.5,
+          "event": "talento:nibi:L10"
+        },
+        {
+          "minute": 43.5,
+          "event": "talento:tula:L10"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:35→36"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:36→37"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:37→38"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:38→39"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:39→40"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:40→41"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:41→42"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:42→43"
+        },
+        {
+          "minute": 158.33333333333334,
+          "event": "talento:momo:L20"
+        },
+        {
+          "minute": 160.33333333333334,
+          "event": "talento:nibi:L20"
+        },
+        {
+          "minute": 164.33333333333334,
+          "event": "talento:tula:L20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:orto:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:orto:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:10→11"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:11→12"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:12→13"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:13→14"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:14→15"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:15→16"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:16→17"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:17→18"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:18→19"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:19→20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:20→21"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:21→22"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:22→23"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:23→24"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:24→25"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:vivaio:L25"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:25→26"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:26→27"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:27→28"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:28→29"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:29→30"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:30→31"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:31→32"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:32→33"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:33→34"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:34→35"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:35→36"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:36→37"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:37→38"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:44→45"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:45→46"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:46→47"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:47→48"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:48→49"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:vivaio:49→50"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:vivaio:L50"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:1→2"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:2→3"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:3→4"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:4→5"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:5→6"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:6→7"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:7→8"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:8→9"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:9→10"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:mulino:L10"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:10→11"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:11→12"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:12→13"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:13→14"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:14→15"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:15→16"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:16→17"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:17→18"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:18→19"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:19→20"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:20→21"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:21→22"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:22→23"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:23→24"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:24→25"
+        },
+        {
+          "minute": 480,
+          "event": "soglia:mulino:L25"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:25→26"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:26→27"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:27→28"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:28→29"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:29→30"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:30→31"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:31→32"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:32→33"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:33→34"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:34→35"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:35→36"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:36→37"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:37→38"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:38→39"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:39→40"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:40→41"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:41→42"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:42→43"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:43→44"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:44→45"
+        },
+        {
+          "minute": 480,
+          "event": "upgrade:mulino:45→46"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:mulino:46→47"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:mulino:47→48"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:mulino:48→49"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:mulino:49→50"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:mulino:L50"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:1→2"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:2→3"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:3→4"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:4→5"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:5→6"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:6→7"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:7→8"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:8→9"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:9→10"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:laboratorio:L10"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:10→11"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:11→12"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:12→13"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:13→14"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:14→15"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:15→16"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:16→17"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:17→18"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:18→19"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:19→20"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:20→21"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:21→22"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:22→23"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:23→24"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:24→25"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:laboratorio:L25"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:25→26"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:26→27"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:27→28"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:28→29"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:29→30"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:30→31"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:31→32"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:32→33"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:33→34"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:34→35"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:35→36"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:36→37"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:37→38"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:38→39"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:39→40"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:40→41"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:41→42"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:42→43"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:43→44"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:44→45"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:45→46"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:46→47"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:47→48"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:48→49"
+        },
+        {
+          "minute": 1440,
+          "event": "upgrade:laboratorio:49→50"
+        },
+        {
+          "minute": 1440,
+          "event": "soglia:laboratorio:L50"
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "policy": "marginale",
+      "active": false,
+      "firstL10Minute": 5,
+      "secondResidentMinute": 3,
+      "completionMinute": 27,
+      "capAtMinute": 240,
+      "purchases": 202,
+      "upgradeCommands": 196,
+      "selectionActions": 0,
+      "economicUIActions": 202,
+      "bonusInputs": 0,
+      "longestNoPurchaseGapFirst30Minutes": 1,
+      "snapshots": [
+        {
+          "minute": 5,
+          "coins": 103.67999999999995,
+          "produced": 1070.6799999999998,
+          "passiveRate": 14.575999999999999,
+          "activities": {
+            "orto": 11,
+            "vivaio": 5,
+            "mulino": 0,
+            "laboratorio": 0
+          },
+          "projects": [],
+          "purchases": 15,
+          "upgradeCommands": 14,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": "completeProject:sentiero",
+          "nextObjectiveAtMinute": 6,
+          "waitForNextObjectiveMinutes": 1
+        },
+        {
+          "minute": 15,
+          "coins": 54.93999999999869,
+          "produced": 41075.939999999995,
+          "passiveRate": 198.748,
+          "activities": {
+            "orto": 26,
+            "vivaio": 20,
+            "mulino": 18,
+            "laboratorio": 14
+          },
+          "projects": [
+            "sentiero",
+            "ponte"
+          ],
+          "purchases": 79,
+          "upgradeCommands": 74,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": "completeProject:festa",
+          "nextObjectiveAtMinute": 27,
+          "waitForNextObjectiveMinutes": 12
+        },
+        {
+          "minute": 30,
+          "coins": 397.77999999999884,
+          "produced": 414797.78,
+          "passiveRate": 651.7280000000001,
+          "activities": {
+            "orto": 41,
+            "vivaio": 36,
+            "mulino": 34,
+            "laboratorio": 29
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 142,
+          "upgradeCommands": 136,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 60,
+          "waitForNextObjectiveMinutes": 30
+        },
+        {
+          "minute": 60,
+          "coins": 35089.5,
+          "produced": 1604108.5000000002,
+          "passiveRate": 962.8880000000001,
+          "activities": {
+            "orto": 50,
+            "vivaio": 45,
+            "mulino": 43,
+            "laboratorio": 38
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 178,
+          "upgradeCommands": 172,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": "soglia:vivaio:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 180
+        },
+        {
+          "minute": 1440,
+          "coins": 160809958.14,
+          "produced": 166528505.14,
+          "passiveRate": 2138.728,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 50,
+            "laboratorio": 50
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 202,
+          "upgradeCommands": 196,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": null,
+          "nextObjectiveAtMinute": null,
+          "waitForNextObjectiveMinutes": null
+        }
+      ],
+      "events": [
+        {
+          "minute": 0,
+          "event": "upgrade:orto:1→2"
+        },
+        {
+          "minute": 1,
+          "event": "upgrade:orto:2→3"
+        },
+        {
+          "minute": 1,
+          "event": "upgrade:orto:3→4"
+        },
+        {
+          "minute": 2,
+          "event": "upgrade:orto:4→5"
+        },
+        {
+          "minute": 2,
+          "event": "upgrade:orto:5→6"
+        },
+        {
+          "minute": 3,
+          "event": "buyActivity:vivaio"
+        },
+        {
+          "minute": 3,
+          "event": "upgrade:vivaio:1→2"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:vivaio:2→3"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:6→7"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:vivaio:3→4"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:7→8"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:vivaio:4→5"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:orto:8→9"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:orto:9→10"
+        },
+        {
+          "minute": 5,
+          "event": "soglia:orto:L10"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:orto:10→11"
+        },
+        {
+          "minute": 6,
+          "event": "completeProject:sentiero"
+        },
+        {
+          "minute": 6,
+          "event": "buyActivity:mulino"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:mulino:1→2"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:orto:11→12"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:mulino:2→3"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:orto:12→13"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:mulino:3→4"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:orto:13→14"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:5→6"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:mulino:4→5"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:14→15"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:vivaio:6→7"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:5→6"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:15→16"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:vivaio:7→8"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:6→7"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:16→17"
+        },
+        {
+          "minute": 8.333333333333334,
+          "event": "talento:momo:L5"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:8→9"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:9→10"
+        },
+        {
+          "minute": 9,
+          "event": "soglia:vivaio:L10"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:10→11"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:11→12"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:12→13"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:orto:17→18"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:13→14"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:mulino:7→8"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:orto:18→19"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:14→15"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:mulino:8→9"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:mulino:9→10"
+        },
+        {
+          "minute": 10,
+          "event": "soglia:mulino:L10"
+        },
+        {
+          "minute": 10,
+          "event": "completeProject:ponte"
+        },
+        {
+          "minute": 11,
+          "event": "buyActivity:laboratorio"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:laboratorio:1→2"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:mulino:10→11"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:laboratorio:2→3"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:mulino:11→12"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:laboratorio:3→4"
+        },
+        {
+          "minute": 11.333333333333334,
+          "event": "talento:nibi:L5"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:mulino:12→13"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:laboratorio:4→5"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:15→16"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:mulino:13→14"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:orto:19→20"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:laboratorio:5→6"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:vivaio:16→17"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:orto:20→21"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:orto:21→22"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:mulino:14→15"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:laboratorio:6→7"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:vivaio:17→18"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:mulino:15→16"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:laboratorio:7→8"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:vivaio:18→19"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:orto:22→23"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:mulino:16→17"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:laboratorio:8→9"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:laboratorio:9→10"
+        },
+        {
+          "minute": 14,
+          "event": "soglia:laboratorio:L10"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:laboratorio:10→11"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:laboratorio:11→12"
+        },
+        {
+          "minute": 14.333333333333334,
+          "event": "talento:tula:L5"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:laboratorio:12→13"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:mulino:17→18"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:vivaio:19→20"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:laboratorio:13→14"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:orto:23→24"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:orto:24→25"
+        },
+        {
+          "minute": 15,
+          "event": "soglia:orto:L25"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:orto:25→26"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:orto:26→27"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:orto:27→28"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:mulino:18→19"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:orto:28→29"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:20→21"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:laboratorio:14→15"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:mulino:19→20"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:29→30"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:vivaio:21→22"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:laboratorio:15→16"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:mulino:20→21"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:30→31"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:vivaio:22→23"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:vivaio:23→24"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:vivaio:24→25"
+        },
+        {
+          "minute": 18,
+          "event": "soglia:vivaio:L25"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:vivaio:25→26"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:vivaio:26→27"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:laboratorio:16→17"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:vivaio:27→28"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:mulino:21→22"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:orto:31→32"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:laboratorio:17→18"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:vivaio:28→29"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:mulino:22→23"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:orto:32→33"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:laboratorio:18→19"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:vivaio:29→30"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:mulino:23→24"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:mulino:24→25"
+        },
+        {
+          "minute": 20,
+          "event": "soglia:mulino:L25"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:mulino:25→26"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:mulino:26→27"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:mulino:27→28"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:orto:33→34"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:mulino:28→29"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:laboratorio:19→20"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:vivaio:30→31"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:orto:34→35"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:vivaio:31→32"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:mulino:29→30"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:laboratorio:20→21"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:orto:35→36"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:vivaio:32→33"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:mulino:30→31"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:laboratorio:21→22"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:orto:36→37"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:mulino:31→32"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:laboratorio:22→23"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:vivaio:33→34"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:orto:37→38"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:mulino:32→33"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:laboratorio:23→24"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:laboratorio:24→25"
+        },
+        {
+          "minute": 27,
+          "event": "soglia:laboratorio:L25"
+        },
+        {
+          "minute": 27,
+          "event": "completeProject:festa"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:laboratorio:25→26"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:laboratorio:26→27"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:laboratorio:27→28"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:vivaio:34→35"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:laboratorio:28→29"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:orto:38→39"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:mulino:33→34"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:vivaio:35→36"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:39→40"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:40→41"
+        },
+        {
+          "minute": 37.5,
+          "event": "talento:momo:L10"
+        },
+        {
+          "minute": 40.5,
+          "event": "talento:nibi:L10"
+        },
+        {
+          "minute": 43.5,
+          "event": "talento:tula:L10"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:34→35"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:29→30"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:36→37"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:35→36"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:30→31"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:37→38"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:41→42"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:36→37"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:31→32"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:38→39"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:42→43"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:37→38"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:32→33"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:39→40"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:43→44"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:38→39"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:33→34"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:40→41"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:44→45"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:39→40"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:34→35"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:41→42"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:45→46"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:40→41"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:35→36"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:42→43"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:46→47"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:41→42"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:36→37"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:43→44"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:47→48"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:42→43"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:37→38"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:44→45"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:48→49"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:49→50"
+        },
+        {
+          "minute": 60,
+          "event": "soglia:orto:L50"
+        },
+        {
+          "minute": 158.33333333333334,
+          "event": "talento:momo:L20"
+        },
+        {
+          "minute": 161.33333333333334,
+          "event": "talento:nibi:L20"
+        },
+        {
+          "minute": 164.33333333333334,
+          "event": "talento:tula:L20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:38→39"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:vivaio:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:mulino:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:laboratorio:L50"
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "policy": "marginale",
+      "active": true,
+      "firstL10Minute": 4,
+      "secondResidentMinute": 2,
+      "completionMinute": 23,
+      "capAtMinute": 240,
+      "purchases": 202,
+      "upgradeCommands": 196,
+      "selectionActions": 0,
+      "economicUIActions": 202,
+      "bonusInputs": 260,
+      "longestNoPurchaseGapFirst30Minutes": 1,
+      "snapshots": [
+        {
+          "minute": 5,
+          "coins": 191.1749999999999,
+          "produced": 2058.175,
+          "passiveRate": 17.881999999999998,
+          "activities": {
+            "orto": 11,
+            "vivaio": 5,
+            "mulino": 2,
+            "laboratorio": 0
+          },
+          "projects": [
+            "sentiero"
+          ],
+          "purchases": 18,
+          "upgradeCommands": 15,
+          "selections": 0,
+          "bonusInputs": 22,
+          "nextObjective": "completeProject:ponte",
+          "nextObjectiveAtMinute": 8,
+          "waitForNextObjectiveMinutes": 3
+        },
+        {
+          "minute": 15,
+          "coins": 3802.1649999999995,
+          "produced": 71600.16499999998,
+          "passiveRate": 235.04000000000002,
+          "activities": {
+            "orto": 31,
+            "vivaio": 23,
+            "mulino": 21,
+            "laboratorio": 17
+          },
+          "projects": [
+            "sentiero",
+            "ponte"
+          ],
+          "purchases": 93,
+          "upgradeCommands": 88,
+          "selections": 0,
+          "bonusInputs": 63,
+          "nextObjective": "completeProject:festa",
+          "nextObjectiveAtMinute": 23,
+          "waitForNextObjectiveMinutes": 8
+        },
+        {
+          "minute": 30,
+          "coins": 8765.224999999997,
+          "produced": 565529.225,
+          "passiveRate": 690.576,
+          "activities": {
+            "orto": 43,
+            "vivaio": 38,
+            "mulino": 36,
+            "laboratorio": 31
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 150,
+          "upgradeCommands": 144,
+          "selections": 0,
+          "bonusInputs": 104,
+          "nextObjective": "soglia:orto:L50",
+          "nextObjectiveAtMinute": 60,
+          "waitForNextObjectiveMinutes": 30
+        },
+        {
+          "minute": 60,
+          "coins": 13856.605000000047,
+          "produced": 1886186.6049999995,
+          "passiveRate": 990.568,
+          "activities": {
+            "orto": 50,
+            "vivaio": 46,
+            "mulino": 45,
+            "laboratorio": 39
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 182,
+          "upgradeCommands": 176,
+          "selections": 0,
+          "bonusInputs": 145,
+          "nextObjective": "soglia:vivaio:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 180
+        },
+        {
+          "minute": 1440,
+          "coins": 161834026.80500004,
+          "produced": 167552573.80500004,
+          "passiveRate": 2138.728,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 50,
+            "laboratorio": 50
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 202,
+          "upgradeCommands": 196,
+          "selections": 0,
+          "bonusInputs": 260,
+          "nextObjective": null,
+          "nextObjectiveAtMinute": null,
+          "waitForNextObjectiveMinutes": null
+        }
+      ],
+      "events": [
+        {
+          "minute": 0,
+          "event": "upgrade:orto:1→2"
+        },
+        {
+          "minute": 1,
+          "event": "upgrade:orto:2→3"
+        },
+        {
+          "minute": 1,
+          "event": "upgrade:orto:3→4"
+        },
+        {
+          "minute": 2,
+          "event": "buyActivity:vivaio"
+        },
+        {
+          "minute": 2,
+          "event": "upgrade:orto:4→5"
+        },
+        {
+          "minute": 3,
+          "event": "upgrade:vivaio:1→2"
+        },
+        {
+          "minute": 3,
+          "event": "upgrade:orto:5→6"
+        },
+        {
+          "minute": 3,
+          "event": "upgrade:vivaio:2→3"
+        },
+        {
+          "minute": 3,
+          "event": "upgrade:orto:6→7"
+        },
+        {
+          "minute": 3,
+          "event": "upgrade:vivaio:3→4"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:7→8"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:vivaio:4→5"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:8→9"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:9→10"
+        },
+        {
+          "minute": 4,
+          "event": "soglia:orto:L10"
+        },
+        {
+          "minute": 4,
+          "event": "upgrade:orto:10→11"
+        },
+        {
+          "minute": 5,
+          "event": "completeProject:sentiero"
+        },
+        {
+          "minute": 5,
+          "event": "buyActivity:mulino"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:mulino:1→2"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:orto:11→12"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:mulino:2→3"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:orto:12→13"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:mulino:3→4"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:orto:13→14"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:vivaio:5→6"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:mulino:4→5"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:orto:14→15"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:vivaio:6→7"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:mulino:5→6"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:orto:15→16"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:7→8"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:mulino:6→7"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:orto:16→17"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:8→9"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:9→10"
+        },
+        {
+          "minute": 7,
+          "event": "soglia:vivaio:L10"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:10→11"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:11→12"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:12→13"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:13→14"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:mulino:7→8"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:17→18"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:vivaio:14→15"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:8→9"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:9→10"
+        },
+        {
+          "minute": 8,
+          "event": "soglia:mulino:L10"
+        },
+        {
+          "minute": 8,
+          "event": "completeProject:ponte"
+        },
+        {
+          "minute": 8,
+          "event": "buyActivity:laboratorio"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:orto:18→19"
+        },
+        {
+          "minute": 8.333333333333334,
+          "event": "talento:momo:L5"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:laboratorio:1→2"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:mulino:10→11"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:laboratorio:2→3"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:mulino:11→12"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:laboratorio:3→4"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:mulino:12→13"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:laboratorio:4→5"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:orto:19→20"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:orto:20→21"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:mulino:13→14"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:15→16"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:laboratorio:5→6"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:mulino:14→15"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:vivaio:16→17"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:laboratorio:6→7"
+        },
+        {
+          "minute": 10,
+          "event": "upgrade:orto:21→22"
+        },
+        {
+          "minute": 10.333333333333334,
+          "event": "talento:nibi:L5"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:vivaio:17→18"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:mulino:15→16"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:laboratorio:7→8"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:vivaio:18→19"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:mulino:16→17"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:orto:22→23"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:laboratorio:8→9"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:laboratorio:9→10"
+        },
+        {
+          "minute": 12,
+          "event": "soglia:laboratorio:L10"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:laboratorio:10→11"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:laboratorio:11→12"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:laboratorio:12→13"
+        },
+        {
+          "minute": 12,
+          "event": "upgrade:orto:23→24"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:orto:24→25"
+        },
+        {
+          "minute": 13,
+          "event": "soglia:orto:L25"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:orto:25→26"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:orto:26→27"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:orto:27→28"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:vivaio:19→20"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:mulino:17→18"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:laboratorio:13→14"
+        },
+        {
+          "minute": 13.333333333333334,
+          "event": "talento:tula:L5"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:mulino:18→19"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:orto:28→29"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:vivaio:20→21"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:laboratorio:14→15"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:mulino:19→20"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:orto:29→30"
+        },
+        {
+          "minute": 14,
+          "event": "upgrade:vivaio:21→22"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:laboratorio:15→16"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:mulino:20→21"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:orto:30→31"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:vivaio:22→23"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:laboratorio:16→17"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:mulino:21→22"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:orto:31→32"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:23→24"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:24→25"
+        },
+        {
+          "minute": 16,
+          "event": "soglia:vivaio:L25"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:25→26"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:26→27"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:27→28"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:laboratorio:17→18"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:vivaio:28→29"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:mulino:22→23"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:32→33"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:laboratorio:18→19"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:vivaio:29→30"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:mulino:23→24"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:mulino:24→25"
+        },
+        {
+          "minute": 17,
+          "event": "soglia:mulino:L25"
+        },
+        {
+          "minute": 17,
+          "event": "upgrade:orto:33→34"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:mulino:25→26"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:mulino:26→27"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:mulino:27→28"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:mulino:28→29"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:laboratorio:19→20"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:vivaio:30→31"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:orto:34→35"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:mulino:29→30"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:laboratorio:20→21"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:orto:35→36"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:vivaio:31→32"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:mulino:30→31"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:laboratorio:21→22"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:vivaio:32→33"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:orto:36→37"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:mulino:31→32"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:vivaio:33→34"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:laboratorio:22→23"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:orto:37→38"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:laboratorio:23→24"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:laboratorio:24→25"
+        },
+        {
+          "minute": 23,
+          "event": "soglia:laboratorio:L25"
+        },
+        {
+          "minute": 23,
+          "event": "completeProject:festa"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:laboratorio:25→26"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:laboratorio:26→27"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:laboratorio:27→28"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:mulino:32→33"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:vivaio:34→35"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:orto:38→39"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:vivaio:35→36"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:laboratorio:28→29"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:mulino:33→34"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:laboratorio:29→30"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:orto:39→40"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:mulino:34→35"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:vivaio:36→37"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:orto:40→41"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:laboratorio:30→31"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:vivaio:37→38"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:mulino:35→36"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:41→42"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:42→43"
+        },
+        {
+          "minute": 37.5,
+          "event": "talento:momo:L10"
+        },
+        {
+          "minute": 39.5,
+          "event": "talento:nibi:L10"
+        },
+        {
+          "minute": 42.5,
+          "event": "talento:tula:L10"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:36→37"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:31→32"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:38→39"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:37→38"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:32→33"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:39→40"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:38→39"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:43→44"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:33→34"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:40→41"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:39→40"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:44→45"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:34→35"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:41→42"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:40→41"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:45→46"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:35→36"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:42→43"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:41→42"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:46→47"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:36→37"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:43→44"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:42→43"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:47→48"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:37→38"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:44→45"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:43→44"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:48→49"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:orto:49→50"
+        },
+        {
+          "minute": 60,
+          "event": "soglia:orto:L50"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:laboratorio:38→39"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:45→46"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:44→45"
+        },
+        {
+          "minute": 158.33333333333334,
+          "event": "talento:momo:L20"
+        },
+        {
+          "minute": 160.33333333333334,
+          "event": "talento:nibi:L20"
+        },
+        {
+          "minute": 163.33333333333334,
+          "event": "talento:tula:L20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:39→40"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:40→41"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:vivaio:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:vivaio:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:41→42"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:42→43"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:mulino:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:43→44"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:44→45"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:45→46"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:46→47"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:47→48"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:48→49"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:49→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:laboratorio:L50"
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "policy": "obiettivi",
+      "active": false,
+      "firstL10Minute": 6,
+      "secondResidentMinute": 3,
+      "completionMinute": 23,
+      "capAtMinute": 240,
+      "purchases": 28,
+      "upgradeCommands": 22,
+      "selectionActions": 0,
+      "economicUIActions": 28,
+      "bonusInputs": 0,
+      "longestNoPurchaseGapFirst30Minutes": 4,
+      "snapshots": [
+        {
+          "minute": 5,
+          "coins": 314.21999999999997,
+          "produced": 464.21999999999997,
+          "passiveRate": 2.2119999999999997,
+          "activities": {
+            "orto": 2,
+            "vivaio": 1,
+            "mulino": 0,
+            "laboratorio": 0
+          },
+          "projects": [],
+          "purchases": 2,
+          "upgradeCommands": 1,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": "completeProject:sentiero",
+          "nextObjectiveAtMinute": 7,
+          "waitForNextObjectiveMinutes": 2
+        },
+        {
+          "minute": 15,
+          "coins": 571.159999999998,
+          "produced": 24788.159999999996,
+          "passiveRate": 160.736,
+          "activities": {
+            "orto": 25,
+            "vivaio": 25,
+            "mulino": 10,
+            "laboratorio": 1
+          },
+          "projects": [
+            "sentiero",
+            "ponte"
+          ],
+          "purchases": 11,
+          "upgradeCommands": 6,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": "completeProject:festa",
+          "nextObjectiveAtMinute": 23,
+          "waitForNextObjectiveMinutes": 8
+        },
+        {
+          "minute": 30,
+          "coins": 2359.920000000013,
+          "produced": 371621.9199999999,
+          "passiveRate": 667.4,
+          "activities": {
+            "orto": 50,
+            "vivaio": 28,
+            "mulino": 25,
+            "laboratorio": 25
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 24,
+          "upgradeCommands": 18,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": "soglia:vivaio:L50",
+          "nextObjectiveAtMinute": 60,
+          "waitForNextObjectiveMinutes": 30
+        },
+        {
+          "minute": 60,
+          "coins": 94235.6399999999,
+          "produced": 1592828.64,
+          "passiveRate": 1051.832,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 45,
+            "laboratorio": 25
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 26,
+          "upgradeCommands": 20,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": "soglia:mulino:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 180
+        },
+        {
+          "minute": 1440,
+          "coins": 161903589.32,
+          "produced": 167622136.32,
+          "passiveRate": 2138.728,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 50,
+            "laboratorio": 50
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 28,
+          "upgradeCommands": 22,
+          "selections": 0,
+          "bonusInputs": 0,
+          "nextObjective": null,
+          "nextObjectiveAtMinute": null,
+          "waitForNextObjectiveMinutes": null
+        }
+      ],
+      "events": [
+        {
+          "minute": 0,
+          "event": "upgrade:orto:1→2"
+        },
+        {
+          "minute": 3,
+          "event": "buyActivity:vivaio"
+        },
+        {
+          "minute": 6,
+          "event": "upgrade:orto:2→10"
+        },
+        {
+          "minute": 6,
+          "event": "soglia:orto:L10"
+        },
+        {
+          "minute": 7,
+          "event": "completeProject:sentiero"
+        },
+        {
+          "minute": 8,
+          "event": "buyActivity:mulino"
+        },
+        {
+          "minute": 8.333333333333334,
+          "event": "talento:momo:L5"
+        },
+        {
+          "minute": 9,
+          "event": "upgrade:vivaio:1→10"
+        },
+        {
+          "minute": 9,
+          "event": "soglia:vivaio:L10"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:mulino:1→10"
+        },
+        {
+          "minute": 11,
+          "event": "soglia:mulino:L10"
+        },
+        {
+          "minute": 11.333333333333334,
+          "event": "talento:nibi:L5"
+        },
+        {
+          "minute": 12,
+          "event": "completeProject:ponte"
+        },
+        {
+          "minute": 12,
+          "event": "buyActivity:laboratorio"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:orto:10→25"
+        },
+        {
+          "minute": 13,
+          "event": "soglia:orto:L25"
+        },
+        {
+          "minute": 15,
+          "event": "upgrade:vivaio:10→25"
+        },
+        {
+          "minute": 15,
+          "event": "soglia:vivaio:L25"
+        },
+        {
+          "minute": 16.333333333333332,
+          "event": "talento:tula:L5"
+        },
+        {
+          "minute": 18,
+          "event": "upgrade:mulino:10→25"
+        },
+        {
+          "minute": 18,
+          "event": "soglia:mulino:L25"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:laboratorio:1→10"
+        },
+        {
+          "minute": 19,
+          "event": "soglia:laboratorio:L10"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:laboratorio:10→25"
+        },
+        {
+          "minute": 23,
+          "event": "soglia:laboratorio:L25"
+        },
+        {
+          "minute": 23,
+          "event": "completeProject:festa"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:orto:25→30"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:orto:30→38"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:orto:38→42"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:orto:42→44"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:orto:44→46"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:orto:46→48"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:orto:48→49"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:orto:49→50"
+        },
+        {
+          "minute": 30,
+          "event": "soglia:orto:L50"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:vivaio:25→28"
+        },
+        {
+          "minute": 37.5,
+          "event": "talento:momo:L10"
+        },
+        {
+          "minute": 40.5,
+          "event": "talento:nibi:L10"
+        },
+        {
+          "minute": 45.5,
+          "event": "talento:tula:L10"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:28→50"
+        },
+        {
+          "minute": 60,
+          "event": "soglia:vivaio:L50"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:25→45"
+        },
+        {
+          "minute": 158.33333333333334,
+          "event": "talento:momo:L20"
+        },
+        {
+          "minute": 161.33333333333334,
+          "event": "talento:nibi:L20"
+        },
+        {
+          "minute": 166.33333333333334,
+          "event": "talento:tula:L20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:45→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:mulino:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:25→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:laboratorio:L50"
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "policy": "obiettivi",
+      "active": true,
+      "firstL10Minute": 5,
+      "secondResidentMinute": 2,
+      "completionMinute": 19,
+      "capAtMinute": 240,
+      "purchases": 30,
+      "upgradeCommands": 24,
+      "selectionActions": 0,
+      "economicUIActions": 30,
+      "bonusInputs": 256,
+      "longestNoPurchaseGapFirst30Minutes": 3,
+      "snapshots": [
+        {
+          "minute": 5,
+          "coins": 220.61250000000004,
+          "produced": 786.6125000000001,
+          "passiveRate": 11,
+          "activities": {
+            "orto": 10,
+            "vivaio": 1,
+            "mulino": 0,
+            "laboratorio": 0
+          },
+          "projects": [],
+          "purchases": 3,
+          "upgradeCommands": 2,
+          "selections": 0,
+          "bonusInputs": 20,
+          "nextObjective": "completeProject:sentiero",
+          "nextObjectiveAtMinute": 6,
+          "waitForNextObjectiveMinutes": 1
+        },
+        {
+          "minute": 15,
+          "coins": 24676.582499999993,
+          "produced": 48893.5825,
+          "passiveRate": 164.27999999999997,
+          "activities": {
+            "orto": 25,
+            "vivaio": 25,
+            "mulino": 10,
+            "laboratorio": 1
+          },
+          "projects": [
+            "sentiero",
+            "ponte"
+          ],
+          "purchases": 11,
+          "upgradeCommands": 6,
+          "selections": 0,
+          "bonusInputs": 59,
+          "nextObjective": "completeProject:festa",
+          "nextObjectiveAtMinute": 19,
+          "waitForNextObjectiveMinutes": 4
+        },
+        {
+          "minute": 30,
+          "coins": 20766.662500000006,
+          "produced": 534155.6625,
+          "passiveRate": 712.5600000000001,
+          "activities": {
+            "orto": 50,
+            "vivaio": 42,
+            "mulino": 25,
+            "laboratorio": 25
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 26,
+          "upgradeCommands": 20,
+          "selections": 0,
+          "bonusInputs": 100,
+          "nextObjective": "soglia:vivaio:L50",
+          "nextObjectiveAtMinute": 60,
+          "waitForNextObjectiveMinutes": 30
+        },
+        {
+          "minute": 60,
+          "coins": 44596.162499999795,
+          "produced": 1903774.1624999996,
+          "passiveRate": 1071.0320000000002,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 48,
+            "laboratorio": 25
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 28,
+          "upgradeCommands": 22,
+          "selections": 0,
+          "bonusInputs": 141,
+          "nextObjective": "soglia:mulino:L50",
+          "nextObjectiveAtMinute": 240,
+          "waitForNextObjectiveMinutes": 180
+        },
+        {
+          "minute": 1440,
+          "coins": 162931778.08250004,
+          "produced": 168650325.08250004,
+          "passiveRate": 2138.728,
+          "activities": {
+            "orto": 50,
+            "vivaio": 50,
+            "mulino": 50,
+            "laboratorio": 50
+          },
+          "projects": [
+            "sentiero",
+            "ponte",
+            "festa"
+          ],
+          "purchases": 30,
+          "upgradeCommands": 24,
+          "selections": 0,
+          "bonusInputs": 256,
+          "nextObjective": null,
+          "nextObjectiveAtMinute": null,
+          "waitForNextObjectiveMinutes": null
+        }
+      ],
+      "events": [
+        {
+          "minute": 0,
+          "event": "upgrade:orto:1→2"
+        },
+        {
+          "minute": 2,
+          "event": "buyActivity:vivaio"
+        },
+        {
+          "minute": 5,
+          "event": "upgrade:orto:2→10"
+        },
+        {
+          "minute": 5,
+          "event": "soglia:orto:L10"
+        },
+        {
+          "minute": 6,
+          "event": "completeProject:sentiero"
+        },
+        {
+          "minute": 6,
+          "event": "buyActivity:mulino"
+        },
+        {
+          "minute": 7,
+          "event": "upgrade:vivaio:1→10"
+        },
+        {
+          "minute": 7,
+          "event": "soglia:vivaio:L10"
+        },
+        {
+          "minute": 8,
+          "event": "upgrade:mulino:1→10"
+        },
+        {
+          "minute": 8,
+          "event": "soglia:mulino:L10"
+        },
+        {
+          "minute": 8.333333333333334,
+          "event": "talento:momo:L5"
+        },
+        {
+          "minute": 9,
+          "event": "completeProject:ponte"
+        },
+        {
+          "minute": 9,
+          "event": "buyActivity:laboratorio"
+        },
+        {
+          "minute": 10.333333333333334,
+          "event": "talento:nibi:L5"
+        },
+        {
+          "minute": 11,
+          "event": "upgrade:orto:10→25"
+        },
+        {
+          "minute": 11,
+          "event": "soglia:orto:L25"
+        },
+        {
+          "minute": 13,
+          "event": "upgrade:vivaio:10→25"
+        },
+        {
+          "minute": 13,
+          "event": "soglia:vivaio:L25"
+        },
+        {
+          "minute": 14.333333333333334,
+          "event": "talento:tula:L5"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:mulino:10→25"
+        },
+        {
+          "minute": 16,
+          "event": "soglia:mulino:L25"
+        },
+        {
+          "minute": 16,
+          "event": "upgrade:laboratorio:1→10"
+        },
+        {
+          "minute": 16,
+          "event": "soglia:laboratorio:L10"
+        },
+        {
+          "minute": 19,
+          "event": "upgrade:laboratorio:10→25"
+        },
+        {
+          "minute": 19,
+          "event": "soglia:laboratorio:L25"
+        },
+        {
+          "minute": 19,
+          "event": "completeProject:festa"
+        },
+        {
+          "minute": 20,
+          "event": "upgrade:orto:25→37"
+        },
+        {
+          "minute": 21,
+          "event": "upgrade:orto:37→41"
+        },
+        {
+          "minute": 22,
+          "event": "upgrade:orto:41→44"
+        },
+        {
+          "minute": 23,
+          "event": "upgrade:orto:44→46"
+        },
+        {
+          "minute": 24,
+          "event": "upgrade:orto:46→47"
+        },
+        {
+          "minute": 25,
+          "event": "upgrade:orto:47→48"
+        },
+        {
+          "minute": 26,
+          "event": "upgrade:orto:48→50"
+        },
+        {
+          "minute": 26,
+          "event": "soglia:orto:L50"
+        },
+        {
+          "minute": 27,
+          "event": "upgrade:vivaio:25→34"
+        },
+        {
+          "minute": 28,
+          "event": "upgrade:vivaio:34→38"
+        },
+        {
+          "minute": 29,
+          "event": "upgrade:vivaio:38→40"
+        },
+        {
+          "minute": 30,
+          "event": "upgrade:vivaio:40→42"
+        },
+        {
+          "minute": 37.5,
+          "event": "talento:momo:L10"
+        },
+        {
+          "minute": 39.5,
+          "event": "talento:nibi:L10"
+        },
+        {
+          "minute": 43.5,
+          "event": "talento:tula:L10"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:vivaio:42→50"
+        },
+        {
+          "minute": 60,
+          "event": "soglia:vivaio:L50"
+        },
+        {
+          "minute": 60,
+          "event": "upgrade:mulino:25→48"
+        },
+        {
+          "minute": 158.33333333333334,
+          "event": "talento:momo:L20"
+        },
+        {
+          "minute": 160.33333333333334,
+          "event": "talento:nibi:L20"
+        },
+        {
+          "minute": 164.33333333333334,
+          "event": "talento:tula:L20"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:mulino:48→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:mulino:L50"
+        },
+        {
+          "minute": 240,
+          "event": "upgrade:laboratorio:25→50"
+        },
+        {
+          "minute": 240,
+          "event": "soglia:laboratorio:L50"
+        }
+      ]
+    }
+  ],
+  "contrasts": [
+    {
+      "version": 1,
+      "policy": "marginale",
+      "windows": [
+        {
+          "fromMinute": 0,
+          "minute": 5,
+          "earnedPassive": 935.1999999999999,
+          "earnedActive": 1407.38,
+          "intervalProducedPercent": 50.48973481608214,
+          "producedPercent": 50.48973481608214
+        },
+        {
+          "fromMinute": 5,
+          "minute": 15,
+          "earnedPassive": 14341.24,
+          "earnedActive": 22359.569999999992,
+          "intervalProducedPercent": 55.91099514407396,
+          "producedPercent": 55.57911398205335
+        },
+        {
+          "fromMinute": 15,
+          "minute": 30,
+          "earnedPassive": 71175.3,
+          "earnedActive": 88185.57750000003,
+          "intervalProducedPercent": 23.899130035279125,
+          "producedPercent": 29.497136205702756
+        },
+        {
+          "fromMinute": 30,
+          "minute": 60,
+          "earnedPassive": 194067.88,
+          "earnedActive": 218420.01249999995,
+          "intervalProducedPercent": 12.548255022933198,
+          "producedPercent": 17.77163394132646
+        },
+        {
+          "fromMinute": 60,
+          "minute": 1440,
+          "earnedPassive": 19547894.16,
+          "earnedActive": 19802961.64,
+          "intervalProducedPercent": 1.3048335432567226,
+          "producedPercent": 1.5377952234765013
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "policy": "marginale",
+      "windows": [
+        {
+          "fromMinute": 0,
+          "minute": 5,
+          "earnedPassive": 1070.6799999999998,
+          "earnedActive": 2058.175,
+          "intervalProducedPercent": 92.23063847274634,
+          "producedPercent": 92.23063847274634
+        },
+        {
+          "fromMinute": 5,
+          "minute": 15,
+          "earnedPassive": 40005.259999999995,
+          "earnedActive": 69541.98999999998,
+          "intervalProducedPercent": 73.83211607673587,
+          "producedPercent": 74.31168951946074
+        },
+        {
+          "fromMinute": 15,
+          "minute": 30,
+          "earnedPassive": 373721.84,
+          "earnedActive": 493929.06,
+          "intervalProducedPercent": 32.1648903366204,
+          "producedPercent": 36.33853705774413
+        },
+        {
+          "fromMinute": 30,
+          "minute": 60,
+          "earnedPassive": 1189310.7200000002,
+          "earnedActive": 1320657.3799999994,
+          "intervalProducedPercent": 11.04393139582558,
+          "producedPercent": 17.584727279981326
+        },
+        {
+          "fromMinute": 60,
+          "minute": 1440,
+          "earnedPassive": 164924396.64,
+          "earnedActive": 165666387.20000005,
+          "intervalProducedPercent": 0.44989739245169247,
+          "producedPercent": 0.6149509743927251
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "policy": "obiettivi",
+      "windows": [
+        {
+          "fromMinute": 0,
+          "minute": 5,
+          "earnedPassive": 464.21999999999997,
+          "earnedActive": 698.8925,
+          "intervalProducedPercent": 50.55200120632462,
+          "producedPercent": 50.55200120632462
+        },
+        {
+          "fromMinute": 5,
+          "minute": 15,
+          "earnedPassive": 4700.869999999999,
+          "earnedActive": 6848.219999999998,
+          "intervalProducedPercent": 45.679842241967975,
+          "producedPercent": 46.11773463773137
+        },
+        {
+          "fromMinute": 15,
+          "minute": 30,
+          "earnedPassive": 21380.469999999998,
+          "earnedActive": 25904.182499999984,
+          "intervalProducedPercent": 21.158152744069646,
+          "producedPercent": 26.014651791109266
+        },
+        {
+          "fromMinute": 30,
+          "minute": 60,
+          "earnedPassive": 54797.67999999999,
+          "earnedActive": 60122.215,
+          "intervalProducedPercent": 9.716716109149148,
+          "producedPercent": 15.035385853821403
+        },
+        {
+          "fromMinute": 60,
+          "minute": 1440,
+          "earnedPassive": 10301531.759999998,
+          "earnedActive": 10337515.999999998,
+          "intervalProducedPercent": 0.3493096059726142,
+          "producedPercent": 0.4643656983253752
+        }
+      ]
+    },
+    {
+      "version": 2,
+      "policy": "obiettivi",
+      "windows": [
+        {
+          "fromMinute": 0,
+          "minute": 5,
+          "earnedPassive": 464.21999999999997,
+          "earnedActive": 786.6125000000001,
+          "intervalProducedPercent": 69.44821420878033,
+          "producedPercent": 69.44821420878033
+        },
+        {
+          "fromMinute": 5,
+          "minute": 15,
+          "earnedPassive": 24323.939999999995,
+          "earnedActive": 48106.969999999994,
+          "intervalProducedPercent": 97.77622375322422,
+          "producedPercent": 97.24571125892363
+        },
+        {
+          "fromMinute": 15,
+          "minute": 30,
+          "earnedPassive": 346833.75999999995,
+          "earnedActive": 485262.07999999996,
+          "intervalProducedPercent": 39.912008565717485,
+          "producedPercent": 43.73631741098589
+        },
+        {
+          "fromMinute": 30,
+          "minute": 60,
+          "earnedPassive": 1221206.72,
+          "earnedActive": 1369618.4999999995,
+          "intervalProducedPercent": 12.152879407673067,
+          "producedPercent": 19.521592887732098
+        },
+        {
+          "fromMinute": 60,
+          "minute": 1440,
+          "earnedPassive": 166029307.68,
+          "earnedActive": 166746550.92000005,
+          "intervalProducedPercent": 0.4319979707332333,
+          "producedPercent": 0.6133967655305161
+        }
+      ]
+    }
+  ]
+}

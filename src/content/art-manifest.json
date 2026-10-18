@@ -1,0 +1,60 @@
+{
+  "artStatus": "Fallback SVG originale e provvisorio; raster illustrati definitivi da sostituire",
+  "background": "/assets/landscape.svg",
+  "activities": {
+    "orto": {
+      "src": "/assets/orto.svg",
+      "width": 320,
+      "height": 240,
+      "x": 27,
+      "y": 31
+    },
+    "vivaio": {
+      "src": "/assets/vivaio.svg",
+      "width": 320,
+      "height": 240,
+      "x": 72,
+      "y": 31
+    },
+    "mulino": {
+      "src": "/assets/mulino.svg",
+      "width": 320,
+      "height": 240,
+      "x": 28,
+      "y": 57
+    },
+    "laboratorio": {
+      "src": "/assets/laboratorio.svg",
+      "width": 320,
+      "height": 240,
+      "x": 74,
+      "y": 58
+    }
+  },
+  "creatures": {
+    "momo": {
+      "src": "/assets/momo.svg",
+      "width": 160,
+      "height": 190,
+      "pivot": [0.5, 0.92],
+      "hitboxInset": 8,
+      "scale": 1
+    },
+    "nibi": {
+      "src": "/assets/nibi.svg",
+      "width": 160,
+      "height": 190,
+      "pivot": [0.5, 0.92],
+      "hitboxInset": 8,
+      "scale": 1
+    },
+    "tula": {
+      "src": "/assets/tula.svg",
+      "width": 160,
+      "height": 190,
+      "pivot": [0.5, 0.92],
+      "hitboxInset": 8,
+      "scale": 1
+    }
+  }
+}
