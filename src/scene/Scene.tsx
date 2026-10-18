@@ -1,19 +1,60 @@
-import { useRef, type PointerEvent as ReactPointerEvent } from "react";
+import {
+  useRef,
+  useLayoutEffect,
+  useState,
+  type CSSProperties,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import manifest from "../content/art-manifest.json";
 import { activities, creatures } from "../content";
-import { rate, type State } from "../core/engine";
+import { type State } from "../core/engine";
 import { game } from "../ui/store";
 import { intersects, type Point } from "./geometry";
-const placements = manifest.activities as Record<
-  string,
-  { src: string; x: number; y: number }
->;
+type Sprite = {
+  src: string;
+  fallbackSrc: string;
+  width: number;
+  height: number;
+  pivot: number[];
+  scale: number;
+};
+type Slot = Sprite & {
+  mobileScale: number;
+  anchor: number[];
+  creatureAnchor: number[];
+  mobileCreatureAnchor: number[];
+  productAnchor: number[];
+  mobileProductAnchor: number[];
+};
+const placements = manifest.activities as Record<string, Slot>;
 export const creatureArt = manifest.creatures as Record<
   string,
-  { src: string }
+  Sprite & { hitboxInset: number; minScreenWidth: number }
 >;
-const number = (n: number) =>
-  n.toLocaleString("it-IT", { maximumFractionDigits: 1 });
+export function Art({
+  asset,
+  alt = "",
+  style,
+}: {
+  asset: { src: string; fallbackSrc: string };
+  alt?: string;
+  style?: CSSProperties;
+}) {
+  return (
+    <img
+      src={asset.src}
+      alt={alt}
+      style={style}
+      draggable="false"
+      onError={(e) => {
+        if (!e.currentTarget.dataset.fallback) {
+          e.currentTarget.dataset.fallback = "true";
+          e.currentTarget.src = asset.fallbackSrc;
+        }
+      }}
+    />
+  );
+}
 export function Scene({
   state,
   selected,
@@ -26,6 +67,47 @@ export function Scene({
   disabled: boolean;
 }) {
   const root = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ width: 800, height: 600 });
+  useLayoutEffect(() => {
+    const measure = () => {
+      const r = root.current!.getBoundingClientRect();
+      setSize((prev) =>
+        prev.width === r.width && prev.height === r.height
+          ? prev
+          : { width: r.width, height: r.height },
+      );
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(root.current!);
+    return () => observer.disconnect();
+  }, []);
+  const mobile = size.width < 600;
+  const scale = Math.max(
+    size.width / manifest.background.width,
+    size.height / manifest.background.height,
+  );
+  const imageWidth = manifest.background.width * scale,
+    imageHeight = manifest.background.height * scale;
+  const point = (anchor: number[]) => ({
+    left: (size.width - imageWidth) / 2 + anchor[0] * imageWidth,
+    top: (size.height - imageHeight) / 2 + anchor[1] * imageHeight,
+  });
+  const sprite = (
+    asset: Sprite,
+    anchor: number[],
+    width: number,
+    inset = 0,
+  ): CSSProperties => {
+    const p = point(anchor),
+      height = (width * asset.height) / asset.width;
+    return {
+      left: p.left - width * asset.pivot[0] + inset,
+      top: p.top - height * asset.pivot[1] + inset,
+      width: width - inset * 2,
+      height: height - inset * 2,
+    };
+  };
   const gesture = useRef<{
     id: number;
     start: Point;
@@ -73,7 +155,7 @@ export function Scene({
       ref={root}
       data-testid="scene"
       aria-label="Quartiere delle creature"
-      style={{ backgroundImage: `url(${manifest.background})` }}
+
       onPointerDown={(e) => {
         if (disabled || !e.isPrimary || e.button !== 0 || gesture.current)
           return;
@@ -126,49 +208,56 @@ export function Scene({
         }
       }}
     >
-      <div className="scene-title">
-        <span>LE TERRAZZE VERDI</span>
-        <small>Un piccolo mondo, un passo alla volta</small>
+      <div className="scene-backdrop">
+        <Art asset={manifest.background} />
       </div>
       {activities.map((a) => {
         const asset = placements[a.id],
           owned = state.activities[a.id] > 0;
-        const locked =
-          !!a.requiresProject &&
-          !state.completedProjects.includes(a.requiresProject);
         return (
           <div key={a.id}>
             <button
               type="button"
-              className={`station ${selected === a.id ? "selected" : ""} ${!owned ? "unbuilt" : ""}`}
-              style={{ left: `${asset.x}%`, top: `${asset.y}%` }}
+              className={`station ${selected === a.id ? "selected" : ""} ${owned ? "" : "unbuilt"}`}
+              style={sprite(
+                asset,
+                asset.anchor,
+                size.width * (mobile ? asset.mobileScale : asset.scale),
+              )}
               data-select={a.id}
               onClick={() => select(a.id)}
               aria-label={`Seleziona ${a.name}`}
               aria-pressed={selected === a.id}
             >
-              <img src={asset.src} alt="" draggable="false" />
+              <Art asset={asset} />
               <span className="station-label">
-                <strong>
-                  {a.name
-                    .replace(" delle gemme", "")
-                    .replace(" delle lucciole", "")
-                    .replace(" di nuvole", "")}
-                </strong>
-                <small>
-                  {owned
-                    ? `Liv. ${state.activities[a.id]} · ${number(rate(state, a.id))}/s`
-                    : locked
-                      ? "Da sbloccare"
-                      : "Da costruire"}
-                </small>
+                {a.name
+                  .replace(" delle gemme", "")
+                  .replace(" delle lucciole", "")
+                  .replace(" di nuvole", "")}{" "}
+                · {owned ? "L" + state.activities[a.id] : "Da costruire"}
               </span>
             </button>
             {state.specialProducts[a.id].ready && (
               <button
                 disabled={disabled}
                 className="product"
-                style={{ left: `${asset.x - 12}%`, top: `${asset.y + 6}%` }}
+                style={{
+                  ...point(
+                    mobile ? asset.mobileProductAnchor : asset.productAnchor,
+                  ),
+                  left: Math.max(
+                    36,
+                    Math.min(
+                      size.width - 36,
+                      point(
+                        mobile
+                          ? asset.mobileProductAnchor
+                          : asset.productAnchor,
+                      ).left,
+                    ),
+                  ),
+                }}
                 data-gesture={`product:${a.id}`}
                 onClick={() =>
                   game.dispatch({ type: "collectProduct", id: a.id })
@@ -185,22 +274,50 @@ export function Scene({
       {creatures.map((def) => {
         const c = state.creatures[def.id];
         if (!c.unlocked || !c.assignedActivityId) return null;
-        const pos = placements[c.assignedActivityId],
+        const slot = placements[c.assignedActivityId],
+          asset = creatureArt[def.id],
+          width = Math.max(
+            asset.minScreenWidth,
+            Math.min(190, size.width * asset.scale),
+          ),
           boosted = c.encouragedUntil > state.lastSimulatedAt;
+        const position = sprite(
+          asset,
+          mobile ? slot.mobileCreatureAnchor : slot.creatureAnchor,
+          width,
+          asset.hitboxInset,
+        );
+        if (mobile) {
+          // Keep the left collection gutter separate from creature hitboxes,
+          // including when a return banner reduces the scene height.
+          const leftGutter = slot.mobileCreatureAnchor[0] < 0.5 ? 78 : 8;
+          position.left = Math.max(
+            8,
+            Math.min(
+              size.width - width + asset.hitboxInset * 2 - 8,
+              Math.max(leftGutter, Number(position.left)),
+            ),
+          );
+        }
         return (
           <button
             key={def.id}
             className={`scene-creature ${boosted ? "encouraged" : ""}`}
-            style={{ left: `${pos.x + 14}%`, top: `${pos.y + 6}%` }}
+            style={position}
             data-select={c.assignedActivityId}
             data-gesture={`creature:${def.id}`}
             onClick={() => select(c.assignedActivityId!)}
             aria-label={`Seleziona ${def.name}`}
           >
-            <img
-              src={creatureArt[def.id].src}
+            <Art
+              asset={asset}
               alt={def.name}
-              draggable="false"
+              style={{
+                left: -asset.hitboxInset,
+                top: -asset.hitboxInset,
+                width,
+                height: (width * asset.height) / asset.width,
+              }}
             />
             {boosted && (
               <span className="boost-label">
@@ -211,16 +328,11 @@ export function Scene({
           </button>
         );
       })}
-      <div
-        className={`garden-label ${state.completedProjects.includes("ponte") ? "revealed" : ""}`}
-      >
-        <strong>Giardino delle lucciole</strong>
-        <small>
-          {state.completedProjects.includes("ponte")
-            ? "Il giardino accoglie il borgo"
-            : "Completa il Ponte per rivelarlo"}
-        </small>
-      </div>
+      {state.completedProjects.includes("ponte") && (
+        <div className="garden-label" style={point([0.5, 0.87])}>
+          Giardino delle lucciole
+        </div>
+      )}
       <p className="gesture-hint">Trascina sulle creature per incoraggiarle</p>
     </div>
   );

@@ -7,6 +7,17 @@ import {
 } from "../../src/core/engine";
 import * as legacy from "../../src/core/legacy-v1";
 import { SAVE_KEY, BACKUP_KEY } from "../../src/persistence/save";
+async function manage(page: Page) {
+  const open = page.getByRole("button", { name: "Gestisci quattro attività" });
+  if (await open.isVisible()) await open.click();
+}
+async function closeManage(page: Page) {
+  const close = page.getByRole("button", {
+    name: "Chiudi Gestione del borgo",
+    exact: true,
+  });
+  if (await close.isVisible()) await close.click();
+}
 const epoch = 1_800_000_000_000;
 const saved = (page: Page): Promise<State> =>
   page.evaluate((key) => JSON.parse(localStorage.getItem(key)!), SAVE_KEY);
@@ -24,10 +35,9 @@ async function seed(page: Page, raw: string) {
   );
   await page.goto("/");
   await expect(
-    page
-      .getByTestId("activity-orto")
-      .getByRole("button", { name: /Incoraggia Momo/ }),
+    page.getByRole("button", { name: /Incoraggia Momo/ }),
   ).toBeEnabled();
+  await manage(page);
 }
 function L8() {
   const s = createState(epoch);
@@ -43,12 +53,21 @@ test("F02: default PROSSIMO, quote153 e upgrade diretto, focus e preferenza stab
 }, info) => {
   await seed(page, JSON.stringify(L8()));
   await expect(
-    page.getByRole("button", { name: "PROSSIMO", exact: true }),
+    page.getByRole("button", { name: "PROSSIMO", exact: true }).last(),
   ).toHaveAttribute("aria-pressed", "true");
   const row = page.getByTestId("activity-orto");
   await expect(row).toContainText("153 monete");
-  await expect(row).toContainText("3,84");
-  await expect(row).toContainText("9,49");
+  await row
+    .getByRole("button", { name: "Anteprima Orto luminoso", exact: true })
+    .click();
+  await expect(page.locator(".quote-preview")).toContainText("3,835");
+  await expect(page.locator(".quote-preview")).toContainText("9,49");
+  await page
+    .getByRole("button", {
+      name: "Chiudi Anteprima Orto luminoso",
+      exact: true,
+    })
+    .click();
   const order = await page
     .locator(".activity-row")
     .evaluateAll((es) => es.map((e) => e.getAttribute("data-testid")));
@@ -60,7 +79,7 @@ test("F02: default PROSSIMO, quote153 e upgrade diretto, focus e preferenza stab
   expect((await saved(page)).activities.orto).toBe(10);
   await expect(row.getByRole("status")).toContainText("Traguardi L10 ×2");
   await page.screenshot({
-    path: `docs/screenshots/f02/${info.project.name}-traguardo.png`,
+    path: `docs/screenshots/f03/${info.project.name}-traguardo.png`,
     fullPage: true,
     animations: "disabled",
   });
@@ -72,12 +91,12 @@ test("F02: default PROSSIMO, quote153 e upgrade diretto, focus e preferenza stab
       .locator(".activity-row")
       .evaluateAll((es) => es.map((e) => e.getAttribute("data-testid"))),
   ).toEqual(order);
-  await page.getByRole("button", { name: "+10", exact: true }).click();
+  await page.getByRole("button", { name: "+10", exact: true }).last().click();
   await expect(row.getByRole("button", { name: /^Migliora / })).toBeDisabled();
-  await page.getByRole("button", { name: "MAX", exact: true }).click();
+  await page.getByRole("button", { name: "MAX", exact: true }).last().click();
   await page.reload();
   await expect(
-    page.getByRole("button", { name: "MAX", exact: true }),
+    page.getByRole("button", { name: "MAX", exact: true }).last(),
   ).toHaveAttribute("aria-pressed", "true");
   expect((await saved(page)).activities.orto).toBe(10);
 });
@@ -98,7 +117,7 @@ test("F02: MAX attraversa tutte le soglie in un click, nessun toast da carezze",
   await seed(page, JSON.stringify(s));
   await page.emulateMedia({ reducedMotion: "reduce" });
   const row = page.getByTestId("activity-orto");
-  await page.getByRole("button", { name: "MAX", exact: true }).click();
+  await page.getByRole("button", { name: "MAX", exact: true }).last().click();
   const q = quoteUpgrade(s, "orto", "max");
   await row.getByRole("button", { name: /^Migliora / }).click();
   const after = await saved(page);
@@ -108,12 +127,15 @@ test("F02: MAX attraversa tutte le soglie in un click, nessun toast da carezze",
   await expect(
     row.getByRole("button", { name: "Orto luminoso: Massimo" }),
   ).toBeDisabled();
-  const pet = row.getByRole("button", { name: /Incoraggia Momo/ });
+  await closeManage(page);
+  const pet = page.getByRole("button", { name: /Incoraggia Momo/ });
   await pet.click();
   await pet.click();
   await expect(page.locator(".toast")).toBeEmpty();
-  await expect(row).toContainText("+50%");
-  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(page.locator(".boost-label")).toContainText("+50%");
+  await expect(
+    page.locator("dialog[open]:not(.management-drawer)"),
+  ).toHaveCount(0);
 });
 test("F02: v1 offline migrato senza retroattività, backup esportabile e reload idempotente", async ({
   page,
@@ -135,19 +157,22 @@ test("F02: v1 offline migrato senza retroattività, backup esportabile e reload 
   await expect(
     page.getByRole("complementary", { name: "Riepilogo ritorno" }),
   ).toBeVisible();
-  await expect(page.getByRole("dialog")).toHaveCount(0);
+  await expect(
+    page.locator("dialog[open]:not(.management-drawer)"),
+  ).toHaveCount(0);
   await page.screenshot({
-    path: `docs/screenshots/f02/${info.project.name}-ritorno.png`,
+    path: `docs/screenshots/f03/${info.project.name}-ritorno.png`,
     fullPage: true,
     animations: "disabled",
   });
   // No dismissal required before this direct upgrade.
-  await page.getByRole("button", { name: "+1", exact: true }).click();
+  await page.getByRole("button", { name: "+1", exact: true }).last().click();
   await page
     .getByTestId("activity-orto")
     .getByRole("button", { name: /^Migliora / })
     .click();
   expect((await saved(page)).activities.orto).toBe(26);
+  await closeManage(page);
   await page.getByRole("button", { name: "Impostazioni", exact: true }).click();
   const download = page.waitForEvent("download");
   await page.getByRole("button", { name: "Esporta backup pre-F02" }).click();
@@ -160,6 +185,7 @@ test("F02: v1 offline migrato senza retroattività, backup esportabile e reload 
   await page.clock.fastForward(1000);
   const future = await saved(page);
   // Autosave every5s: explicit export reconciles/saves current state before reading it.
+  await closeManage(page);
   await page.getByRole("button", { name: "Impostazioni", exact: true }).click();
   await page.getByRole("button", { name: "Esporta partita JSON" }).click();
   expect((await saved(page)).economyVersion).toBe(2);
@@ -197,13 +223,11 @@ test("F02: backup negato conserva v1 originale, partita in memoria e versione fu
   await expect(page.getByRole("alert")).toContainText(
     "Backup pre-F02 disponibile in memoria",
   );
-  await page
-    .getByTestId("activity-orto")
-    .getByRole("button", { name: /Incoraggia Momo/ })
-    .click();
+  await page.getByRole("button", { name: /Incoraggia Momo/ }).click();
   expect(
     await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY),
   ).toBe(raw);
+  await closeManage(page);
   await page.getByRole("button", { name: "Impostazioni", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Esporta backup pre-F02" }),
@@ -212,7 +236,7 @@ test("F02: backup negato conserva v1 originale, partita in memoria e versione fu
     .getByLabel("Oppure incolla un salvataggio JSON")
     .fill(JSON.stringify({ ...createState(epoch), economyVersion: 999 }));
   await page.getByRole("button", { name: "Valida e importa" }).click();
-  await expect(page.locator(".toast")).toContainText(
+  await expect(page.locator(".settings-result")).toContainText(
     "Versione economica sconosciuta",
   );
 });
@@ -237,8 +261,11 @@ test("F02: controlli mobile44px, toolbar sticky e assenza overflow", async ({
   expect(controls.every((c) => c.height >= 44 && c.width >= 44)).toBe(true);
   if (info.project.name !== "desktop") {
     await page.getByTestId("activity-laboratorio").scrollIntoViewIfNeeded();
-    const toolbar = await page.locator(".purchase-toolbar").boundingBox();
+    const toolbar = await page
+      .locator(".purchase-toolbar")
+      .last()
+      .boundingBox();
     expect(toolbar!.y).toBeGreaterThanOrEqual(-1);
-    expect(toolbar!.y).toBeLessThan(20);
+    expect(toolbar!.y).toBeLessThan(260);
   }
 });

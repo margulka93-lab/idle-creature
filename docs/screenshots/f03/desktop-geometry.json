@@ -1,0 +1,188 @@
+{
+  "geometry": {
+    "width": 1440,
+    "overflow": false,
+    "main": 761,
+    "view": 761,
+    "nav": {
+      "x": 0,
+      "y": 837,
+      "width": 1440,
+      "height": 63,
+      "top": 837,
+      "right": 1440,
+      "bottom": 900,
+      "left": 0
+    }
+  },
+  "controls": [
+    {
+      "name": "Impostazioni",
+      "w": 44,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Orto luminoso",
+      "w": 287.609375,
+      "h": 287.609375,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Vivaio delle gemme",
+      "w": 287.609375,
+      "h": 287.609375,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Mulino di nuvole",
+      "w": 287.609375,
+      "h": 287.609375,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Laboratorio delle lucciole",
+      "w": 287.609375,
+      "h": 287.609375,
+      "font": 14
+    },
+    {
+      "name": "Seleziona Momo",
+      "w": 145.765625,
+      "h": 145.765625,
+      "font": 14
+    },
+    {
+      "name": "Incoraggia Momo",
+      "w": 162.46875,
+      "h": 53.1875,
+      "font": 14
+    },
+    {
+      "name": "Dettagli Orto luminoso",
+      "w": 102.953125,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Attiva meraviglie",
+      "w": 157.890625,
+      "h": 53.1875,
+      "font": 14
+    },
+    {
+      "name": "+1",
+      "w": 111.296875,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "+10",
+      "w": 111.3125,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "PROSSIMO",
+      "w": 111.296875,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "MAX",
+      "w": 111.296875,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Seleziona dalla lista Orto luminoso",
+      "w": 376.234375,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Migliora Orto luminoso: L2 → L10, 8 livelli, 416 monete",
+      "w": 200.09375,
+      "h": 48,
+      "font": 14
+    },
+    {
+      "name": "Anteprima Orto luminoso",
+      "w": 44,
+      "h": 48,
+      "font": 23
+    },
+    {
+      "name": "Seleziona dalla lista Vivaio delle gemme",
+      "w": 376.234375,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Costruisci Vivaio delle gemme: 150 monete",
+      "w": 200.09375,
+      "h": 48,
+      "font": 14
+    },
+    {
+      "name": "Anteprima Vivaio delle gemme",
+      "w": 44,
+      "h": 48,
+      "font": 23
+    },
+    {
+      "name": "Seleziona dalla lista Mulino di nuvole",
+      "w": 376.234375,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Anteprima Mulino di nuvole",
+      "w": 44,
+      "h": 48,
+      "font": 23
+    },
+    {
+      "name": "Seleziona dalla lista Laboratorio delle lucciole",
+      "w": 376.234375,
+      "h": 44,
+      "font": 14
+    },
+    {
+      "name": "Anteprima Laboratorio delle lucciole",
+      "w": 44,
+      "h": 48,
+      "font": 23
+    },
+    {
+      "name": "Prossimo progetto: Il sentiero delle nuvole",
+      "w": 465.203125,
+      "h": 83.578125,
+      "font": 14
+    },
+    {
+      "name": "Borgo",
+      "w": 135,
+      "h": 46,
+      "font": 14
+    },
+    {
+      "name": "Creature",
+      "w": 135,
+      "h": 46,
+      "font": 14
+    },
+    {
+      "name": "Progetti",
+      "w": 135,
+      "h": 46,
+      "font": 14
+    },
+    {
+      "name": "Collezione",
+      "w": 135,
+      "h": 46,
+      "font": 14
+    }
+  ]
+}

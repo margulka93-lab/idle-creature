@@ -1,60 +1,99 @@
 {
-  "artStatus": "Fallback SVG originale e provvisorio; raster illustrati definitivi da sostituire",
-  "background": "/assets/landscape.svg",
+  "artStatus": "F03 original illustrated candidates, integrated and locally exported; pending human art approval",
+  "background": {
+    "src": "/assets/f03/background.webp",
+    "fallbackSrc": "/assets/landscape.svg",
+    "width": 1448,
+    "height": 1086
+  },
   "activities": {
     "orto": {
-      "src": "/assets/orto.svg",
-      "width": 320,
-      "height": 240,
-      "x": 27,
-      "y": 31
+      "src": "/assets/f03/orto.webp",
+      "fallbackSrc": "/assets/orto.svg",
+      "width": 768,
+      "height": 768,
+      "pivot": [0.5, 0.94],
+      "scale": 0.32,
+      "mobileScale": 0.4,
+      "anchor": [0.27, 0.35],
+      "creatureAnchor": [0.41, 0.39],
+      "mobileCreatureAnchor": [0.38, 0.39],
+      "productAnchor": [0.13, 0.4],
+      "mobileProductAnchor": [0.13, 0.45]
     },
     "vivaio": {
-      "src": "/assets/vivaio.svg",
-      "width": 320,
-      "height": 240,
-      "x": 72,
-      "y": 31
+      "src": "/assets/f03/vivaio.webp",
+      "fallbackSrc": "/assets/vivaio.svg",
+      "width": 768,
+      "height": 768,
+      "pivot": [0.5, 0.94],
+      "scale": 0.32,
+      "mobileScale": 0.4,
+      "anchor": [0.73, 0.35],
+      "creatureAnchor": [0.85, 0.39],
+      "mobileCreatureAnchor": [0.75, 0.39],
+      "productAnchor": [0.58, 0.4],
+      "mobileProductAnchor": [0.58, 0.45]
     },
     "mulino": {
-      "src": "/assets/mulino.svg",
-      "width": 320,
-      "height": 240,
-      "x": 28,
-      "y": 57
+      "src": "/assets/f03/mulino.webp",
+      "fallbackSrc": "/assets/mulino.svg",
+      "width": 768,
+      "height": 768,
+      "pivot": [0.5, 0.94],
+      "scale": 0.32,
+      "mobileScale": 0.4,
+      "anchor": [0.27, 0.62],
+      "creatureAnchor": [0.41, 0.66],
+      "mobileCreatureAnchor": [0.38, 0.74],
+      "productAnchor": [0.13, 0.67],
+      "mobileProductAnchor": [0.13, 0.7200000000000001]
     },
     "laboratorio": {
-      "src": "/assets/laboratorio.svg",
-      "width": 320,
-      "height": 240,
-      "x": 74,
-      "y": 58
+      "src": "/assets/f03/laboratorio.webp",
+      "fallbackSrc": "/assets/laboratorio.svg",
+      "width": 768,
+      "height": 768,
+      "pivot": [0.5, 0.94],
+      "scale": 0.32,
+      "mobileScale": 0.4,
+      "anchor": [0.73, 0.62],
+      "creatureAnchor": [0.85, 0.66],
+      "mobileCreatureAnchor": [0.75, 0.74],
+      "productAnchor": [0.58, 0.67],
+      "mobileProductAnchor": [0.58, 0.7200000000000001]
     }
   },
   "creatures": {
     "momo": {
-      "src": "/assets/momo.svg",
-      "width": 160,
-      "height": 190,
-      "pivot": [0.5, 0.92],
+      "src": "/assets/f03/momo.webp",
+      "fallbackSrc": "/assets/momo.svg",
+      "width": 512,
+      "height": 512,
+      "pivot": [0.5, 0.93],
+      "scale": 0.18,
       "hitboxInset": 8,
-      "scale": 1
+      "minScreenWidth": 104
     },
     "nibi": {
-      "src": "/assets/nibi.svg",
-      "width": 160,
-      "height": 190,
-      "pivot": [0.5, 0.92],
+      "src": "/assets/f03/nibi.webp",
+      "fallbackSrc": "/assets/nibi.svg",
+      "width": 512,
+      "height": 512,
+      "pivot": [0.5, 0.93],
+      "scale": 0.18,
       "hitboxInset": 8,
-      "scale": 1
+      "minScreenWidth": 104
     },
     "tula": {
-      "src": "/assets/tula.svg",
-      "width": 160,
-      "height": 190,
-      "pivot": [0.5, 0.92],
+      "src": "/assets/f03/tula.webp",
+      "fallbackSrc": "/assets/tula.svg",
+      "width": 512,
+      "height": 512,
+      "pivot": [0.5, 0.93],
+      "scale": 0.18,
       "hitboxInset": 8,
-      "scale": 1
+      "minScreenWidth": 104
     }
   }
 }

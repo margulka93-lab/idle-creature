@@ -219,6 +219,17 @@ class GameStore {
       this.persist();
       return;
     }
+    if (action.type === "buyActivity" && !result.error) {
+      this.emit({
+        state: result.state,
+        upgradeFeedback: {
+          ...this.snapshot.upgradeFeedback,
+          [action.id]: "Attività costruita · L1",
+        },
+      });
+      this.persist();
+      return;
+    }
     const success: Record<Command["type"], string> = {
       encourage: "Carezza ricevuta · produzione +50% per 30s",
       buyActivity: "Una nuova attività nel borgo!",

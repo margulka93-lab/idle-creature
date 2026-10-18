@@ -1,0 +1,1787 @@
+{
+  "method": "Computed foreground/background, opaque UI outside illustrated scene; minimum14px and normal-text contrast4.5:1. Not a full WCAG certification.",
+  "results": [
+    {
+      "width": 1440,
+      "checks": [
+        {
+          "text": "Borgo delle",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 15,
+          "ratio": 9.56
+        },
+        {
+          "text": "Creature",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 23,
+          "ratio": 9.56
+        },
+        {
+          "text": "Monete",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "25,2",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 21,
+          "ratio": 9.56
+        },
+        {
+          "text": "Cristalli",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "0",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 21,
+          "ratio": 9.56
+        },
+        {
+          "text": "Borgo",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "L",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 21,
+          "ratio": 9.56
+        },
+        {
+          "text": "1",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 21,
+          "ratio": 9.56
+        },
+        {
+          "text": "+",
+          "selector": "total-income",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            232,
+            237,
+            218
+          ],
+          "font": 14,
+          "ratio": 8.22
+        },
+        {
+          "text": "0,7",
+          "selector": "total-income",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            232,
+            237,
+            218
+          ],
+          "font": 14,
+          "ratio": 8.22
+        },
+        {
+          "text": "monete/s",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            232,
+            237,
+            218
+          ],
+          "font": 14,
+          "ratio": 8.22
+        },
+        {
+          "text": "Orto luminoso",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            249,
+            248,
+            235
+          ],
+          "font": 14,
+          "ratio": 9.2
+        },
+        {
+          "text": "· L",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            249,
+            248,
+            235
+          ],
+          "font": 14,
+          "ratio": 9.2
+        },
+        {
+          "text": "1",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            249,
+            248,
+            235
+          ],
+          "font": 14,
+          "ratio": 9.2
+        },
+        {
+          "text": "0,7",
+          "selector": "",
+          "color": "rgb(82, 109, 68)",
+          "bg": [
+            249,
+            248,
+            235
+          ],
+          "font": 14,
+          "ratio": 5.41
+        },
+        {
+          "text": "monete/s",
+          "selector": "",
+          "color": "rgb(82, 109, 68)",
+          "bg": [
+            249,
+            248,
+            235
+          ],
+          "font": 14,
+          "ratio": 5.41
+        },
+        {
+          "text": "♡",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 25,
+          "ratio": 7.23
+        },
+        {
+          "text": "Incoraggia Momo",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "+50% produzione",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "Dettagli",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "✧",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 25,
+          "ratio": 7.23
+        },
+        {
+          "text": "Meraviglie",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "Richiede Sentiero",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "Fai crescere il borgo",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            239,
+            238,
+            222
+          ],
+          "font": 20,
+          "ratio": 8.4
+        },
+        {
+          "text": "+1",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "+10",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "PROSSIMO",
+          "selector": "",
+          "color": "rgb(255, 252, 239)",
+          "bg": [
+            52,
+            94,
+            67
+          ],
+          "font": 14,
+          "ratio": 7.22
+        },
+        {
+          "text": "MAX",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "Orto luminoso",
+          "selector": "",
+          "color": "rgb(47, 81, 60)",
+          "bg": [
+            250,
+            251,
+            239
+          ],
+          "font": 15,
+          "ratio": 8.51
+        },
+        {
+          "text": "L1 · Momo",
+          "selector": "",
+          "color": "rgb(89, 106, 73)",
+          "bg": [
+            250,
+            251,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.61
+        },
+        {
+          "text": "0,7",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            250,
+            251,
+            239
+          ],
+          "font": 20,
+          "ratio": 9.41
+        },
+        {
+          "text": "monete/s",
+          "selector": "",
+          "color": "rgb(86, 105, 72)",
+          "bg": [
+            250,
+            251,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.73
+        },
+        {
+          "text": "Mancano 416 monete",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            250,
+            251,
+            239
+          ],
+          "font": 14,
+          "ratio": 9.41
+        },
+        {
+          "text": "Puoi comprare +1",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 14,
+          "ratio": 5.67
+        },
+        {
+          "text": "25",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 14,
+          "ratio": 5.67
+        },
+        {
+          "text": "monete",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 14,
+          "ratio": 5.67
+        },
+        {
+          "text": "↗",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 23,
+          "ratio": 7.23
+        },
+        {
+          "text": "Vivaio delle gemme",
+          "selector": "",
+          "color": "rgb(47, 81, 60)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 15,
+          "ratio": 7.61
+        },
+        {
+          "text": "Da costruire",
+          "selector": "",
+          "color": "rgb(89, 106, 73)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 5.02
+        },
+        {
+          "text": "0",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 20,
+          "ratio": 8.41
+        },
+        {
+          "text": "monete/s",
+          "selector": "",
+          "color": "rgb(86, 105, 72)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 5.12
+        },
+        {
+          "text": "Mancano 125 monete",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 8.41
+        },
+        {
+          "text": "Costruisci",
+          "selector": "",
+          "color": "rgb(88, 104, 78)",
+          "bg": [
+            226,
+            230,
+            215
+          ],
+          "font": 14,
+          "ratio": 4.72
+        },
+        {
+          "text": "150 monete",
+          "selector": "",
+          "color": "rgb(88, 104, 78)",
+          "bg": [
+            226,
+            230,
+            215
+          ],
+          "font": 14,
+          "ratio": 4.72
+        },
+        {
+          "text": "↗",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 23,
+          "ratio": 7.23
+        },
+        {
+          "text": "Mulino di nuvole",
+          "selector": "",
+          "color": "rgb(47, 81, 60)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 15,
+          "ratio": 7.61
+        },
+        {
+          "text": "Da costruire",
+          "selector": "",
+          "color": "rgb(89, 106, 73)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 5.02
+        },
+        {
+          "text": "0",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 20,
+          "ratio": 8.41
+        },
+        {
+          "text": "monete/s",
+          "selector": "",
+          "color": "rgb(86, 105, 72)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 5.12
+        },
+        {
+          "text": "1.5",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 8.41
+        },
+        {
+          "text": "monete/s base",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 8.41
+        },
+        {
+          "text": "Completa il Sentiero",
+          "selector": "unlock-label",
+          "color": "rgb(94, 99, 75)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 5.35
+        },
+        {
+          "text": "↗",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 23,
+          "ratio": 7.23
+        },
+        {
+          "text": "Laboratorio delle lucciole",
+          "selector": "",
+          "color": "rgb(47, 81, 60)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 15,
+          "ratio": 7.61
+        },
+        {
+          "text": "Da costruire",
+          "selector": "",
+          "color": "rgb(89, 106, 73)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 5.02
+        },
+        {
+          "text": "0",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 20,
+          "ratio": 8.41
+        },
+        {
+          "text": "monete/s",
+          "selector": "",
+          "color": "rgb(86, 105, 72)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 5.12
+        },
+        {
+          "text": "3",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 8.41
+        },
+        {
+          "text": "monete/s base",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 8.41
+        },
+        {
+          "text": "Completa il Ponte",
+          "selector": "unlock-label",
+          "color": "rgb(94, 99, 75)",
+          "bg": [
+            236,
+            239,
+            223
+          ],
+          "font": 14,
+          "ratio": 5.35
+        },
+        {
+          "text": "↗",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 23,
+          "ratio": 7.23
+        },
+        {
+          "text": "Prossimo progetto",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "Il sentiero delle nuvole",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 16,
+          "ratio": 5.79
+        },
+        {
+          "text": "0",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "/",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "2",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "condizioni ·",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "250",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "monete ·",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "3",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "cristalli",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 14,
+          "ratio": 5.79
+        },
+        {
+          "text": "›",
+          "selector": "",
+          "color": "rgb(73, 98, 68)",
+          "bg": [
+            245,
+            237,
+            219
+          ],
+          "font": 25,
+          "ratio": 5.79
+        },
+        {
+          "text": "Borgo",
+          "selector": "",
+          "color": "rgb(47, 84, 57)",
+          "bg": [
+            220,
+            232,
+            198
+          ],
+          "font": 14,
+          "ratio": 6.7
+        },
+        {
+          "text": "Creature",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        },
+        {
+          "text": "Progetti",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        },
+        {
+          "text": "Collezione",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        }
+      ],
+      "failures": []
+    },
+    {
+      "width": 390,
+      "checks": [
+        {
+          "text": "Monete",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "25,2",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 17,
+          "ratio": 9.56
+        },
+        {
+          "text": "Cristalli",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "0",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 17,
+          "ratio": 9.56
+        },
+        {
+          "text": "Borgo",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "L",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 17,
+          "ratio": 9.56
+        },
+        {
+          "text": "1",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 17,
+          "ratio": 9.56
+        },
+        {
+          "text": "+",
+          "selector": "total-income",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 9.56
+        },
+        {
+          "text": "0,7",
+          "selector": "total-income",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 9.56
+        },
+        {
+          "text": "monete/s",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 9.56
+        },
+        {
+          "text": "✧",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            253.56,
+            248.01,
+            232.01
+          ],
+          "font": 22,
+          "ratio": 7.34
+        },
+        {
+          "text": "Meraviglie",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            253.56,
+            248.01,
+            232.01
+          ],
+          "font": 14,
+          "ratio": 7.34
+        },
+        {
+          "text": "Richiede Sentiero",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            253.56,
+            248.01,
+            232.01
+          ],
+          "font": 14,
+          "ratio": 7.34
+        },
+        {
+          "text": "Orto luminoso",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 16,
+          "ratio": 9.56
+        },
+        {
+          "text": "L",
+          "selector": "",
+          "color": "rgb(91, 113, 72)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.24
+        },
+        {
+          "text": "1",
+          "selector": "",
+          "color": "rgb(91, 113, 72)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.24
+        },
+        {
+          "text": "Gestisci",
+          "selector": "management-open secondary",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "↑",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "+1",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "+10",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "PROSSIMO",
+          "selector": "",
+          "color": "rgb(255, 252, 239)",
+          "bg": [
+            52,
+            94,
+            67
+          ],
+          "font": 14,
+          "ratio": 7.22
+        },
+        {
+          "text": "MAX",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "Puoi comprare +1",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 15,
+          "ratio": 5.67
+        },
+        {
+          "text": "25",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 15,
+          "ratio": 5.67
+        },
+        {
+          "text": "monete",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 15,
+          "ratio": 5.67
+        },
+        {
+          "text": "↗",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 23,
+          "ratio": 7.23
+        },
+        {
+          "text": "Blocco selezionato:",
+          "selector": "disabled-reason",
+          "color": "rgb(111, 96, 74)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.92
+        },
+        {
+          "text": "Mancano 416 monete",
+          "selector": "disabled-reason",
+          "color": "rgb(111, 96, 74)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.92
+        },
+        {
+          "text": "♡",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 25,
+          "ratio": 7.23
+        },
+        {
+          "text": "Incoraggia",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "+50% · 30s",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "Borgo",
+          "selector": "",
+          "color": "rgb(47, 84, 57)",
+          "bg": [
+            220,
+            232,
+            198
+          ],
+          "font": 14,
+          "ratio": 6.7
+        },
+        {
+          "text": "Creature",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        },
+        {
+          "text": "Progetti",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        },
+        {
+          "text": "Collezione",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        }
+      ],
+      "failures": []
+    },
+    {
+      "width": 360,
+      "checks": [
+        {
+          "text": "Monete",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "25,2",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 17,
+          "ratio": 9.56
+        },
+        {
+          "text": "Cristalli",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "0",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 17,
+          "ratio": 9.56
+        },
+        {
+          "text": "Borgo",
+          "selector": "",
+          "color": "rgb(104, 117, 92)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 4.77
+        },
+        {
+          "text": "L",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 17,
+          "ratio": 9.56
+        },
+        {
+          "text": "1",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 17,
+          "ratio": 9.56
+        },
+        {
+          "text": "+",
+          "selector": "total-income",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 9.56
+        },
+        {
+          "text": "0,7",
+          "selector": "total-income",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 9.56
+        },
+        {
+          "text": "monete/s",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            240
+          ],
+          "font": 14,
+          "ratio": 9.56
+        },
+        {
+          "text": "✧",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            253.56,
+            248.01,
+            232.01
+          ],
+          "font": 22,
+          "ratio": 7.34
+        },
+        {
+          "text": "Meraviglie",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            253.56,
+            248.01,
+            232.01
+          ],
+          "font": 14,
+          "ratio": 7.34
+        },
+        {
+          "text": "Richiede Sentiero",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            253.56,
+            248.01,
+            232.01
+          ],
+          "font": 14,
+          "ratio": 7.34
+        },
+        {
+          "text": "Orto luminoso",
+          "selector": "",
+          "color": "rgb(41, 74, 59)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 16,
+          "ratio": 9.56
+        },
+        {
+          "text": "L",
+          "selector": "",
+          "color": "rgb(91, 113, 72)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.24
+        },
+        {
+          "text": "1",
+          "selector": "",
+          "color": "rgb(91, 113, 72)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.24
+        },
+        {
+          "text": "Gestisci",
+          "selector": "management-open secondary",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "↑",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "+1",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "+10",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "PROSSIMO",
+          "selector": "",
+          "color": "rgb(255, 252, 239)",
+          "bg": [
+            52,
+            94,
+            67
+          ],
+          "font": 14,
+          "ratio": 7.22
+        },
+        {
+          "text": "MAX",
+          "selector": "",
+          "color": "rgb(75, 99, 67)",
+          "bg": [
+            227,
+            234,
+            213
+          ],
+          "font": 14,
+          "ratio": 5.37
+        },
+        {
+          "text": "Puoi comprare +1",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 15,
+          "ratio": 5.67
+        },
+        {
+          "text": "25",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 15,
+          "ratio": 5.67
+        },
+        {
+          "text": "monete",
+          "selector": "",
+          "color": "rgb(255, 253, 241)",
+          "bg": [
+            80,
+            110,
+            55
+          ],
+          "font": 15,
+          "ratio": 5.67
+        },
+        {
+          "text": "↗",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 23,
+          "ratio": 7.23
+        },
+        {
+          "text": "Blocco selezionato:",
+          "selector": "disabled-reason",
+          "color": "rgb(111, 96, 74)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.92
+        },
+        {
+          "text": "Mancano 416 monete",
+          "selector": "disabled-reason",
+          "color": "rgb(111, 96, 74)",
+          "bg": [
+            255,
+            252,
+            239
+          ],
+          "font": 14,
+          "ratio": 5.92
+        },
+        {
+          "text": "♡",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 25,
+          "ratio": 7.23
+        },
+        {
+          "text": "Incoraggia",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "+50% · 30s",
+          "selector": "",
+          "color": "rgb(53, 90, 67)",
+          "bg": [
+            248,
+            247,
+            233
+          ],
+          "font": 14,
+          "ratio": 7.23
+        },
+        {
+          "text": "Borgo",
+          "selector": "",
+          "color": "rgb(47, 84, 57)",
+          "bg": [
+            220,
+            232,
+            198
+          ],
+          "font": 14,
+          "ratio": 6.7
+        },
+        {
+          "text": "Creature",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        },
+        {
+          "text": "Progetti",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        },
+        {
+          "text": "Collezione",
+          "selector": "",
+          "color": "rgb(94, 114, 85)",
+          "bg": [
+            255,
+            251,
+            238
+          ],
+          "font": 14,
+          "ratio": 5.05
+        }
+      ],
+      "failures": []
+    }
+  ]
+}
