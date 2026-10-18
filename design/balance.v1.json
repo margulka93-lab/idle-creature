@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "status": "Implementation baseline; tune numeric values only after simulations, document changes",
+  "startingCoins": 25,
+  "offlineCapSeconds": 172800,
+  "activityMaxLevel": 50,
+  "creatureMaxLevel": 20,
+  "activities": [
+    {
+      "id": "orto",
+      "name": "Orto luminoso",
+      "purchaseCost": 0,
+      "startLevel": 1,
+      "baseCoinsPerSecond": 0.5,
+      "coinsPerSecondPerLevel": 0.35,
+      "upgradeBaseCost": 25,
+      "upgradeCostGrowth": 1.16,
+      "requiresProject": null
+    },
+    {
+      "id": "vivaio",
+      "name": "Vivaio delle gemme",
+      "purchaseCost": 150,
+      "startLevel": 0,
+      "baseCoinsPerSecond": 0.8,
+      "coinsPerSecondPerLevel": 0.5,
+      "upgradeBaseCost": 60,
+      "upgradeCostGrowth": 1.16,
+      "requiresProject": null
+    },
+    {
+      "id": "mulino",
+      "name": "Mulino di nuvole",
+      "purchaseCost": 500,
+      "startLevel": 0,
+      "baseCoinsPerSecond": 1.5,
+      "coinsPerSecondPerLevel": 1,
+      "upgradeBaseCost": 150,
+      "upgradeCostGrowth": 1.16,
+      "requiresProject": "sentiero"
+    },
+    {
+      "id": "laboratorio",
+      "name": "Laboratorio delle lucciole",
+      "purchaseCost": 1500,
+      "startLevel": 0,
+      "baseCoinsPerSecond": 3,
+      "coinsPerSecondPerLevel": 2,
+      "upgradeBaseCost": 400,
+      "upgradeCostGrowth": 1.16,
+      "requiresProject": "ponte"
+    }
+  ],
+  "creatures": [
+    {
+      "id": "momo",
+      "name": "Momo",
+      "preferredActivity": "orto",
+      "unlock": "starter",
+      "appearance": "crema, grandi orecchie a foglia, guance pesca; pilota provvisorio, non master del vecchio progetto"
+    },
+    {
+      "id": "nibi",
+      "name": "Nibi",
+      "preferredActivity": "vivaio",
+      "unlock": "own:vivaio",
+      "appearance": "lilla, orecchie lunghe morbide, piccolo grembiule; design provvisorio"
+    },
+    {
+      "id": "tula",
+      "name": "Tula",
+      "preferredActivity": "mulino",
+      "unlock": "own:mulino",
+      "appearance": "tartarughina turchese dal guscio a nuvola; design provvisorio"
+    }
+  ],
+  "creature": {
+    "xpPerWorkingSecond": 1,
+    "xpToNextLevelBase": 50,
+    "assignedBonus": 0.1,
+    "preferredBonus": 0.2,
+    "bonusPerLevel": 0.02
+  },
+  "pet": {
+    "durationSeconds": 30,
+    "additiveProductionBonus": 0.5,
+    "refreshThrottleMilliseconds": 500
+  },
+  "festival": {
+    "durationSeconds": 20,
+    "cooldownSeconds": 300,
+    "additiveProductionBonus": 0.5,
+    "requiresProject": "sentiero"
+  },
+  "specialProduct": {
+    "secondsToReady": 180,
+    "maxPerActivity": 1,
+    "rewardUnboostedProductionSeconds": 10
+  },
+  "milestones": [
+    {
+      "id": "coins100",
+      "lifetimeCoins": 100,
+      "crystals": 2
+    },
+    {
+      "id": "coins500",
+      "lifetimeCoins": 500,
+      "crystals": 3
+    },
+    {
+      "id": "coins1500",
+      "lifetimeCoins": 1500,
+      "crystals": 5
+    },
+    {
+      "id": "coins5000",
+      "lifetimeCoins": 5000,
+      "crystals": 8
+    },
+    {
+      "id": "coins10000",
+      "lifetimeCoins": 10000,
+      "crystals": 10
+    }
+  ],
+  "projects": [
+    {
+      "id": "sentiero",
+      "name": "Il sentiero delle nuvole",
+      "coinsCost": 250,
+      "crystalsCost": 3,
+      "requiresOwned": "vivaio",
+      "requiresProject": null,
+      "unlocks": [
+        "mulino",
+        "festival"
+      ],
+      "villageLevel": 2
+    },
+    {
+      "id": "ponte",
+      "name": "Il ponte delle lucciole",
+      "coinsCost": 1000,
+      "crystalsCost": 8,
+      "requiresOwned": "mulino",
+      "requiresProject": "sentiero",
+      "unlocks": [
+        "laboratorio",
+        "gardenPlot"
+      ],
+      "villageLevel": 3
+    },
+    {
+      "id": "festa",
+      "name": "La prima festa del borgo",
+      "coinsCost": 3000,
+      "crystalsCost": 12,
+      "requiresOwned": "laboratorio",
+      "requiresProject": "ponte",
+      "unlocks": [
+        "completionBanner"
+      ],
+      "villageLevel": 4
+    }
+  ]
+}
