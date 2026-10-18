@@ -1,5 +1,7 @@
 # FIRST_PLAYABLE — report di implementazione
 
+> Report storico del commit 8ae73a6. Per il runtime attuale F02 vedere [FLOW_IMPLEMENTATION_REPORT.md](FLOW_IMPLEMENTATION_REPORT.md); risultati e verifiche qui sotto appartengono alla baseline v1.
+
 Verifica del 18 ottobre 2026. Branch `codex/first-playable`, destinazione PR `main`. Nessun merge o deploy. Specifiche lette nell’ordine di AGENTS.md; nessun codice o asset importato da altri giochi.
 
 ## Consegna e scelte

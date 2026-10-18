@@ -7,16 +7,21 @@ import {
   createState,
   type State,
 } from "../../src/core/engine";
-import { SAVE_KEY } from "../../src/persistence/save";
+import * as legacy from "../../src/core/legacy-v1";
+import {
+  normalizeSave,
+  BACKUP_KEY,
+  SAVE_KEY,
+} from "../../src/persistence/save";
 const epoch = 1_800_000_000_000;
 function progressed() {
-  let s = advance(createState(epoch - 86400_000), epoch);
+  let s = legacy.advance(legacy.createState(epoch - 86400_000), epoch);
   for (const a of activities.slice(1)) {
-    s = command(s, { type: "buyActivity", id: a.id }, epoch).state;
+    s = legacy.command(s, { type: "buyActivity", id: a.id }, epoch).state;
     for (const id of ["sentiero", "ponte", "festa"])
-      s = command(s, { type: "completeProject", id }, epoch).state;
+      s = legacy.command(s, { type: "completeProject", id }, epoch).state;
   }
-  return s;
+  return normalizeSave(s, epoch);
 }
 async function setup(page: Page, state?: State, url = "/") {
   await page.clock.install({ time: new Date(epoch) });
@@ -51,21 +56,28 @@ test("primi due minuti normali, selezione, upgrade, tastiera e reload", async ({
     .click();
   expect((await saved(page)).activities.vivaio).toBe(0);
   await page.getByRole("button", { name: "Seleziona Orto luminoso" }).click();
-  await page.getByRole("button", { name: /Incoraggia Momo/ }).focus();
+  await page
+    .getByTestId("activity-orto")
+    .getByRole("button", { name: /Incoraggia Momo/ })
+    .focus();
   await page.keyboard.press("Enter");
   expect((await saved(page)).creatures.momo.encouragedUntil).toBeGreaterThan(
     epoch,
   );
-  await page.getByRole("button", { name: /^Migliora ·/ }).click();
+  await page.getByRole("button", { name: "+1", exact: true }).click();
+  await page
+    .getByTestId("activity-orto")
+    .getByRole("button", { name: /^Migliora / })
+    .click();
   expect((await saved(page)).activities.orto).toBe(2);
   await page.clock.runFor(121_000);
   expect((await saved(page)).lifetimeCoins).toBeGreaterThan(140);
   await page.reload();
-  await expect(page.getByText("Livello 2 ·", { exact: false })).toBeVisible();
+  await expect(page.getByTestId("activity-orto")).toContainText("L2");
   expect((await saved(page)).activities.orto).toBe(2);
   mkdirSync("docs/screenshots", { recursive: true });
   await page.screenshot({
-    path: `docs/screenshots/${info.project.name}-inizio.png`,
+    path: `docs/screenshots/f02/${info.project.name}-inizio.png`,
     fullPage: true,
     animations: "disabled",
   });
@@ -131,7 +143,7 @@ test("scena, pannelli, assegnazioni, raccolta e layout completo", async ({
     ),
   ).toBe(true);
   await page.screenshot({
-    path: `docs/screenshots/${info.project.name}-borgo.png`,
+    path: `docs/screenshots/f02/${info.project.name}-borgo.png`,
     fullPage: true,
     animations: "disabled",
   });
@@ -176,8 +188,8 @@ test("swipe veloce attraversa più creature senza acquisti o tap; hover e cancel
     clientY: end.y,
   });
   await expect(
-    page.getByRole("heading", { name: "Orto luminoso", exact: true }),
-  ).toBeVisible();
+    page.getByRole("region", { name: "Dettagli attività selezionata" }),
+  ).toHaveCount(0);
 });
 test("touch reale: scroll esterno, scena ferma, multitouch ignorato e tap seleziona", async ({
   page,
@@ -190,7 +202,9 @@ test("touch reale: scroll esterno, scena ferma, multitouch ignorato e tap selezi
     .getByRole("button", { name: "Seleziona Vivaio delle gemme" })
     .tap();
   await expect(
-    page.getByRole("heading", { name: "Vivaio delle gemme", exact: true }),
+    page
+      .getByRole("region", { name: "Dettagli attività selezionata" })
+      .getByRole("heading", { name: "Vivaio delle gemme", exact: true }),
   ).toBeVisible();
   await page.getByRole("button", { name: "Seleziona Orto luminoso" }).tap();
   await cdp.send("Input.synthesizeScrollGesture", {
@@ -229,7 +243,9 @@ test("touch reale: scroll esterno, scena ferma, multitouch ignorato e tap selezi
     .getByRole("button", { name: "Seleziona Vivaio delle gemme" })
     .tap();
   await expect(
-    page.getByRole("heading", { name: "Vivaio delle gemme", exact: true }),
+    page
+      .getByRole("region", { name: "Dettagli attività selezionata" })
+      .getByRole("heading", { name: "Vivaio delle gemme", exact: true }),
   ).toBeVisible();
   const scene = page.getByTestId("scene");
   await scene.dispatchEvent("pointerdown", {
@@ -293,7 +309,9 @@ test("salvataggio corrotto non sovrascritto; reset esplicito", async ({
     await page.evaluate((key) => localStorage.getItem(key), SAVE_KEY),
   ).toBe("{corrotto");
   await expect(
-    page.getByRole("button", { name: /Incoraggia Momo/ }),
+    page
+      .getByTestId("activity-orto")
+      .getByRole("button", { name: /Incoraggia Momo/ }),
   ).toBeDisabled();
   page.once("dialog", (d) => d.accept());
   await page
@@ -315,8 +333,12 @@ test("storage negato: partita in memoria e avviso persistente", async ({
   await expect(page.getByRole("alert")).toHaveText(
     "Il salvataggio non è disponibile",
   );
-  await page.getByRole("button", { name: /Incoraggia Momo/ }).click();
-  await expect(page.getByText(/Carezza ricevuta/)).toBeVisible();
+  await page
+    .getByTestId("activity-orto")
+    .getByRole("button", { name: /Incoraggia Momo/ })
+    .click();
+  await expect(page.getByTestId("activity-orto")).toContainText("+50%");
+  await expect(page.locator(".toast")).toBeEmpty();
 });
 test("offline 1h con riepilogo: chiusura e reload senza doppio accredito", async ({
   page,
@@ -332,12 +354,16 @@ test("offline 1h con riepilogo: chiusura e reload senza doppio accredito", async
     { key: SAVE_KEY, raw: JSON.stringify(createState(epoch - 3600_000)) },
   );
   await page.goto("/");
-  await expect(page.getByRole("dialog")).toBeVisible();
+  await expect(
+    page.getByRole("complementary", { name: "Riepilogo ritorno" }),
+  ).toBeVisible();
   const a = await saved(page);
-  await page.getByRole("button", { name: "Rientra nel borgo" }).click();
+  await page.getByRole("button", { name: "Nascondi riepilogo" }).click();
   expect((await saved(page)).lifetimeCoins).toBe(a.lifetimeCoins);
   await page.reload();
-  await expect(page.getByRole("dialog")).not.toBeVisible();
+  await expect(
+    page.getByRole("complementary", { name: "Riepilogo ritorno" }),
+  ).not.toBeVisible();
   expect((await saved(page)).lifetimeCoins).toBeCloseTo(a.lifetimeCoins, 0);
 });
 test("ritorno dal background riconciliato una sola volta", async ({ page }) => {
@@ -357,35 +383,61 @@ test("ritorno dal background riconciliato una sola volta", async ({ page }) => {
     (window as unknown as { testHidden: boolean }).testHidden = false;
     document.dispatchEvent(new Event("visibilitychange"));
   });
-  await expect(page.getByRole("dialog")).toBeVisible();
+  await expect(
+    page.getByRole("complementary", { name: "Riepilogo ritorno" }),
+  ).toBeVisible();
   const returned = await saved(page);
   expect(returned.lifetimeCoins).toBeGreaterThan(2000);
-  await page.getByRole("button", { name: "Rientra nel borgo" }).click();
+  await page.getByRole("button", { name: "Nascondi riepilogo" }).click();
   expect((await saved(page)).lifetimeCoins).toBe(returned.lifetimeCoins);
 });
-test("percorso completo tramite UI dalla partenza alla Festa, senza debug o seed", async ({
+test("percorso F02 completo dalla lista, gate espliciti e ritorno non bloccante", async ({
   page,
 }) => {
   await setup(page);
-  await page.getByRole("button", { name: /^Migliora ·/ }).click();
+  const row = (id: string) => page.getByTestId("activity-" + id);
+  await page.getByRole("button", { name: "+1", exact: true }).click();
+  await row("orto")
+    .getByRole("button", { name: /^Migliora / })
+    .click();
   await page.clock.fastForward(3600_000);
-  await page.getByRole("button", { name: "Rientra nel borgo" }).click();
-  await page
-    .getByRole("button", { name: "Seleziona Vivaio delle gemme" })
+  await expect(
+    page.getByRole("complementary", { name: "Riepilogo ritorno" }),
+  ).toBeVisible();
+  // Buy without dismissing the return summary or selecting a station.
+  await page.getByRole("button", { name: "PROSSIMO", exact: true }).click();
+  await row("orto")
+    .getByRole("button", { name: /^Migliora / })
     .click();
-  await page.getByRole("button", { name: /^Costruisci ·/ }).click();
+  await row("vivaio")
+    .getByRole("button", { name: /^Costruisci / })
+    .click();
   await page.getByRole("button", { name: "Realizza progetto" }).click();
-  await page
-    .getByRole("button", { name: "Seleziona Mulino di nuvole" })
+  await row("mulino")
+    .getByRole("button", { name: /^Costruisci / })
     .click();
-  await page.getByRole("button", { name: /^Costruisci ·/ }).click();
+  await expect(
+    page.getByRole("button", { name: "Realizza progetto" }),
+  ).toBeDisabled();
   await page.clock.fastForward(3600_000);
-  await page.getByRole("button", { name: "Rientra nel borgo" }).click();
+  for (const id of ["vivaio", "mulino"])
+    await row(id)
+      .getByRole("button", { name: /^Migliora / })
+      .click();
   await page.getByRole("button", { name: "Realizza progetto" }).click();
-  await page
-    .getByRole("button", { name: "Seleziona Laboratorio delle lucciole" })
+  await row("laboratorio")
+    .getByRole("button", { name: /^Costruisci / })
     .click();
-  await page.getByRole("button", { name: /^Costruisci ·/ }).click();
+  await expect(
+    page.getByRole("button", { name: "Realizza progetto" }),
+  ).toBeDisabled();
+  await page.clock.fastForward(3600_000);
+  for (const id of ["orto", "vivaio", "mulino", "laboratorio"]) {
+    while ((await saved(page)).activities[id] < 25)
+      await row(id)
+        .getByRole("button", { name: /^Migliora / })
+        .click();
+  }
   await page.getByRole("button", { name: "Realizza progetto" }).click();
   await expect(
     page.getByText("La prima festa del borgo è cominciata!"),
@@ -395,7 +447,9 @@ test("percorso completo tramite UI dalla partenza alla Festa, senza debug o seed
     "ponte",
     "festa",
   ]);
+  await expect(page.getByRole("dialog")).toHaveCount(0);
 });
+
 test("seconda scheda non avanza né scrive; takeover esplicito", async ({
   page,
   context,
@@ -418,8 +472,10 @@ test("seconda scheda non avanza né scrive; takeover esplicito", async ({
   const readonlyBalance = (await saved(other)).lifetimeCoins;
   expect(readonlyBalance - before.lifetimeCoins).toBeLessThan(3);
   await other.getByRole("button", { name: /Riprova dopo/ }).click();
-  await expect(other.getByRole("dialog")).toBeVisible();
-  await other.getByRole("button", { name: "Rientra nel borgo" }).click();
+  await expect(
+    other.getByRole("complementary", { name: "Riepilogo ritorno" }),
+  ).toBeVisible();
+  await other.getByRole("button", { name: "Nascondi riepilogo" }).click();
   await expect(
     other.getByRole("button", { name: /Incoraggia Momo/ }),
   ).toBeEnabled();
@@ -436,13 +492,15 @@ test("reduced motion e strumenti debug solo in sviluppo", async ({ page }) => {
       .evaluate((e) => getComputedStyle(e).animationName),
   ).toBe("none");
   await page.getByRole("button", { name: "Salta 60s", exact: true }).click();
-  await expect(page.getByRole("dialog")).toBeVisible();
-  await page.getByRole("button", { name: "Rientra nel borgo" }).click();
+  await expect(
+    page.getByRole("complementary", { name: "Riepilogo ritorno" }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Nascondi riepilogo" }).click();
   expect((await saved(page)).lifetimeCoins).toBeGreaterThan(30);
   await page
     .getByRole("button", { name: "Sblocchi di test", exact: true })
     .click();
-  await page.getByRole("button", { name: "Rientra nel borgo" }).click();
+  await page.getByRole("button", { name: "Nascondi riepilogo" }).click();
   await expect(
     page.getByText("La prima festa del borgo è cominciata!"),
   ).toBeVisible();

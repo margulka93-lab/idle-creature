@@ -1,3 +1,5 @@
+> Baseline FIRST_PLAYABLE (storica). Per F02, CODEX_TASK.md e docs/FLOW_REVISION.md prevalgono su acquisti, milestone, prerequisiti, UI, ritorno e migrazione. Accettazione corrente: docs/FLOW_ACCEPTANCE.md; conservare le regressioni tecniche applicabili qui sotto.
+
 # Visione e perimetro
 
 ## Vincoli approvati
